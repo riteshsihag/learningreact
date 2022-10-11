@@ -1,22 +1,23 @@
 .container{
     margin: 50px;
 }
-.name{
-    margin-top: 20px;
-    background-color: #fddddb;
-    width: 200px;
-    height: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 10px;
-}
+
 button{
     padding: 12px;
-    margin-left: 14px;
+    margin-left: 102px;
     border: none;
-    color: #dd1264;
     font-weight: 600;
     border-radius: 10px;
+    color: white;
+    background-color: #007bff;
+}
+h3{
+    margin-left: 114px;
+    font-size: 34px;
+}
+img{
+    width: 300px;
+    display: block;
+    margin-bottom: 37px;
 }
 

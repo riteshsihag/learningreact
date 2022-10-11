@@ -3,22 +3,23 @@ import './button.css';
 
 class Button extends Component {
     
-    state = { isShowing: true }
+    state = { count: 0 }
     mode = () => {
-        this.setState(prevState => ({
-            isShowing: !prevState.isShowing
-        }))
+        this.setState(prevState => {
+            return {count: prevState.count+1}
+        })
     }
 
     render() {
-        const { isShowing } = this.state;
+        const { count } = this.state;
         return (
+            <div className='main'>
+            <h3>{count + this.props.fruit}</h3>
             <div className="container">
-                
+                <img src={this.props.link}/>
                         <button onClick={this.mode}>{this.props.btn}</button>
-                        { isShowing ? <div className='name'>{this.props.txt}</div> : null }
                 </div>
-           
+                </div>
         )
     }
 }

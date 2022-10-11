@@ -3,20 +3,21 @@ import Button from './Component/Button';
 
 function App() {
  const content = [{
-    heading: "Show/Hide Firstname",
-    name: "Joe"
+    heading: "Eat Mango",
+    url: "https://assets.ccbp.in/frontend/react-js/mango-img.png ",
+    fruits : " Mangoes"
    
 }, {
-    heading: "Show/Hide Secondname",
-    name: "Jones"
+    heading: "Eat Banana",
+    url: "https://assets.ccbp.in/frontend/react-js/banana-img.png",
+    fruits : " Bananas"
 }]
   return (
     <div>
-      <h1>Show/Hide</h1>
       <div className="names"> 
       {content.map(item =>{
         return(
-        <Button btn ={item.heading} txt={item.name} />)
+        <Button fruit={item.fruits} btn ={item.heading} link={item.url} />)
       })} </div>
    </div>
   );
