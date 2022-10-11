@@ -1,19 +1,24 @@
-import {Component} from 'react';
+import { Component } from 'react';
 import './button.css';
-class Button extends Component{
-    state = {isLight: true}
-    mode = () =>{
-       this.setState(prevState => ({
-        isLight: !prevState.isLight
-      }))
+
+class Button extends Component {
+    
+    state = { isShowing: true }
+    mode = () => {
+        this.setState(prevState => ({
+            isShowing: !prevState.isShowing
+        }))
     }
-    render(){
-       const {isLight} = this.state;
-        return(
-            <div className={isLight?"light":"light dark"}>
-                <h2>Click to change mode</h2>
-                <button onClick={this.mode}>{isLight?"Dark Mode":"Light Mode"}</button>
-            </div>
+
+    render() {
+        const { isShowing } = this.state;
+        return (
+            <div className="container">
+                
+                        <button onClick={this.mode}>{this.props.btn}</button>
+                        { isShowing ? <div className='name'>{this.props.txt}</div> : null }
+                </div>
+           
         )
     }
 }

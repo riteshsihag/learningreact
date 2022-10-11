@@ -1,19 +1,22 @@
-.light{
-    text-align: center;
-    margin-top: 340px;
-    border: 1px solid black;
-    border-radius: 15px;
-    width: 400px;
-    padding: 30px;
+.container{
+    margin: 50px;
 }
-.light button{
-    padding: 10px;
-    border: 2px solid;
-    border-radius: 7px;
+.name{
+    margin-top: 20px;
+    background-color: #fddddb;
+    width: 200px;
+    height: 100px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 10px;
 }
-.dark{
-    background-color: black;
+button{
+    padding: 12px;
+    margin-left: 14px;
+    border: none;
+    color: #dd1264;
+    font-weight: 600;
+    border-radius: 10px;
 }
-.dark h2{
-    color: white;
-}
+
