@@ -8,14 +8,8 @@ body{
 #root{
   background-color: white;
     padding: 50px;
-    border-radius: 125px
+    border-radius: 125px;
+    width:335px;
+    text-align: center;
 }
-.names{
-  display: flex;
-}
-h1{
-  text-align: center;
-    font-size: 50px;
-    color: white;
-    line-height: 0px;
-}
+

@@ -4,7 +4,6 @@
 
 button{
     padding: 12px;
-    margin-left: 102px;
     border: none;
     font-weight: 600;
     border-radius: 10px;
@@ -12,12 +11,12 @@ button{
     background-color: #007bff;
 }
 h3{
-    margin-left: 114px;
+   
     font-size: 34px;
 }
-img{
-    width: 300px;
-    display: block;
-    margin-bottom: 37px;
+
+p{
+    
+    font-size: 20px;
 }
 
