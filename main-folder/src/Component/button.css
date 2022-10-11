@@ -1,0 +1,19 @@
+.light{
+    text-align: center;
+    margin-top: 340px;
+    border: 1px solid black;
+    border-radius: 15px;
+    width: 400px;
+    padding: 30px;
+}
+.light button{
+    padding: 10px;
+    border: 2px solid;
+    border-radius: 7px;
+}
+.dark{
+    background-color: black;
+}
+.dark h2{
+    color: white;
+}
