@@ -3,50 +3,68 @@ import Card from './Component/card';
 import { Component } from 'react';
 
 class App extends Component {
-  content = [{
-    money: "50"
+  content = [
+    {
+    id: "1",
+    info: "Follow these instructions"
   },
   {
-    money: "100"
+    id: "2",
+    info: "Run the below command "
   },
   {
-    money: "200"
+    id: "3",
+    info: "Submit the question"
   },
   {
-    money: "500"
+    id: "4",
+    info: "Publish the code"
+  },
+  {
+    id: "5",
+    info: "Functionality to be added"
+  },
+  {
+    id: "6",
+    info: "Things to Keep in Mind"
   }
-  ]
-  state = ({
-    balance: "2000"
+]
+state = {searchInput: ""}
+onChangeSearch = event => {
+  this.setState({
+    searchInput : event.target.value
   })
-  ramainingBalance = (no) =>{
-   this.setState(prevState => {
-    return { balance: prevState.balance - no}
-   })
-  }
+}
+onClickButton = (text) =>{
+  this.setState({
+    searchInput : text
+  })
+}
   render() {
-    const {balance} = this.state;
+    const {searchInput} = this.state;
+    const searchResults = this.content.filter(item=>{
+      return item.info.toLowerCase().includes(searchInput.toLowerCase())
+    })
     return (
-      <div className='container'>
-        <div className='account'>
-          <h2>S</h2>
-          <h1>Sarah Williams</h1>
-        </div>
-        <div className='bank'>
-        <h2 className='balance'>Your Balance</h2>
-        <p>{balance}</p>
-        </div>
+      <div>
+         <img className='google' src='https://assets.ccbp.in/frontend/react-js/google-logo.png'/>
+     
+      <div className='main'>
        
-        <h3 className='withdraw'>Withdraw</h3>
-        <h3>CHOOSE SUM (IN RUPEES)</h3>
-        <div className='cash'>
-          {this.content.map(item=>{
-           return <Card remaining = {this.ramainingBalance} rupees = {item.money} />
+        <div className='search'>
+          <img className='searchimg' src="https://assets.ccbp.in/frontend/react-js/google-search-icon.png"/>
+          <input type="text" value={searchInput} onChange={this.onChangeSearch} placeholder='Search Google'/>
+        </div>
+        <div className='list'>
+          {searchResults.map(item=>{
+            return <Card onClickButton={this.onClickButton} secondState={this.state} element={item.info}/>
           })}
-        </div> 
+       </div>
+      </div>
       </div>
     );
   }
 }
 
 export default App;
+onClick={onSearch}

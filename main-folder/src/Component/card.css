@@ -1,15 +1,21 @@
-.main{
+.main-container{
     display: flex;
-    margin: 10px;
 }
-button{
-    width: 100px;
-    height: 31px;
-    color: white;
-    border-radius: 10px;
-    background-color: #382f5a;
-    border: 1px solid white;
+img{
+    height: 20px;
+    right: 10px;
+    margin-top: 5px;
+    position: absolute;
 }
-button:hover{
-    cursor: pointer;
+img:hover{
+cursor: pointer;
+}
+p{
+    line-height: 0px;
+    color: #475569;
+    font-size: 14px;
+}
+.list{
+    margin-top: 10px;
+    margin-bottom: 5px
 }
