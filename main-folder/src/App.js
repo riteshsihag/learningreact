@@ -3,50 +3,47 @@ import Card from './Component/card';
 import { Component } from 'react';
 
 class App extends Component {
+  content = [{
+    money: "50"
+  },
+  {
+    money: "100"
+  },
+  {
+    money: "200"
+  },
+  {
+    money: "500"
+  }
+  ]
   state = ({
-    content: [
-      {
-        id: "1",
-        element: "Complete the below steps to create your development environment",
-      },
-      {
-        id: "2",
-        element: "Complete the below steps to create your development environment",
-      },
-      {
-        id: "3",
-        element: "Complete the below steps to create your development environment",
-      },
-      {
-        id: "4",
-        element: "Complete the below steps to create your development environment",
-      },
-      {
-        id: "5",
-        element: "Complete the below steps to create your development environment",
-      },
-      {
-        id: "6",
-        element: "Complete the below steps to create your development environment",
-      }
-    ]
+    balance: "2000"
   })
-  deleteUser = (id) =>{
-   const{content} = this.state;
-   const filteredList = content.filter((eachItem) =>{
-   return eachItem.id !== id;
+  ramainingBalance = (no) =>{
+   this.setState(prevState => {
+    return { balance: prevState.balance - no}
    })
-   this.setState({content : filteredList});
   }
   render() {
-    const {content} = this.state;
+    const {balance} = this.state;
     return (
       <div className='container'>
-        <h1>Simple Todos</h1>
-        {content.map(item=>{
-        return <Card key={item.id} content={item} deleteUser={this.deleteUser} para={item.element} />
-        })}
-     
+        <div className='account'>
+          <h2>S</h2>
+          <h1>Sarah Williams</h1>
+        </div>
+        <div className='bank'>
+        <h2 className='balance'>Your Balance</h2>
+        <p>{balance}</p>
+        </div>
+       
+        <h3 className='withdraw'>Withdraw</h3>
+        <h3>CHOOSE SUM (IN RUPEES)</h3>
+        <div className='cash'>
+          {this.content.map(item=>{
+           return <Card remaining = {this.ramainingBalance} rupees = {item.money} />
+          })}
+        </div> 
       </div>
     );
   }

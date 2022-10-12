@@ -5,12 +5,10 @@
 button{
     width: 100px;
     height: 31px;
-    margin: 10px;
-    margin-left: 62px;
-    color: #ff0b37;
-    border: 1px solid #ff0b37;
+    color: white;
     border-radius: 10px;
-    background-color: white;
+    background-color: #382f5a;
+    border: 1px solid white;
 }
 button:hover{
     cursor: pointer;

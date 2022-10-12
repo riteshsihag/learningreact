@@ -3,17 +3,55 @@ body{
   align-items: center;
   justify-content: center;
   height: 100vh;
-  background-color: #ffc2a0;
-}
-h1{
-  text-align: center;
-  margin-bottom: 47px;
-  margin-top: 0px;
-  color: #ff8542;
-  font-size: 47px;
-}
-.container{
   background-color: white;
+}
+
+.container{
+  background-color: #150b3e;
   padding: 100px;
-    border-radius: 102px;
+    border-radius: 30px;
+}
+.account{
+  color: white;
+  display: flex;
+}
+.account h1{
+  margin-left: 20px;
+  font-size: 23px;
+  margin-top: 27px;
+  color: #c7d2fe;
+}
+.account h2{
+  width: 52px;
+  height: 34px;
+  border-radius: 50px;
+  background-color: #c7d2fe;
+  text-align: center;
+  color: #7c3aed;
+  font-size: 18px;
+  padding-top: 15px;
+}
+h3{
+  color: #585076;
+  font-size: 15px;
+}
+.cash{
+  display: grid;
+    grid-template-columns: auto auto;
+}
+.withdraw{
+  color: white;
+  font-size: 25px;
+}
+.balance{
+  color: #585076;
+}
+.bank{
+  display: flex;
+}
+p{
+color: white;
+margin: 16px;
+    margin-left: 90px;
+    font-size: 30px;
 }
