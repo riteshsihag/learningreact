@@ -1,17 +1,18 @@
 .main{
     display: flex;
     margin: 10px;
+    position: relative;
+    width: 50vw;
 }
-button{
-    width: 100px;
-    height: 31px;
-    margin: 10px;
-    margin-left: 62px;
-    color: #ff0b37;
-    border: 1px solid #ff0b37;
-    border-radius: 10px;
-    background-color: white;
+ img{
+    position: absolute;
+    right: 0px;
+    margin-top: 13px;
+ }
+ .content{
+    display: flex;
+    margin-left: 75px;
 }
-button:hover{
+img:hover{
     cursor: pointer;
 }

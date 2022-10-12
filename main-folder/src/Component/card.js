@@ -11,8 +11,13 @@ class Card extends Component{
         }
         return(
             <div className='main'>
-              <p>{this.props.para}</p>
-              <button  onClick={onDelete}>Delete</button>
+                <p>{this.props.time}</p>
+                <div className='content'>
+                <p>{this.props.para}</p>
+              <p className='web'>{this.props.web}</p>
+                </div>
+            <img onClick={onDelete} src="https://assets.ccbp.in/frontend/react-js/delete-img.png"/>
+
             </div>
         )
     }
