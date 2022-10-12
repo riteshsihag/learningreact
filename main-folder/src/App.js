@@ -67,4 +67,3 @@ onClickButton = (text) =>{
 }
 
 export default App;
-onClick={onSearch}
