@@ -7,7 +7,7 @@ import details from './constants/detail';
 
 class App extends Component {
   state = {
-    commonId: content[0].id
+    commonId: content[0].id, searchInput: ""
   }
 
   clickImg = (id) => {
@@ -16,29 +16,42 @@ class App extends Component {
 
   findSimilarImg = () => {
     const { commonId } = this.state;
-    const similarImg = details.find(element => {
+    const similarImg = content.filter(element => {
       return element.id === commonId
     })
     return similarImg;
+  }
+  onChangeSearch = event =>{
+    this.setState({
+      searchInput: event.target.value
+    })
   }
 
   render() {
     const {commonId} = this.state;
     const similarImg = this.findSimilarImg();
 
+    const {searchInput} = this.state;
+    const searchResults = similarImg.filter(eachItem=>{
+      return eachItem.name.toLowerCase().includes(searchInput.toLowerCase());
+    })
+   
     return (
       <>
-      <div className='big-container'>
-       
-         <Card2 key={similarImg.id} url={similarImg.link} />
-       
-        <h2>Nature Photography</h2>
-        <p>Nature Photography by Rahul</p>
-        </div>
+      <h1>App Store</h1>
+      <div className='search'>
+        <input placeholder='Search' onChange={this.onChangeSearch} value={searchInput} type="text"/>
+      </div>
         <div className='img-container'>
-        {content.map(item => {
-          return <Card key={item.id} clickImg={this.clickImg} contentlist ={item.id} url={item.link} isActive={commonId === item.id} />
+        {details.map(item => {
+          return <Card  clickImg={this.clickImg} contentlist ={item.id} name={item.name} isActive={commonId === item.id} />
         })}</div>
+
+<div className='big-container'>
+        {searchResults.map(item => {
+          return <Card2 key={item.uniqueID} name={item.name} url={item.link} />
+        })}
+        </div>
       </>
     );
   }
