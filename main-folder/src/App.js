@@ -4,17 +4,26 @@ import { Component } from 'react';
 import content from './constants/content';
 
 class App extends Component {
-  
+  state = {
+    num:0,
+    count:0
+  }
+  random = (prevState) => {
+   this.setState({
+    num:Math.floor((Math.random()*10)),
+    count: prevState.count + 1
+  }) 
+  }
   render() {
-    const random = Math.floor((Math.random()*10))
-    const even = random%2===0;
-   
+    
+   const {num, count} = this.state
     return (
       <>
     <div>
-     {even:<img src="https://assets.ccbp.in/frontend/react-js/heads-img.png"/>}  
-       <img src="https://assets.ccbp.in/frontend/react-js/tails-img.png"/>
+     {num%2===0?<img src="https://assets.ccbp.in/frontend/react-js/heads-img.png"/>: <img src="https://assets.ccbp.in/frontend/react-js/tails-img.png"/>}  
+      <button onClick={this.random}>Toss Coin</button>
      </div>
+     <p>Total:{count}</p>
       </>
     );
   }
