@@ -3,42 +3,45 @@ import Card from './Component/card';
 import Card2 from './Component/card2';
 import { Component } from 'react';
 import content from './constants/content';
-import details from './constants/detail';
 
 class App extends Component {
   state = {
     commonId: content[0].id
   }
 
-  clickImg = (id) => {
-    this.setState({ commonId: id })
+  
+ clickCapital = (event)=> {
+    content.find((item)=>{
+    if(item.name === event.target.value){
+    this.setState({ commonId: item.id }) 
+    }
+   })
   }
 
-  findSimilarImg = () => {
+  findSimilarID = () => {
     const { commonId } = this.state;
-    const similarImg = details.find(element => {
+    const similarID = content.find(element => {
       return element.id === commonId
     })
-    return similarImg;
+    return similarID;
   }
+ 
 
   render() {
-    const {commonId} = this.state;
-    const similarImg = this.findSimilarImg();
-
+    const similarID = this.findSimilarID();
+   
     return (
       <>
-      <div className='big-container'>
+      <div className='country-container'>
        
-         <Card2 key={similarImg.id} url={similarImg.link} />
+         <Card2 key={similarID.id} name={similarID.name1} />
        
-        <h2>Nature Photography</h2>
-        <p>Nature Photography by Rahul</p>
         </div>
-        <div className='img-container'>
+        <div className='capital-container'>
+          <select onChange={this.clickCapital}>
         {content.map(item => {
-          return <Card key={item.id} clickImg={this.clickImg} contentlist ={item.id} url={item.link} isActive={commonId === item.id} />
-        })}</div>
+          return <Card key={item.id}  name={item.name} />
+        })}</select></div>
       </>
     );
   }
