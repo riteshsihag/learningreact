@@ -3,14 +3,14 @@ import './card.css';
 class Card extends Component{
    
     render(){
-           const {clickEmoji} = this.props;
-          const giveFeedback = () =>{
-                clickEmoji()
-        }
+        const {contentlist , clickImg, isActive} = this.props;
+         const changeImg=()=>{
+            clickImg(contentlist)
+         } 
+         const activeImgClassName = isActive ? '' : 'smallimg'
         return(
             <div className='main'>
-               <img onClick={giveFeedback} src={this.props.url}/>
-               <p>{this.props.mood}</p>
+               <img className={activeImgClassName} onClick={changeImg} src={this.props.url}/>
             </div>
         )
     }

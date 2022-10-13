@@ -1,54 +1,45 @@
 import './App.css';
 import Card from './Component/card';
+import Card2 from './Component/card2';
 import { Component } from 'react';
+import content from './constants/content';
+import details from './constants/detail';
 
- const content = [
-  {
-    link: "https://img.icons8.com/cotton/64/000000/sad.png",
-    mood: "Sad"
-  },
-  {
-    link: "https://img.icons8.com/emoji/48/000000/neutral-face.png",
-    mood: "None"
-  },
-  {
-    link: "https://img.icons8.com/fluency/48/000000/lol.png",
-    mood: "Happy"
-  }
-]
 class App extends Component {
- 
-  state = {feedDone : false}
-  clickEmoji = () =>{
-   this.setState(prevState =>{
-   return {feedDone: !prevState.feedDone}
-   })
+  state = {
+    commonId: content[0].id
   }
+
+  clickImg = (id) => {
+    this.setState({ commonId: id })
+  }
+
+  findSimilarImg = () => {
+    const { commonId } = this.state;
+    const similarImg = details.filter(element => {
+      return element.id === commonId
+    })
+    return similarImg;
+  }
+
   render() {
-const {feedDone} = this.state;
+    const {commonId} = this.state;
+    const similarImg = this.findSimilarImg();
+
     return (
       <>
-      {feedDone? 
-      
-      <div className='thank'>
-      <img src="https://img.icons8.com/fluency/48/000000/like.png" />
-      <h4>Thank You</h4>
-      <p>We will use your feedback to improve our customer support performance</p>
-    </div>
-    :
-    <div className='container'>
-        <h3>How satisfied are you with our customer support performance?</h3>
-        <div className='emoji'>
-          {content.map(item => {
-            return <Card clickEmoji={this.clickEmoji} mood={item.mood} url={item.link} />
-          })}
+      <div className='big-container'>
+        {similarImg.map(item => {
+          return <Card2 key={item.id} url={item.link} />
+        })}
+        <h2>Nature Photography</h2>
+        <p>Nature Photography by Rahul</p>
         </div>
-      </div>
-
-  }
-      
-     
-    </>
+        <div className='img-container'>
+        {content.map(item => {
+          return <Card key={item.id} clickImg={this.clickImg} contentlist ={item.id} url={item.link} isActive={commonId === item.id} />
+        })}</div>
+      </>
     );
   }
 }
