@@ -2,21 +2,22 @@ import './App.css';
 import Card from './Component/card';
 import { Component } from 'react';
 
+ const content = [
+  {
+    link: "https://img.icons8.com/cotton/64/000000/sad.png",
+    mood: "Sad"
+  },
+  {
+    link: "https://img.icons8.com/emoji/48/000000/neutral-face.png",
+    mood: "None"
+  },
+  {
+    link: "https://img.icons8.com/fluency/48/000000/lol.png",
+    mood: "Happy"
+  }
+]
 class App extends Component {
-  content = [
-    {
-      link: "https://img.icons8.com/cotton/64/000000/sad.png",
-      mood: "Sad"
-    },
-    {
-      link: "https://img.icons8.com/emoji/48/000000/neutral-face.png",
-      mood: "None"
-    },
-    {
-      link: "https://img.icons8.com/fluency/48/000000/lol.png",
-      mood: "Happy"
-    }
-  ]
+ 
   state = {feedDone : false}
   clickEmoji = () =>{
    this.setState(prevState =>{
@@ -38,7 +39,7 @@ const {feedDone} = this.state;
     <div className='container'>
         <h3>How satisfied are you with our customer support performance?</h3>
         <div className='emoji'>
-          {this.content.map(item => {
+          {content.map(item => {
             return <Card clickEmoji={this.clickEmoji} mood={item.mood} url={item.link} />
           })}
         </div>
