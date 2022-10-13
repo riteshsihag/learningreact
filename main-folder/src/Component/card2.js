@@ -6,8 +6,7 @@ class Card2 extends Component{
           
         return(
             <div className='main'>
-               <img src={this.props.url}/>
-               <p>{this.props.name}</p>
+             
             </div>
         )
     }
