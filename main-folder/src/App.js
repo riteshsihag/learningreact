@@ -16,7 +16,7 @@ class App extends Component {
 
   findSimilarImg = () => {
     const { commonId } = this.state;
-    const similarImg = details.filter(element => {
+    const similarImg = details.find(element => {
       return element.id === commonId
     })
     return similarImg;
@@ -29,9 +29,9 @@ class App extends Component {
     return (
       <>
       <div className='big-container'>
-        {similarImg.map(item => {
-          return <Card2 key={item.id} url={item.link} />
-        })}
+       
+         <Card2 key={similarImg.id} url={similarImg.link} />
+       
         <h2>Nature Photography</h2>
         <p>Nature Photography by Rahul</p>
         </div>
