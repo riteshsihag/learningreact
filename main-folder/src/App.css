@@ -1,60 +1,39 @@
-body{
-  display: flex;
-  justify-content: center;
- 
+.emoji{
+  justify-content: space-evenly;
+    display: flex;
+    width: 300px;
 }
-h1{
+img{
+  width: 77px;
+    height: 77px;
+}
+p{
   text-align: center;
-  margin-bottom: 47px;
-  margin-top: 0px;
-  font-size: 47px;
 }
 .container{
-  display: flex;
-    flex-direction: column;
-    align-items: center;
+  width: 300px;
+  padding: 50px;
+  border-radius: 40px;
+  text-align: center;
+    background-color: white;
 }
-.web{
-  margin-left: 15px;
-  color: #64748b;
-}
-.nav{
-  background-color: #3367d6;
+body{
+  background-color: #ffc0bb;
   display: flex;
-  width: 100vw;
-  height: 80px;
-  margin-bottom: 30px;
+  justify-content: center;
   align-items: center;
+  height: 100vh;
 }
-#img{
-  margin: 0px;
-    margin-right: 2px;
-    background-color: #2850a7;
-    height: 30px;
-    padding-left: 10px;
-    padding-right: 10px;
-    margin-left: 0px;
-    border: 1px solid #ececec;
+img:hover{
+  cursor: pointer;
 }
-.nav img{
-  position: initial;
-  height: 35px;
-  margin-left: 45px;
-  margin-top: 0px;
+p:hover{
+  cursor: pointer;
 }
-input{
-  color: #ececec;
-  width: 330px;
-    height: 28px;
-    border: none;
-    background-color: #2850a7;
-    border: 1px solid #ececec;
-}
-input:focus{
-  outline: none;
-}
-.searchbar{
-  display: flex;
-    justify-content: center;
-    width: 100%;
+.thank{
+  text-align: center;
+    width: 300px;
+    background-color: white;
+    padding: 50px;
+    border-radius: 35px;
 }

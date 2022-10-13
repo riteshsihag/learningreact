@@ -1,23 +1,16 @@
 import {Component} from 'react';
 import './card.css';
 class Card extends Component{
+   
     render(){
-        const {content, deleteUser} = this.props;
-        const {id} = content;
-        console.log(content);
-       const onDelete = () =>{
-            deleteUser(id);
-           
+           const {clickEmoji} = this.props;
+          const giveFeedback = () =>{
+                clickEmoji()
         }
         return(
             <div className='main'>
-                <p>{this.props.time}</p>
-                <div className='content'>
-                <p>{this.props.para}</p>
-              <p className='web'>{this.props.web}</p>
-                </div>
-            <img onClick={onDelete} src="https://assets.ccbp.in/frontend/react-js/delete-img.png"/>
-
+               <img onClick={giveFeedback} src={this.props.url}/>
+               <p>{this.props.mood}</p>
             </div>
         )
     }
