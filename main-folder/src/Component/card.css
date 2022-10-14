@@ -1,57 +1,30 @@
-.like img{
-    margin: 8px;
-    height: 16px;
+.name{
+    width: 303px;
+   border: 1px solid grey;
+    border-radius: 13px;
 }
-.like p{
-    line-height: 0px;
-    color: grey;
-    font-weight: 500;
-}
-.deleteimg{
-    position: absolute;
-    right: 10px;
-    margin-top: 2px;
-    height: 20px;
-}
-.delete{
+.head{
     display: flex;
+    width: 300px;
     position: relative;
-    margin-top: 8px;
-    margin-left: 7px;
 }
 .like{
-    display: flex;
+    position: absolute;
+    right: 10px;
+    top:14px
 }
-.main-container{
-    border-bottom: 1px solid grey;
-    padding-bottom: 10px;
-}
-.logo{
-    margin: 13px;
-    font-size: 28px;
-    background-color: #f97316;
-    width: 34px;
-    color: white;
-    text-align: center;
-    height: 33px;
-    border-radius: 50px;
-    padding: 4px;
-}
-.name{
-    display: flex;
-}
-.name h1{
-    line-height: 34px;
-    font-size: 17px;
+.head h1{
+    margin-left: 20px;
+    margin-top: 28px;
+    font-size: 22px;
+    line-height: 0px;
     font-weight: 500;
 }
-.head p{
+.date{
     line-height: 0px;
-    font-size: 15px;
-}
-#like-color{
-  color: #0ea5e9;
-}
-.like p:hover, .like img:hover, .deleteimg:hover, button:hover{
-    cursor: pointer;
+    font-size: 14px;
+    margin-left: 20px;
+    margin-bottom: 23px;
+    margin-top: 20px;
+
 }

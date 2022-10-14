@@ -8,44 +8,42 @@ class App extends Component {
   state = ({
     content: initialcontent,
     naam: "",
-    comment: "",
-    count:0,
-    
+    date: "",
+    count: 0,
+
   })
 
   addItem = () => {
-    const colors = ['#ff0000', '#00ff00', '#0000ff'];
-const  random_color = colors[Math.floor(Math.random() * colors.length)];
-    const { naam, comment } = this.state;
-    if(naam!=="" && comment!==""){
-    const newContent = {
-      id: uuidv4(),
-      naam,
-      comment,
-      isFavorite: false,
-      random_color
-    }
-    this.setState(prevState => {
-      return {
-        content: [...prevState.content, newContent],
-        naam: "",
-        comment: "",
-        count:prevState.count + 1,
-        
+    const { naam, date } = this.state;
+    if (naam !== "" && date !== "") {
+      const newContent = {
+        id: uuidv4(),
+        naam,
+        date,
+        isFavorite: false,
       }
-    })}
+      this.setState(prevState => {
+        return {
+          content: [...prevState.content, newContent],
+          naam: "",
+          date: "",
+          count: prevState.count + 1,
+
+        }
+      })
+    }
   };
 
-  changeFavorite=(id)=>{
-    this.setState(prevState=>({
-     content: prevState.content.map(item=>{
-       if(id===item.id){
-        return{...item, isFavorite: !item.isFavorite}
-       } return item;
-     })
+  changeFavorite = (id) => {
+    this.setState(prevState => ({
+      content: prevState.content.map(item => {
+        if (id === item.id) {
+          return { ...item, isFavorite: !item.isFavorite }
+        } return item;
+      })
     }))
-   
-   }
+
+  }
 
   submitName = (event) => {
     this.setState({
@@ -53,39 +51,33 @@ const  random_color = colors[Math.floor(Math.random() * colors.length)];
     })
   }
 
-  submitComment = (event) => {
+  submitdate = (event) => {
     this.setState({
-      comment: event.target.value
+      date: event.target.value
     })
   }
 
-  deleteUser = (id) => {
-    const { content } = this.state;
-    const filteredList = content.filter((eachItem) => {
-      return eachItem.id !== id;
-    })
-    this.setState(prevState=>{ return{content: filteredList , count: prevState.count-1}});
-  }
   render() {
-    const { content, naam, comment, count } = this.state;
+    const { content, naam, date, count } = this.state;
     return (
       <div className='container'>
         <div className='main'>
-        <div className='write'>
-        <h1 className='heading'>Comments</h1>
-        <p>Say something about 4.0 Technologies</p>
-        <form>
-        <input placeholder='Your Name' value={naam} onChange={this.submitName} type="text" required/> <br />
-        <textarea ty placeholder='Your Comment' value={comment} onChange={this.submitComment} rows="10" cols="35" required/>
-        <button onClick={this.addItem}>Add Comments</button></form>
+          <div className='write'>
+            <h1 className='heading'>Add Appointment</h1>
+            <form>
+              <p>Title</p>
+              <input placeholder='Title' value={naam} onChange={this.submitName} type="text" required /> <br />
+              <p>Date</p>
+              <input value={date} onChange={this.submitdate} className="inputdate" type="date" rows="10" cols="35" required />
+              <button onClick={this.addItem}>Add</button></form>
+          </div>
+          <div className='img-container'>
+            <img className='img' src="https://assets.ccbp.in/frontend/react-js/appointments-app/appointments-img.png" />
+          </div>
         </div>
-        <div className='img-container'>
-          <img className='img' src="https://assets.ccbp.in/frontend/react-js/comments-app/comments-img.png"/>
-        </div>
-        </div>
-       <span className='count-container'> <p className='count'>{count}</p> <p className='com'>Comments</p></span>
+        <h1>Appointments</h1>
         {content.map(item => {
-          return <Card random_color={item.random_color} changeFavorite={this.changeFavorite} key={item.id} content={item} deleteUser={this.deleteUser} naam={item.naam} comment={item.comment} />
+          return <Card changeFavorite={this.changeFavorite} key={item.id} content={item} naam={item.naam} date={item.date} />
         })}
 
       </div>
