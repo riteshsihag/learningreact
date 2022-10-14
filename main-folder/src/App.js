@@ -53,9 +53,19 @@ class App extends Component {
       date: event.target.value
     })
   }
-
+ 
   render() {
+   
     const { content, naam, date} = this.state;
+   const starredElement = () =>{
+      const star = content.map(item=>{
+        if(item.isFavorite){
+         content.filter(item=>{
+          
+         })
+        }
+      })
+     }
     return (
       <div className='container'>
         <div className='main'>
@@ -74,7 +84,7 @@ class App extends Component {
         </div>
         <div className='star'>
         <h2>Appointments</h2>
-        <p className='starred' onClick={this.starredElement}>Starred</p>
+        <p className='starred' onClick={starredElement}>Starred</p>
         </div>
         <div className='flex-container'>
         {content.map(item => {
