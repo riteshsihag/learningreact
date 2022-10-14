@@ -9,7 +9,6 @@ class App extends Component {
     content: initialcontent,
     naam: "",
     date: "",
-    count: 0,
 
   })
 
@@ -26,9 +25,7 @@ class App extends Component {
         return {
           content: [...prevState.content, newContent],
           naam: "",
-          date: "",
-          count: prevState.count + 1,
-
+          date: ""
         }
       })
     }
@@ -58,7 +55,7 @@ class App extends Component {
   }
 
   render() {
-    const { content, naam, date, count } = this.state;
+    const { content, naam, date} = this.state;
     return (
       <div className='container'>
         <div className='main'>
@@ -77,7 +74,7 @@ class App extends Component {
         </div>
         <div className='star'>
         <h2>Appointments</h2>
-        <p className='starred'>Starred</p>
+        <p className='starred' onClick={this.starredElement}>Starred</p>
         </div>
         <div className='flex-container'>
         {content.map(item => {
