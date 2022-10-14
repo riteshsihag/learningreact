@@ -1,29 +1,50 @@
 import './App.css';
-import Card from './Component/card';
 import { Component } from 'react';
-import content from './constants/content';
 
 class App extends Component {
   state = {
-    num:0,
-    count:0
+    num: 0,
+    count: 0,
+    head:0,
+    tail:0
   }
-  random = (prevState) => {
-   this.setState({
-    num:Math.floor((Math.random()*10)),
-    count: prevState.count + 1
-  }) 
+  random = () => {
+    const ran = Math.floor((Math.random() *17));
+    this.setState(prevState=>{
+      return {
+      num: ran,
+      count: prevState.count + 1
+    }})
+    if(ran%2===0){
+      this.setState(prevState=>{
+        return {
+        head: prevState.head + 1
+      }})
+    }
+    else{
+      this.setState(prevState=>{
+        return {
+        tail: prevState.tail + 1
+      }})
+    }
+   
   }
   render() {
-    
-   const {num, count} = this.state
+
+    const { num, count, head, tail } = this.state
     return (
       <>
-    <div>
-     {num%2===0?<img src="https://assets.ccbp.in/frontend/react-js/heads-img.png"/>: <img src="https://assets.ccbp.in/frontend/react-js/tails-img.png"/>}  
-      <button onClick={this.random}>Toss Coin</button>
-     </div>
-     <p>Total:{count}</p>
+        <div>
+          <h1>Coin Toss Game</h1>
+          <h3>Head (or) Tail</h3>
+          {num % 2 === 0 ? <img src="https://assets.ccbp.in/frontend/react-js/heads-img.png" /> : <img src="https://assets.ccbp.in/frontend/react-js/tails-img.png" />}
+          <button onClick={this.random}>Toss Coin</button>
+        </div>
+        <div className='count'>
+        <p>Total: {count}</p>
+        <p>Head: {head}</p>
+        <p>Tail: {tail}</p>
+        </div>
       </>
     );
   }
