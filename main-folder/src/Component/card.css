@@ -1,17 +1,57 @@
-.main{
+.like img{
+    margin: 8px;
+    height: 16px;
+}
+.like p{
+    line-height: 0px;
+    color: grey;
+    font-weight: 500;
+}
+.deleteimg{
+    position: absolute;
+    right: 10px;
+    margin-top: 2px;
+    height: 20px;
+}
+.delete{
     display: flex;
-    margin: 10px;
+    position: relative;
+    margin-top: 8px;
+    margin-left: 7px;
 }
-button{
-    width: 100px;
-    height: 31px;
-    margin: 10px;
-    margin-left: 62px;
-    color: #ff0b37;
-    border: 1px solid #ff0b37;
-    border-radius: 10px;
-    background-color: white;
+.like{
+    display: flex;
 }
-button:hover{
+.main-container{
+    border-bottom: 1px solid grey;
+    padding-bottom: 10px;
+}
+.logo{
+    margin: 13px;
+    font-size: 28px;
+    background-color: #f97316;
+    width: 34px;
+    color: white;
+    text-align: center;
+    height: 33px;
+    border-radius: 50px;
+    padding: 4px;
+}
+.name{
+    display: flex;
+}
+.name h1{
+    line-height: 34px;
+    font-size: 17px;
+    font-weight: 500;
+}
+.head p{
+    line-height: 0px;
+    font-size: 15px;
+}
+#like-color{
+  color: #0ea5e9;
+}
+.like p:hover, .like img:hover, .deleteimg:hover, button:hover{
     cursor: pointer;
 }
