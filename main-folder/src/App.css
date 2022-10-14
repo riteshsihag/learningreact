@@ -1,10 +1,17 @@
 body{
     display: flex;
     justify-content: center;
+    align-items: center;
     background:linear-gradient(#fbc7d4,#9796f0);
     background-size: cover;
+    height: 100vh;
     background-repeat: no-repeat;
     
+}
+.container{
+    background-color: white;
+    padding: 50px;
+    border-radius: 20px;
 }
 .main{
     display: flex;
@@ -28,28 +35,52 @@ input{
 }
 .img{
     width: 381px;
-    margin-top: 138px;
+    margin-top: 45px;
 }
 button{
     padding: 10px;
-    background-color: #0284c7;
+    background-color: #8b5cf6;
     color: white;
     border: none;
+    border-radius: 10px;
+    margin-top: 11px;
 }
 .heading{
-    font-size: 55px;
+    font-size: 37px;
 }
 .count{
     background-color: #0284c7;
-    width: 19px;
-    color: white;
-    padding: 2px;
+    width: 19px;    
     text-align: center;
     margin-right: 7px;
+   
+}
+.flex-container{
+    display: grid;
+    grid-template-columns: auto auto auto;
 }
 .com{
     margin-top: 17px;
 }
 .count-container{
     display: flex;
+}
+.star{
+    display: flex;
+    position: relative;
+    margin-bottom: -20px;
+}
+.starred{
+    position: absolute;
+    right: 20px;
+    border: 1px solid #8b5cf6;
+    padding: 6px;
+    color: #8b5cf6;
+    width: 67px;
+    text-align: center;
+    font-size: 13px;
+    border-radius: 15px;
+}
+.main-container{
+    margin-top: 20px;
 }

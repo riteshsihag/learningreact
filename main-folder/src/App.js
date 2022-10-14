@@ -75,10 +75,14 @@ class App extends Component {
             <img className='img' src="https://assets.ccbp.in/frontend/react-js/appointments-app/appointments-img.png" />
           </div>
         </div>
-        <h1>Appointments</h1>
+        <div className='star'>
+        <h2>Appointments</h2>
+        <p className='starred'>Starred</p>
+        </div>
+        <div className='flex-container'>
         {content.map(item => {
           return <Card changeFavorite={this.changeFavorite} key={item.id} content={item} naam={item.naam} date={item.date} />
-        })}
+        })}</div>
 
       </div>
     );

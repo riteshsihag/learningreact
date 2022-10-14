@@ -2,6 +2,7 @@
     width: 303px;
    border: 1px solid grey;
     border-radius: 13px;
+    margin-right: 20px;
 }
 .head{
     display: flex;
