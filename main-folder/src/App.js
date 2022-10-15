@@ -76,7 +76,7 @@ const  random_color = colors[Math.floor(Math.random() * colors.length)];
         <p>Say something about 4.0 Technologies</p>
         <form>
         <input placeholder='Your Name' value={naam} onChange={this.submitName} type="text" required/> <br />
-        <textarea ty placeholder='Your Comment' value={comment} onChange={this.submitComment} rows="10" cols="35" required/>
+        <textarea placeholder='Your Comment' value={comment} onChange={this.submitComment} rows="10" cols="35" required/>
         <button onClick={this.addItem}>Add Comments</button></form>
         </div>
         <div className='img-container'>
