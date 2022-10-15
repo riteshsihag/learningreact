@@ -1,6 +1,6 @@
 import { Component } from 'react';
 import './card.css';
-class Card extends Component {
+class Finished extends Component {
 
     render() {
        const {getrandomEmoji,id} = this.props;

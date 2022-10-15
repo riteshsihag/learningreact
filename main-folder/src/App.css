@@ -1,146 +1,28 @@
-body{
+.navbar{
     display: flex;
-    justify-content: center;
+    background-color: rgba(255, 255, 255, 0.205);
+    height: 80px;
 }
-.balance-container{
+.score{
     display: flex;
-}
-.balance{
-    margin: 10px;
-    display: flex;
-    width: 216px;
-    justify-content: center;
-    padding: 7px;
-    border-radius: 18px;
-    padding-left: 0px;
-}
-.balance img{
-    width: 55px;
-    margin-right: 16px;
-    height: 55px;
-    margin-top: 14px;
-   
-}
-.balance-details h3{
-    font-size: 15px;
-    font-weight: 400;
-    margin-top: 24px;
-    line-height: 0px;
-}
-.balance-details p{
-    font-size: 24px;
-    line-height: 16px;
-}
-.bal{
-    background-color: #ecfccb;
-    border: 1px solid #84cc16;
-}
-.income{
-    background-color: #cffafe;
-    border: 1px solid #06b6d4;
-}
-.expenses{
-    background-color: #ede9fe;
-    border: 1px solid #7c3aed;
-}
-.history-container{
-    display: flex;
-}
-.transaction-container{
-    border: 1px solid #cbd5e1;
-    padding: 50px;
-    padding-top: 30px;
-    margin-top: 30px;
-    border-radius: 10px;
-}
-input{
-    display: block;
-    margin-bottom: 15px;
-    height: 15px;
-    padding: 6px;
-    width: 200px;
-    border: 1px solid #cbd5e1;
-}
-select{
-    display: block;
-    margin-bottom: 15px;
-    width: 216px;
-    height: 35px;
-    padding: 6px;
-    border: 1px solid #cbd5e1;
-    background-color: white;
-}
-.transaction-container p{
-    line-height: 0px;
-    font-size: 15px;
-    margin-top: 30px;
-    color: #7e858e;
-}
-.transaction-container h2{
-    margin-bottom: 35px;
-    color: #334155;
-}
-button{
-   padding: 10px;
-   background-color: #0b69ff;
-   color: white;
-   border: none;
-   border-radius: 7px;
-   width: 55px;
-}
-table{
-    border-collapse: collapse;
-  margin-left: 27px;
-  border: 1px solid #cbd5e1;
-   margin-top: 20px;
-   height: 35px;
-   width: 320px;
-   margin-bottom: 40px;
-}
-tr{
-    border: 1px solid #cbd5e1;
-    height: 35px;
-}
-th{
-    width: 100px;
-}
-td img{
-    height: 20px;
-}
-td{
-    text-align: center;
-}
-.list{
-    width: 371px;
-    border: 1px solid #cbd5e1;
-    margin-left: 40px;
-    margin-top: 30px;
-    color: #334155 ;
-    border-radius: 10px;
-
-}
-.list h2{
-    margin-left: 27px;
-    margin-top: 50px;
-    color: #334155;
-}
-.person-details{
-    background-image: url(https://assets.ccbp.in/frontend/react-js/money-manager/money-manager-bg.png);
-    padding: 20px;
-    background-size: cover;
-    margin-top: 50px;
-    margin-bottom: 30px;
-}
-.manager{
-    color:  #0b69ff;
-}
-h1{
-    margin-left: 30px;
-    margin-top: 28px;
-}
-.person-details p{
-    margin-left: 30px;
-    margin-left: 30px;
-    font-size: 17px;
+    position: absolute;
+    right: 100px;
+    top: 8px;
+    color: white;
+    font-size: 20px;
     font-weight: 500;
+}
+.logo{
+    width: 60px;
+    height: 60px;
+    margin-left: 100px;
+    margin-top: 10px;
+}
+.logo-name{
+    color: white;
+    margin-top: 27px;
+    font-size: 22px;
+}
+.score-card{
+    margin-right: 40px;
 }

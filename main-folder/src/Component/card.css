@@ -1,0 +1,28 @@
+.emoji-container{
+    display: grid;
+    grid-template-columns: auto auto auto auto;
+    width: 100%;
+    justify-content: center;
+    margin-top: 110px;
+}
+body{
+    height: 100vh;
+    background: linear-gradient(to bottom right, #9796f0,#fbc7d4);
+}
+
+.emoji{
+    width: 170px;
+    background-color: rgba(255, 255, 255, 0.2);
+    height: 170px;
+    border: 5px solid rgba(255, 239, 239, 0.418);
+    display: flex;
+    margin-bottom: 20px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border-radius: 30px;
+    margin: 15px;
+}
+.emoji:hover{
+    cursor: pointer;
+}
