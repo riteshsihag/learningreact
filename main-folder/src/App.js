@@ -62,13 +62,34 @@ class App extends Component {
       }))
     }
   }
-  deleteElement = (id) => {
-    const { content} = this.state;
+  deleteElement = (id,amount,select) => {
+    const {content} = this.state;
     const filteredList = content.filter(eachItem => {
       return eachItem.id !== id;
     })
+
+    
+    if(select == "Income"){
+      this.setState(prevState=>{
+        return {
+          income: prevState.income - amount,
+          balance: prevState.balance - amount,
+          expenses: prevState.expenses
+        }
+      })
+    }
+    else{
+      this.setState(prevState=>{
+        return {
+          balance: prevState.balance + amount,
+          expenses: prevState.expenses - amount,
+          income: prevState.income
+        }
+      })
+    }
+    
     this.setState({
-      content: filteredList,
+      content: filteredList
     })
   }
 
@@ -108,9 +129,9 @@ class App extends Component {
           <h2>Add Transaction</h2>
           <form>
             <p>TITLE</p>
-            <input value={title} onChange={this.changeTitle} placeholder='TITLE' type="text" required />
+            <input value={title} onChange={this.changeTitle} placeholder='TITLE' type="text" required/>
             <p>AMOUNT</p>
-            <input value={amount} onChange={this.changeAmount} placeholder='Amount' type="text" required />
+            <input value={amount} onChange={this.changeAmount} placeholder='Amount' type="text" required/>
             <p>TYPE</p>
             <select value={selectValue} onChange={this.changeSelectValue}>
               <option value="Income">Income</option>
