@@ -1,19 +1,26 @@
 import { Component } from 'react';
 import './card.css';
 class Card extends Component {
-
+    state=({
+        isVisible: false
+       })
+      
+       onshow=()=>{
+        this.setState(prevState=>({
+          isVisible:!prevState.isVisible
+        }))
+      }
     render() {
-        const {deleteElement,id,amount,select} = this.props;
-       const onDelete = () =>{
-            deleteElement(id,amount,select);
-        }
+        const {isVisible} = this.state
+       
         return (
-            <tr>
-            <td>{this.props.title}</td>
-            <td>{amount}</td>
-            <td>{select}</td>
-            <td><img className='img' onClick={onDelete} src="https://assets.ccbp.in/frontend/react-js/money-manager/delete.png "/></td>
-            </tr>
+           <div className='main'>
+            <div className='ques'>
+                <p className='question'>{this.props.ques}</p>
+                <img onClick={this.onshow} src={isVisible?"https://assets.ccbp.in/frontend/react-js/faqs-minus-icon-img.png ":"https://assets.ccbp.in/frontend/react-js/faqs-plus-icon-img.png "}/>
+            </div>
+            {isVisible ? <p className='answer'>{this.props.ans}</p> : "" }
+           </div>
         )
     }
 }
