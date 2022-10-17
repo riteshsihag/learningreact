@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 .emoji-container{
     display: grid;
     grid-template-columns: auto auto auto auto;
@@ -64,3 +65,8 @@ body{
 button:hover{
     cursor: pointer;
 }
+=======
+.img:hover, button:hover{
+    cursor: pointer;
+}
+>>>>>>> b530803c4d277184cf77080f67c80c99406563b7
