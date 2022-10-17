@@ -7,55 +7,50 @@ const initialcontent = []
 class App extends Component {
   state = ({
     content: initialcontent,
-    naam: "",
-    comment: "",
-    count:0,
-    
+    gmail: "",
+    username: "",
+    password: "",
+    count: 0,
+
   })
 
   addItem = () => {
-    const colors = ['#ff0000', '#00ff00', '#0000ff'];
-const  random_color = colors[Math.floor(Math.random() * colors.length)];
-    const { naam, comment } = this.state;
-    if(naam!=="" && comment!==""){
-    const newContent = {
-      id: uuidv4(),
-      naam,
-      comment,
-      isFavorite: false,
-      random_color
-    }
-    this.setState(prevState => {
-      return {
-        content: [...prevState.content, newContent],
-        naam: "",
-        comment: "",
-        count:prevState.count + 1,
-        
+    const { gmail, username, password } = this.state;
+    if (gmail !== "" && username !== "") {
+      const newContent = {
+        id: uuidv4(),
+        gmail,
+        username,
+        password,
+        onShow: false,
       }
-    })}
-  };
+      this.setState(prevState => {
+        return {
+          content: [...prevState.content, newContent],
+          gmail: "",
+          username: "",
+          password: "",
+          count: prevState.count + 1,
 
-  changeFavorite=(id)=>{
-    this.setState(prevState=>({
-     content: prevState.content.map(item=>{
-       if(id===item.id){
-        return{...item, isFavorite: !item.isFavorite}
-       } return item;
-     })
-    }))
-   
-   }
+        }
+      })
+    }
+  };
 
   submitName = (event) => {
     this.setState({
-      naam: event.target.value
+      gmail: event.target.value
     })
   }
 
-  submitComment = (event) => {
+  submitusername = (event) => {
     this.setState({
-      comment: event.target.value
+      username: event.target.value
+    })
+  }
+  submitPassword = (event) => {
+    this.setState({
+      password: event.target.value
     })
   }
 
@@ -64,28 +59,27 @@ const  random_color = colors[Math.floor(Math.random() * colors.length)];
     const filteredList = content.filter((eachItem) => {
       return eachItem.id !== id;
     })
-    this.setState(prevState=>{ return{content: filteredList , count: prevState.count-1}});
+    this.setState(prevState => { return { content: filteredList, count: prevState.count - 1 } });
   }
   render() {
-    const { content, naam, comment, count } = this.state;
+    const { content, gmail, username, count, password } = this.state;
     return (
       <div className='container'>
         <div className='main'>
-        <div className='write'>
-        <h1 className='heading'>Comments</h1>
-        <p>Say something about 4.0 Technologies</p>
-        <form>
-        <input placeholder='Your Name' value={naam} onChange={this.submitName} type="text" required/> <br />
-        <textarea placeholder='Your Comment' value={comment} onChange={this.submitComment} rows="10" cols="35" required/>
-        <button onClick={this.addItem}>Add Comments</button></form>
+          <div className='write'>
+            <form>
+              <input placeholder='Your Gmail' value={gmail} onChange={this.submitName} type="gmail" /> <br />
+              <input placeholder='Your username' value={username} onChange={this.submitusername} /> <br />
+              <input type={'password'} placeholder='Your password' value={password} onChange={this.submitPassword} />
+              <button type='button' onClick={this.addItem}>Add</button></form>
+          </div>
+          <div className='img-container'>
+            <img className='img' src="" />
+          </div>
         </div>
-        <div className='img-container'>
-          <img className='img' src="https://assets.ccbp.in/frontend/react-js/comments-app/comments-img.png"/>
-        </div>
-        </div>
-       <span className='count-container'> <p className='count'>{count}</p> <p className='com'>Comments</p></span>
+        <span className='count-container'> <p className='count'>{count}</p> <p className='com'>Passwords</p></span>
         {content.map(item => {
-          return <Card random_color={item.random_color} changeFavorite={this.changeFavorite} key={item.id} content={item} deleteUser={this.deleteUser} naam={item.naam} comment={item.comment} />
+          return <Card key={item.id} password={item.password} content={item} deleteUser={this.deleteUser} gmail={item.gmail} username={item.username} />
         })}
 
       </div>
