@@ -22,7 +22,6 @@ class App extends Component {
         gmail,
         username,
         password,
-        onShow: false,
       }
       this.setState(prevState => {
         return {
