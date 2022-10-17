@@ -1,146 +1,107 @@
+.timer-img{
+    background-image: url(https://assets.ccbp.in/frontend/react-js/digital-timer-elapsed-bg.png);
+    width: 600px;
+    background-position: center;
+    background-size: cover;
+    height: 395px;
+    position: relative;
+}
 body{
     display: flex;
     justify-content: center;
+    background: linear-gradient(to right,#defafe,#a5f0dd,#bcf7ff);
 }
-.balance-container{
-    display: flex;
+.time{
+    color: #00d9f5;
+    font-weight: 700;
 }
-.balance{
-    margin: 10px;
-    display: flex;
-    width: 216px;
-    justify-content: center;
-    padding: 7px;
-    border-radius: 18px;
-    padding-left: 0px;
-}
-.balance img{
-    width: 55px;
-    margin-right: 16px;
-    height: 55px;
-    margin-top: 14px;
-   
-}
-.balance-details h3{
-    font-size: 15px;
-    font-weight: 400;
-    margin-top: 24px;
+.time-para{
     line-height: 0px;
+    font-weight: 500;
 }
-.balance-details p{
-    font-size: 24px;
-    line-height: 16px;
+img:hover{
+    cursor: pointer;
 }
-.bal{
-    background-color: #ecfccb;
-    border: 1px solid #84cc16;
+.heading{
+    text-align: center;
+    margin-top: 200px;
+    margin-left: 50px;
+    font-size: 40px;
+    margin-bottom: 100px;
 }
-.income{
-    background-color: #cffafe;
-    border: 1px solid #06b6d4;
-}
-.expenses{
-    background-color: #ede9fe;
-    border: 1px solid #7c3aed;
-}
-.history-container{
-    display: flex;
-}
-.transaction-container{
-    border: 1px solid #cbd5e1;
-    padding: 50px;
-    padding-top: 30px;
-    margin-top: 30px;
-    border-radius: 10px;
-}
-input{
-    display: block;
-    margin-bottom: 15px;
-    height: 15px;
-    padding: 6px;
-    width: 200px;
-    border: 1px solid #cbd5e1;
-}
-select{
-    display: block;
-    margin-bottom: 15px;
-    width: 216px;
-    height: 35px;
-    padding: 6px;
-    border: 1px solid #cbd5e1;
+.display-timer{
+    position: absolute;
+    top: 32%;
+    left: 39%;
+    padding: 20px;
+    width: 115px;
+    text-align: center;
+    border-radius: 90px;
+    height: 115px;
     background-color: white;
 }
-.transaction-container p{
+.container{
+    display: flex;
+}
+.start{
+    display: flex;
+    font-size: 30px;
     line-height: 0px;
-    font-size: 15px;
-    margin-top: 30px;
-    color: #7e858e;
+    margin-right: 50px;
 }
-.transaction-container h2{
-    margin-bottom: 35px;
-    color: #334155;
+.reset{
+    display: flex;
+    font-size: 30px;
+    line-height: 0px;
 }
-button{
-   padding: 10px;
-   background-color: #0b69ff;
-   color: white;
-   border: none;
-   border-radius: 7px;
-   width: 55px;
+.start-img{
+    width: 30px;
+    height: 30px;
+    margin-top: 17px;
+    margin-right: 10px
 }
-table{
-    border-collapse: collapse;
-  margin-left: 27px;
-  border: 1px solid #cbd5e1;
-   margin-top: 20px;
-   height: 35px;
-   width: 320px;
-   margin-bottom: 40px;
+.reset-img{
+    width: 30px;
+    height: 30px;
+    margin-top: 17px;
+    margin-right: 10px
 }
-tr{
-    border: 1px solid #cbd5e1;
-    height: 35px;
+.play-setting{
+    display: flex;
 }
-th{
-    width: 100px;
+.setTimer{
+    display: flex;
+    width: 130px;
+    margin-top: -10px;
 }
-td img{
-    height: 20px;
-}
-td{
-    text-align: center;
-}
-.list{
-    width: 371px;
-    border: 1px solid #cbd5e1;
-    margin-left: 40px;
-    margin-top: 30px;
-    color: #334155 ;
+.set-btn{
+    margin-top: 16px;
+    background: linear-gradient( to right, #76f3d6,#00d9f5) ;
+    width: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     border-radius: 10px;
-
 }
-.list h2{
-    margin-left: 27px;
-    margin-top: 50px;
-    color: #334155;
+.setTimer p{
+    font-size: 30px;
+    margin: 0px;
+    margin-left: 15px;
+    margin-right: 15px;
+    margin-top: 13px;
 }
-.person-details{
-    background-image: url(https://assets.ccbp.in/frontend/react-js/money-manager/money-manager-bg.png);
-    padding: 20px;
-    background-size: cover;
-    margin-top: 50px;
-    margin-bottom: 30px;
+.setTimer p:hover{
+    cursor: pointer;
 }
-.manager{
-    color:  #0b69ff;
+.timer-settings{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 100px;
+    margin-left: 60px;
 }
-h1{
-    margin-left: 30px;
-    margin-top: 28px;
-}
-.person-details p{
-    margin-left: 30px;
-    margin-left: 30px;
-    font-size: 17px;
-    font-weight: 500;
+.limit{
+    line-height: 0px;
+    margin-top: 40px;
+    font-size: 15px;
 }

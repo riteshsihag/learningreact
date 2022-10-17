@@ -1,166 +1,118 @@
 import './App.css';
-import Card from './Component/card';
 import { Component } from 'react';
-import { v4 as uuidv4 } from 'uuid';
-const initialcontent = []
 class App extends Component {
-  state = {
-    content: initialcontent,
-    id: uuidv4(),
-    title: "",
-    amount: Number(),
-    selectValue: "Income",
-    balance: 0,
-    income: 0,
-    expenses: 0
-  }
-  changeTitle = (event) => {
-    this.setState({
-      title: event.target.value
-    })
-  }
-  changeAmount = (event) => {
-    this.setState({
-      amount: Number(event.target.value)
-    })
-  }
-  changeSelectValue = (event) => {
-    this.setState({
-      selectValue: event.target.value
 
-    })
-  }
-  addItem = () => {
-    const { title, amount, selectValue } = this.state
+  state = ({
+    isStart: false,
+    timer: 25,
+    seconds: 0
+  })
 
-    const newContent = {
-      id: uuidv4(),
-      title,
-      amount,
-      selectValue
-    }
-    if (selectValue === "Income") {
-      this.setState(prevState => ({
-        content: [...prevState.content, newContent],
-        title: "",
-        amount: Number(),
-        selectValue: "Income",
-        balance: prevState.balance + amount,
-        income: prevState.income + amount,
-        expenses: prevState.expenses
-      }))
+  countDownTime = () => {
+    const { timer, seconds } = this.state;
+    const timerFinished = seconds === timer * 60;
+    if (timerFinished) {
+      this.setState({ isStart: false, seconds: 0 })
     }
     else {
+      this.setState(prevState => ({ seconds: prevState.seconds + 1 }))
+    }
+  }
+
+  clearTimer = () => {
+    clearInterval(this.intervalId)
+  }
+  toggleStart = () => {
+    const { isStart } = this.state;
+
+    if (isStart) {
+      this.clearTimer()
+    }
+    else {
+      this.intervalId = setInterval(() => {
+        this.countDownTime()
+      }, 1000)
+    }
+    this.setState(prevState => ({
+      isStart: !prevState.isStart
+    }))
+  }
+
+
+
+  resetTimer = () => {
+    this.clearTimer();
+    this.setState({
+      isStart: false,
+      timer: 25,
+      seconds: 0
+    })
+  }
+
+  decrease = () => {
+    const { isStart } = this.state;
+    if (!isStart) {
       this.setState(prevState => ({
-        content: [...prevState.content, newContent],
-        title: "",
-        amount: Number(),
-        selectValue: "Income",
-        balance: prevState.balance - amount,
-        income: prevState.income,
-        expenses: prevState.expenses + amount
+        timer: prevState.timer - 1
       }))
     }
   }
-  deleteElement = (id,amount,select) => {
-    const {content} = this.state;
-    const filteredList = content.filter(eachItem => {
-      return eachItem.id !== id;
-    })
+  increase = () => {
+    const { isStart } = this.state;
+    if (!isStart) {
+      this.setState(prevState => ({
+        timer: prevState.timer + 1
+      }))
+    }
+  }
 
-    
-    if(select == "Income"){
-      this.setState(prevState=>{
-        return {
-          income: prevState.income - amount,
-          balance: prevState.balance - amount,
-          expenses: prevState.expenses
-        }
-      })
+  displayTimer = () => {
+    const { timer, seconds } = this.state;
+    const timeToSecond = timer * 60 - seconds;
+    var min = Math.floor(timeToSecond / 60);
+    var sec = Math.floor(timeToSecond % 60);
+    if (min < 10) {
+      min = `0${min}`
     }
-    else{
-      this.setState(prevState=>{
-        return {
-          balance: prevState.balance + amount,
-          expenses: prevState.expenses - amount,
-          income: prevState.income
-        }
-      })
+    if (sec < 10) {
+      sec = `0${sec}`
     }
-    
-    this.setState({
-      content: filteredList
-    })
+    return `${min}:${sec}`
   }
 
   render() {
-    const { content, title, amount, selectValue, balance, expenses, income } = this.state;
+    const { isStart, timer } = this.state;
     return (
-      <div className='money-container'>
-        <div className='person-details'>
-          <h1>Hi, Ritesh</h1>
-         <span><p>Welcome to your <span className='manager'>Money Manager</span></p></span>
+      <>
+        <h1 className='heading'>Digital Timer</h1>
+      <div className='container'>
+      
+      <div className='timer-img'>
+        <div className='display-timer'>
+          <h1 className='time'>{this.displayTimer()}</h1>
+          <p className='time-para'>{isStart ? "Running" : "Paused"}</p>
         </div>
-        <div className='balance-container'>
-          <div className='balance bal'>
-            <img src="https://assets.ccbp.in/frontend/react-js/money-manager/balance-image.png"/>
-            <div className='balance-details'>
-              <h3>Your Balance</h3>
-              <p>Rs {balance}</p>
-            </div>
+        </div>
+        <div className='timer-settings'>
+          <div className='play-setting'>
+          <span className='start'>
+            <img className='start-img' onClick={this.toggleStart} src={isStart ? "https://assets.ccbp.in/frontend/react-js/pause-icon-img.png" : "https://assets.ccbp.in/frontend/react-js/play-icon-img.png"} />
+            <p>{isStart ? "Pause" : "Start"}</p>
+          </span>
+          <span className='reset'>
+            <img className='reset-img' onClick={this.resetTimer} src="https://assets.ccbp.in/frontend/react-js/reset-icon-img.png" />
+            <p>Reset</p>
+          </span>
           </div>
-          <div className='balance income'>
-            <img src="https://assets.ccbp.in/frontend/react-js/money-manager/income-image.png"/>
-            <div className='balance-details'>
-              <h3>Your Income</h3>
-              <p>Rs {income}</p>
-            </div>
+          <p className='limit'>Set Timer limit</p>
+          <div className='setTimer'>
+            <p onClick={this.decrease}>-</p>
+            <span className='set-btn'>{timer}</span>
+            <p onClick={this.increase}>+</p>
           </div>
-          <div className='balance expenses'>
-            <img src="https://assets.ccbp.in/frontend/react-js/money-manager/expenses-image.png" />
-            <div className='balance-details'>
-              <h3>Your Expenses</h3>
-              <p>Rs {expenses}</p>
-            </div>
-          </div>
-        </div>
-        <div className='history-container'>
-        <div className='transaction-container'>
-          <h2>Add Transaction</h2>
-          <form>
-            <p>TITLE</p>
-            <input value={title} onChange={this.changeTitle} placeholder='TITLE' type="text" required/>
-            <p>AMOUNT</p>
-            <input value={amount} onChange={this.changeAmount} placeholder='Amount' type="text" required/>
-            <p>TYPE</p>
-            <select value={selectValue} onChange={this.changeSelectValue}>
-              <option value="Income">Income</option>
-              <option value="Expenses">Expenses</option>
-            </select>
-            <button type={'button'} onClick={this.addItem}>Add</button>
-          </form>
-        </div>
-        <div className='list'>
-          <h2>History</h2>
-        <table>
-          <thead>
-            <tr>
-              <th>Title</th>
-              <th>Amount</th>
-              <th>Type</th>
-              <th></th>
-            </tr>
-          </thead>
-          <tbody>
-         
-            {content.map(item => {
-              return <Card key={item.id} id={item.id} deleteElement={this.deleteElement} title={item.title} select={item.selectValue} amount={item.amount} />
-            })}
-          </tbody>
-        </table>
-        </div>
         </div>
       </div>
+      </>
     );
   }
 }
