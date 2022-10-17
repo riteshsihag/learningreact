@@ -16,16 +16,14 @@
 .delete{
     display: flex;
     position: relative;
-    margin-top: 8px;
-    margin-left: 7px;
+    margin-top: 23px;
+    margin-left: 58px;
+    height: 30px;
 }
 .like{
     display: flex;
 }
-.main-container{
-    border-bottom: 1px solid grey;
-    padding-bottom: 10px;
-}
+
 .logo{
     margin: 13px;
     font-size: 28px;
@@ -39,11 +37,18 @@
 }
 .name{
     display: flex;
+    border: 1px solid;
+    width: 250px;
+    padding: 8px;
+    margin-top: 40px;
+    margin-right: 10px;
+    border-radius: 7px;
 }
 .name h1{
-    line-height: 34px;
+    line-height: 0px;
     font-size: 17px;
     font-weight: 500;
+    margin-top: 23px;
 }
 .head p{
     line-height: 0px;

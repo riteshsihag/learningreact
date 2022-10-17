@@ -1,12 +1,10 @@
 import { Component } from 'react';
 import './card.css';
 class Card extends Component {
-  state=({
-    onShow:false
-  })
+  
+ 
     render() {
-        const {onShow} = this.state
-        const { content, deleteUser, random_color } = this.props;
+        const { content, deleteUser, onShow } = this.props;
         const { id } = content;
         const onDelete = () => {
             deleteUser(id);
@@ -15,15 +13,13 @@ class Card extends Component {
             <div className='main-container'>
 
                 <div className='name'>
-                    <div style={{ backgroundColor: random_color }} className='logo'>{this.props.gmail.charAt(0)}</div>
+                    <div className='logo'>{this.props.gmail.charAt(0)}</div>
                     <div className='head'>
                         <h1>{this.props.gmail}</h1>
-                        <p>{this.props.username}</p>
-                        <p>{onShow?this.props.password:"..........."}</p>
+                        <h1>{this.props.username}</h1>
+                        <h1>{onShow?this.props.password:". . . . . . . . . . ."}</h1>
                     </div>
-                </div>
-                <div className='delete'>
-                    <img onClick={onDelete} src="https://assets.ccbp.in/frontend/react-js/comments-app/delete-img.png" />
+                    <img className='delete' onClick={onDelete} src="https://assets.ccbp.in/frontend/react-js/password-manager-delete-img.png" />
                 </div>
             </div>
         )

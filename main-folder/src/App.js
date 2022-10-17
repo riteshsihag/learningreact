@@ -11,6 +11,8 @@ class App extends Component {
     username: "",
     password: "",
     count: 0,
+    searchInput: "",
+    onShow: false
 
   })
 
@@ -52,6 +54,17 @@ class App extends Component {
       password: event.target.value
     })
   }
+  onChangeSearch = (event) => {
+    this.setState({
+      searchInput: event.target.value
+    })
+  }
+
+  onChecked = () => {
+    this.setState(prevState => {
+      return { onShow: !prevState.onShow }
+    })
+  }
 
   deleteUser = (id) => {
     const { content } = this.state;
@@ -61,26 +74,36 @@ class App extends Component {
     this.setState(prevState => { return { content: filteredList, count: prevState.count - 1 } });
   }
   render() {
-    const { content, gmail, username, count, password } = this.state;
+    const { content, gmail, username, count, password, searchInput, onShow } = this.state;
+    const searchResults = content.filter(item => {
+      return item.gmail.toLowerCase().includes(searchInput.toLowerCase())
+    })
     return (
       <div className='container'>
         <div className='main'>
           <div className='write'>
+            <h2 className='add'>Add New Password</h2>
             <form>
               <input placeholder='Your Gmail' value={gmail} onChange={this.submitName} type="gmail" /> <br />
               <input placeholder='Your username' value={username} onChange={this.submitusername} /> <br />
-              <input type={'password'} placeholder='Your password' value={password} onChange={this.submitPassword} />
+              <input type={'password'} placeholder='Your password' value={password} onChange={this.submitPassword} /><br />
               <button type='button' onClick={this.addItem}>Add</button></form>
           </div>
           <div className='img-container'>
-            <img className='img' src="" />
+            <img className='img' src="https://assets.ccbp.in/frontend/react-js/password-manager-sm-img.png" />
           </div>
         </div>
-        <span className='count-container'> <p className='count'>{count}</p> <p className='com'>Passwords</p></span>
-        {content.map(item => {
-          return <Card key={item.id} password={item.password} content={item} deleteUser={this.deleteUser} gmail={item.gmail} username={item.username} />
-        })}
-
+        <div className='password-container'>
+          <div className='flex-container'>
+        <span className='count-container'> <p className='count'>{count}</p> <p className='com'>Your Passwords</p></span>
+        <input placeholder='Search' className='search' onChange={this.onChangeSearch} type="text" value={searchInput} />
+        </div>
+        <span className='check-span'><input className='check' onChange={this.onChecked} type={'checkbox'} /> Show Password</span>
+        <div className='card-container'>
+        {searchResults.map(item => {
+          return <Card key={item.id} onShow={onShow} password={item.password} content={item} deleteUser={this.deleteUser} gmail={item.gmail} username={item.username} />
+        })}</div>
+          </div>
       </div>
     );
   }
