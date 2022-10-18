@@ -3,9 +3,9 @@ class Contact extends Component{
    
     render(){
         return(
-            <div className='main'>
-             
-            </div>
+            <div className='contact-element'>
+            <img src='https://assets.ccbp.in/frontend/react-js/contact-blog-img.png'/>
+           </div>
         )
     }
 }
