@@ -1,13 +1,12 @@
 import {Component} from 'react';
-import './card.css';
-class Card3 extends Component{
+class Contact extends Component{
    
     render(){
         return(
             <div className='main'>
-               <img className='thumbnail' src={this.props.url}/>
+             
             </div>
         )
     }
 }
-export default Card3;
+export default Contact;
