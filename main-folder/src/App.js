@@ -5,6 +5,7 @@ import { Component } from 'react';
 import content from './constants/content';
 import details from './constants/detail';
 import Card3 from './Component/card3';
+import GameOver from './Component/gameover';
 
 class App extends Component {
   state = {
@@ -13,7 +14,7 @@ class App extends Component {
     randomImg: 0,
     score: 0,
     isgameFinished: false,
-    seconds: 10
+    seconds: 60
   }
 
   clickImg = (id) => {
@@ -22,22 +23,29 @@ class App extends Component {
 
 
   countDown = () => {
-    const {isgameFinished} = this.state;
+    const { isgameFinished,seconds } = this.state;
     if (!isgameFinished) {
-        this.setState(prevState => ({
-          seconds: prevState.seconds - 1
-        }))
-      }
+      this.setState(prevState => ({
+        seconds: prevState.seconds - 1
+      }))
     }
-componentDidMount(){
-  
-}
-   
+    if(seconds===1){
+      this.componentWillUnmount();
+      this.setState({
+        isgameFinished: true
+      })
+    }
+  }
+  componentDidMount() {
+    this.intervalId = setInterval(() => {
+      this.countDown()
+    }, 1000)
+  }
 
-    clearTime=()=>{
-      clearInterval();
-    }
-  
+componentWillUnmount(){
+  clearInterval(this.intervalId)
+}
+
 
   findSimilarImg = () => {
     const { commonId } = this.state;
@@ -57,17 +65,34 @@ componentDidMount(){
       }));
     }
     else {
-      this.setState({ isgameFinished: true })
+      this.setState({ isgameFinished: true , seconds:0})
     }
+  }
+  gameStarted=()=>{
+    this.setState({
+      isgameFinished:false,
+      seconds:60,
+      score:0
+    })
   }
   render() {
     const { commonId, randomImg, score, isgameFinished, seconds } = this.state;
     const similarImg = this.findSimilarImg();
     return (
       <>
-        <h1>Score: {score}</h1>
-        <h2>Time: {seconds}</h2>
-        {isgameFinished ? "GameOver"
+      <div className='nav'>
+      <img className='logo' src='https://assets.ccbp.in/frontend/react-js/match-game-website-logo.png'/>
+      <div className='scores'>
+        <h1 className='score'>Score: {score}</h1>
+        <h1 className='seconds'>Time: {seconds}</h1>
+        </div>
+      </div>
+     
+        {isgameFinished ?
+         <>
+        <GameOver gameStarted={this.gameStarted} score={score}/>
+        
+        </>
           :
           <>
             <div>

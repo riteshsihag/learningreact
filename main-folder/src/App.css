@@ -2,10 +2,13 @@
 body{
   display: flex;
   justify-content: center;
-  align-items: center;
   height: 100vh;
-  background: linear-gradient(#fff1eb,#ace0f9) ;
+  background: linear-gradient(#1f0a2b,#501e68) ;
 
+}
+.scores{
+    display: flex;
+    margin-left: 800px;
 }
 .img-container{
   display: flex;
@@ -34,7 +37,8 @@ img{
 }
 .main{
   margin: 10px;
-   
+  display: flex;
+  justify-content: center;
 }
 input{
     width: 255px;
@@ -43,14 +47,38 @@ input{
     padding: 10px;
     border:1px solid #7b8794;
 }
-h1{
-  text-align: center;
-  font-size: 40px;
-}
+
 h2:hover{
 cursor: pointer;
 }
 .text{
-  border-bottom:2px solid #2563eb;
-  color: #2563eb;
+  border-bottom:2px solid #fec653;
+  color: #fec653;
+}
+.text2{
+    color: white;
+}
+
+.score{
+  margin-right: 40px;
+}
+.seconds{
+   
+}
+h1{
+    font-size: 20px;
+    color: white;
+  
+}
+.logo{
+    width: 160px;
+    height: 39px;
+}
+.nav{
+    display: flex;
+    background-color: #48165f;
+    width: 100vw;
+    justify-content: center;
+    align-items: center;
+    height: 85px;
 }

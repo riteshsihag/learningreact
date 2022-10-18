@@ -1,0 +1,43 @@
+.thumbnail{
+    width: 450px;
+    height: 350px;
+    margin-top: 50px;
+}
+.game-img{
+    width: 500px;
+    margin-top: 80px;
+    height: 650px;
+}
+.game{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+button{
+    position: absolute;
+    bottom: 240px;
+    padding: 10px;
+    width: 100px;
+    border-radius: 10px;
+    background-color: #cf60c8;
+    border: 1px solid #cf60c8;
+    color: white;
+}
+.trophy{
+    position: absolute;
+    width: 270px;
+    height: 200px;
+}
+.your{
+    position: absolute;
+    margin-top: 271px;
+    font-size: 27px;
+    font-weight: 500;
+}
+.your-score{
+    position: absolute;
+    margin-top: 390px;
+    font-size: 47px;
+    font-weight: 500;
+}

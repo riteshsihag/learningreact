@@ -7,7 +7,7 @@ class Card extends Component{
          const changeImg=()=>{
             clickImg(contentlist)
          } 
-         const activeImgClassName = isActive ? 'text' :  ''
+         const activeImgClassName = isActive ? 'text' :  'text2'
         return(
             <div>
                <h2 className={activeImgClassName} onClick={changeImg}>{this.props.name}</h2>

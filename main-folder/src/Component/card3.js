@@ -5,7 +5,7 @@ class Card3 extends Component{
     render(){
         return(
             <div className='main'>
-               <img src={this.props.url}/>
+               <img className='thumbnail' src={this.props.url}/>
             </div>
         )
     }
