@@ -1,35 +1,33 @@
 import {Component} from 'react';
 import List from './list';
 import {v4 as uuidv4} from 'uuid'
-const content = [
-    {
-    ques: "Setting up IDE",
-    ans: "If you have already finished step-1 before, skip this and continue directly to step-2",
-    time: "Aug 2nd",
-    id: uuidv4()
-  },
-  {
-    ques: "Setting up a Workspace ",
-    ans: "ccbp start RJSCPC7UBX",
-    time: "Aug 2nd",
-    id: uuidv4()
-  },
-  {
-    ques: "Submit the question after solving it",
-    ans: "ccbp submit RJSCPC7UBX",
-    time: "Aug 2nd",
-    id: uuidv4()
-  },
-  {
-    ques: "Publish your code after solving it",
-    ans: "ccbp publish RJSCPC7UBX domain_name.ccbp.tech",
-    time: "Aug 2nd",
-    id: uuidv4()
-  },
-  ]
+
 class Home extends Component{
+    state = {content: [] }
+
+    componentDidMount() {
+      this.getBlogsData()
+    }
+  
+    getBlogsData = async () => {
+      const response = await fetch('https://apis.ccbp.in/blogs')
+      const statusCode = await response.statusCode
+      console.log(statusCode)
+      const data = await response.json()
+  
+      const updatedData = data.map(eachItem => ({
+        id: eachItem.id,
+        title: eachItem.title,
+        imageUrl: eachItem.image_url,
+        avatarUrl: eachItem.avatar_url,
+        author: eachItem.author,
+        topic: eachItem.topic,
+      }))
+      this.setState({ content: updatedData})
+    }
    
     render(){
+        const {content} = this.state;
         return(
 
             <div className='home'>
@@ -40,7 +38,7 @@ class Home extends Component{
                 </div>
                 <div className='list-main'>
                 {content.map(item=>{
-                    return <List ques={item.ques} ans={item.ans} time={item.time}/>
+                    return <List title={item.title} author={item.author} avatarUrl={item.avatarUrl} imageUrl={item.imageUrl} topic={item.topic}/>
                 })}</div>
             </div>
         )
