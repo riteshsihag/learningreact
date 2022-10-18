@@ -20,28 +20,17 @@ class App extends Component {
     this.setState({ commonId: id })
   }
 
-  // componentDidMount(){
-  //   this.countDown();
-  // }
 
   countDown = () => {
-    const {isgameFinished,seconds} = this.state;
-    
-
+    const {isgameFinished} = this.state;
     if (!isgameFinished) {
-      setInterval(() => {
         this.setState(prevState => ({
           seconds: prevState.seconds - 1
         }))
-      }, 1000)
+      }
     }
-    if(seconds===0){
-        this.clearTime();
-        this.setState({
-          isgameFinished: true
-        })
-    }
-  }
+
+   
 
     clearTime=()=>{
       clearInterval();
