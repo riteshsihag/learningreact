@@ -78,15 +78,26 @@ class App extends Component {
     const searchResults = content.filter(item => {
       return item.gmail.toLowerCase().includes(searchInput.toLowerCase())
     })
+    const emptyContainer = searchResults.length===0;
     return (
       <div className='container'>
+        <img className='app-logo' src='https://assets.ccbp.in/frontend/react-js/password-manager-logo-img.png'/>
         <div className='main'>
           <div className='write'>
             <h2 className='add'>Add New Password</h2>
             <form>
-              <input placeholder='Your Gmail' value={gmail} onChange={this.submitName} type="gmail" /> <br />
-              <input placeholder='Your username' value={username} onChange={this.submitusername} /> <br />
-              <input type={'password'} placeholder='Your password' value={password} onChange={this.submitPassword} /><br />
+              <div className='website'>
+                <img className='website-img' src='https://assets.ccbp.in/frontend/react-js/password-manager-website-img.png'/>
+              <input placeholder='Enter Website' value={gmail} onChange={this.submitName} type="gmail" /> 
+              </div>
+              <div className='website'>
+                <img className='website-img' src='https://assets.ccbp.in/frontend/react-js/password-manager-username-img.png'/>
+              <input placeholder='Enter Username' value={username} onChange={this.submitusername} />
+              </div>
+              <div className='website'>
+                <img className='website-img' src='https://assets.ccbp.in/frontend/react-js/password-manager-password-img.png'/>
+              <input type={'password'} placeholder='Enter Password' value={password} onChange={this.submitPassword} />
+              </div>
               <button type='button' onClick={this.addItem}>Add</button></form>
           </div>
           <div className='img-container'>
@@ -96,13 +107,26 @@ class App extends Component {
         <div className='password-container'>
           <div className='flex-container'>
         <span className='count-container'> <p className='count'>{count}</p> <p className='com'>Your Passwords</p></span>
+        <div className='website'>
+                <img className='search-img' src='https://assets.ccbp.in/frontend/react-js/password-manager-search-img.png'/>
         <input placeholder='Search' className='search' onChange={this.onChangeSearch} type="text" value={searchInput} />
         </div>
-        <span className='check-span'><input className='check' onChange={this.onChecked} type={'checkbox'} /> Show Password</span>
+        </div>
+        <span className='check-span'><input className='check' onChange={this.onChecked} type={'checkbox'} /> Show Passwords</span>
         <div className='card-container'>
-        {searchResults.map(item => {
+          {emptyContainer?  <>
+          
+          <img className='no-password' src='https://assets.ccbp.in/frontend/react-js/no-passwords-img.png'/><br/>
+          <h2 className='no'>No Passwords</h2>
+          </>
+          :
+          <>
+          {searchResults.map(item => {
           return <Card key={item.id} onShow={onShow} password={item.password} content={item} deleteUser={this.deleteUser} gmail={item.gmail} username={item.username} />
-        })}</div>
+        })}
+          </>
+          }
+        </div>
           </div>
       </div>
     );
