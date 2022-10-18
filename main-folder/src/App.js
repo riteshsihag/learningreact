@@ -29,7 +29,9 @@ class App extends Component {
         }))
       }
     }
-
+componentDidMount(){
+  
+}
    
 
     clearTime=()=>{
