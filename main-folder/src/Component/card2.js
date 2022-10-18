@@ -3,11 +3,13 @@ import './card.css';
 class Card2 extends Component{
    
     render(){
-          
+        const {changeImage,Imageid} = this.props;
+        const  onChangeImg=()=>{
+          changeImage(Imageid)
+        }
         return(
             <div className='main'>
-               <img src={this.props.url}/>
-               <p>{this.props.name}</p>
+               <img onClick={onChangeImg}  src={this.props.url}/>
             </div>
         )
     }

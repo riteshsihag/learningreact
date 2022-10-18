@@ -4,15 +4,49 @@ import Card2 from './Component/card2';
 import { Component } from 'react';
 import content from './constants/content';
 import details from './constants/detail';
+import Card3 from './Component/card3';
 
 class App extends Component {
   state = {
-    commonId: content[0].id, searchInput: ""
+    commonId: content[0].id,
+    searchInput: "",
+    randomImg: 0,
+    score: 0,
+    isgameFinished: false,
+    seconds: 10
   }
 
   clickImg = (id) => {
     this.setState({ commonId: id })
   }
+
+  // componentDidMount(){
+  //   this.countDown();
+  // }
+
+  countDown = () => {
+    const {isgameFinished,seconds} = this.state;
+    
+
+    if (!isgameFinished) {
+      setInterval(() => {
+        this.setState(prevState => ({
+          seconds: prevState.seconds - 1
+        }))
+      }, 1000)
+    }
+    if(seconds===0){
+        this.clearTime();
+        this.setState({
+          isgameFinished: true
+        })
+    }
+  }
+
+    clearTime=()=>{
+      clearInterval();
+    }
+  
 
   findSimilarImg = () => {
     const { commonId } = this.state;
@@ -21,37 +55,48 @@ class App extends Component {
     })
     return similarImg;
   }
-  onChangeSearch = event =>{
-    this.setState({
-      searchInput: event.target.value
-    })
+
+  changeImage = (Imageid) => {
+    const { randomImg } = this.state;
+    const randomNumber = Math.floor(Math.random() * content.length);
+    if (Imageid === content[randomImg].uniqueID) {
+      this.setState(prevState => ({
+        randomImg: randomNumber,
+        score: prevState.score + 1
+      }));
+    }
+    else {
+      this.setState({ isgameFinished: true })
+    }
   }
-
   render() {
-    const {commonId} = this.state;
+    const { commonId, randomImg, score, isgameFinished, seconds } = this.state;
     const similarImg = this.findSimilarImg();
-
-    const {searchInput} = this.state;
-    const searchResults = similarImg.filter(eachItem=>{
-      return eachItem.name.toLowerCase().includes(searchInput.toLowerCase());
-    })
-   
     return (
       <>
-      <h1>App Store</h1>
-      <div className='search'>
-        <input placeholder='Search' onChange={this.onChangeSearch} value={searchInput} type="text"/>
-      </div>
-        <div className='img-container'>
-        {details.map(item => {
-          return <Card  clickImg={this.clickImg} contentlist ={item.id} name={item.name} isActive={commonId === item.id} />
-        })}</div>
+        <h1>Score: {score}</h1>
+        <h2>Time: {seconds}</h2>
+        {isgameFinished ? "GameOver"
+          :
+          <>
+            <div>
+              <Card3 changeImage={this.changeImage} key={content[randomImg].uniqueID} url={content[randomImg].thumbnailUrl} />
+            </div>
+            <div className='img-container'>
+              {details.map(item => {
+                return <Card key={item.uniqueID} clickImg={this.clickImg} contentlist={item.id} name={item.name} isActive={commonId === item.id} />
+              })}</div>
 
-<div className='big-container'>
-        {searchResults.map(item => {
-          return <Card2 key={item.uniqueID} name={item.name} url={item.link} />
-        })}
-        </div>
+            <div className='big-container'>
+              {similarImg.map(item => {
+                return <Card2 Imageid={item.uniqueID} changeImage={this.changeImage} key={item.uniqueID} name={item.name} url={item.imageUrl} />
+              })}
+            </div>
+
+          </>
+
+        }
+
       </>
     );
   }

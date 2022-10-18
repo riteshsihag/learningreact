@@ -20,24 +20,21 @@ h2{
     padding-right: 16px;
 }
 .big-container{
-  display: flex;
-  justify-content: center;
-  text-align: center;
+    justify-content: center;
+    display: grid;
+    grid-template-columns: auto auto auto auto auto;
 }
 img{
-  width: 52px;
+    width: 117px;
+    height: 102px;
 }
 .search{
   display: flex;
   justify-content: center;
 }
 .main{
-  margin: 20px;
-    background-color: white;
-    padding: 20px;
-    width: 100px;
-    border-radius: 20px;
-    height: 100px;
+  margin: 10px;
+   
 }
 input{
     width: 255px;

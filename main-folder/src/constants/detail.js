@@ -1,19 +1,15 @@
 const details = [
    {
-    name : "Social",
-    id : "SOCIAL"
+    name : "Fruits",
+    id : "FRUIT"
    },
    {
-    name : "Games",
-    id : "GAMES"
+    name : "Animals",
+    id : "ANIMAL"
    },
    {
-    name : "News",
-    id : "NEWS"
-   },
-   {
-    name : "Food",
-    id : "FOOD"
-   },
+    name : "Places",
+    id : "PLACE"
+   }
   ]
   export default details;
