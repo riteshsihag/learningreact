@@ -94,3 +94,29 @@ body{
 .title{
     width: 340px;
 }
+.loader{
+    display: flex;
+    justify-content: center;
+}
+.list-title{
+    text-align: center;
+    font-size: 30px;
+    margin-top: 80px;
+}
+.list-image{
+    margin-left: 350px;
+    width: 1060px;
+    height: 500px;
+}
+.list-avatar-container{
+    display: flex;
+    margin-left: 350px;
+margin-bottom: 20px;
+margin-top: 40px;
+
+}
+.list-content{
+    width: 1000px;
+    margin-left: 350px;
+    font-size: 20px;
+}
