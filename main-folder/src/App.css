@@ -61,3 +61,14 @@ body{
     display: flex;
     justify-content: center;
 }
+.notfound img{
+    margin-bottom: 40px;
+}
+button{
+    padding: 10px;
+    margin-bottom: 50px;
+    font-size: 15px;
+    color: #00e7ff;
+    background-color: #000000;
+    border-color: #00e7ff;
+}

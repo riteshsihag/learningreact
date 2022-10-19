@@ -51,9 +51,13 @@ class Home extends Component {
     }
     else {
       return (
-        <NotFound />
+        <NotFound block={this.unBlock} />
       )
     }
+  }
+  unBlock=()=>{
+    this.setState({status:"loading"})
+    this.getlistsData();
   }
   render() {
     const { content, status } = this.state;
