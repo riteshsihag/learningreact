@@ -9,18 +9,17 @@ class Home extends Component {
   }
 
   getlistsData = async () => {
-    const response = await fetch('https://apis.ccbp.in/blogs')
+    const response = await fetch('https://apis.ccbp.in/crypto-currency-converter')
     const statusCode = await response.statusCode
     console.log(statusCode)
     const data = await response.json()
 
     const updatedData = data.map(eachItem => ({
+      currencyName: eachItem.currency_name,
+      usdValue: eachItem.usd_value,
+      euroValue: eachItem.euro_value,
       id: eachItem.id,
-      title: eachItem.title,
-      imageUrl: eachItem.image_url,
-      avatarUrl: eachItem.avatar_url,
-      author: eachItem.author,
-      topic: eachItem.topic,
+      currencyLogo: eachItem.currency_logo,
     }))
     this.setState({ content: updatedData, isLoading: false })
   }
@@ -30,18 +29,21 @@ class Home extends Component {
     return (
 
       <div className='home'>
-        <div className='home-child'>
-          <img className='home-img' src='https://assets.ccbp.in/frontend/react-js/profile-img.png' />
-          <h2>Ritesh Sihag</h2>
-          <p className='home-para'>Software Developer at Nxtwave</p>
-        </div>
-       
+        <h1 className='heading'>Cryptocurrency Tracker</h1>
+       <img src='https://assets.ccbp.in/frontend/react-js/cryptocurrency-bg.png'/>
         {isLoading ? 
         <div className='loader'>
           <TailSpin type="TailSpin" color="#00BFFF" height={50} width={50} />
           </div>
          :
           <div className='list-main'>
+            <div className='nav'>
+                <h3 className='type '>Coin Type</h3>
+                <div className='crypto-price'>
+                <h3 className='type'>USD</h3>
+                <h3 className='type'>EURO</h3>
+                </div>
+                </div>
             {content.map(item => {return <List listData={item} />})}
           </div>}
            
