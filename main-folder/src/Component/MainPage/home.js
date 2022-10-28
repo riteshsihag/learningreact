@@ -4,7 +4,7 @@ import './home.css'
 class Home extends Component {
  
   render() {
-   
+  
     return (
      <>
      <Navbar/>

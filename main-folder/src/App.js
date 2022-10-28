@@ -4,6 +4,9 @@ import { BrowserRouter, Route, Switch } from "react-router-dom"
 import Home from './Component/MainPage/home';
 import NotFound from './Component/NotFound/notfound';
 import Login from './Component/LoginPage/login';
+import Product from './Component/Products/product';
+import Cart from './Component/Cart/cart';
+import ProtectedRoute from './Component/ProtectedRoute/protectedRoute';
 class App extends Component {
   
   render() {
@@ -11,9 +14,11 @@ class App extends Component {
     return (
       <BrowserRouter>
       <Switch>
-      <Route exact path="/" component={Home}/>
       <Route exact path="/login" component={Login}/>
-      <Route path='*' component={NotFound}/>
+      <ProtectedRoute exact path="/" component={Home}/>
+      <ProtectedRoute exact path="/products" component={Product}/>
+      <ProtectedRoute exact path="/cart" component={Cart}/>
+      <ProtectedRoute path='*' component={NotFound}/>
       </Switch>
      
       </BrowserRouter>

@@ -1,6 +1,7 @@
 import { Component } from 'react';
-import Navbar from '../NavBar/navbar';
+import Cookies from 'js-cookie'
 import './login.css'
+import { Redirect } from 'react-router-dom';
 class Login extends Component {
     state = {
         username: '',
@@ -9,7 +10,8 @@ class Login extends Component {
         enterUsername: '',
         error_msg: ''
     }
-    onSuccess = () => {
+    onSuccess = (jwt_token) => {
+        Cookies.set("jwt_token",jwt_token,30)
         const {history} = this.props
         history.replace('/')
       }
@@ -27,7 +29,7 @@ class Login extends Component {
         const data = await response.json()
         
         if(response.ok === true){
-            this.onSuccess();
+            this.onSuccess(data.jwt_token);
         }
         else{
             this.setState({error_msg:data.error_msg})
@@ -58,6 +60,11 @@ class Login extends Component {
 
     render() {
        const {username,password,enterUsername,enterPassword,error_msg} = this.state;
+    const jwtToken = Cookies.get("jwt_token")
+     if(jwtToken !== undefined){
+        return <Redirect to={'/'}/>
+     }
+     
        
         return (
             <>
