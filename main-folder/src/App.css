@@ -1,0 +1,11 @@
+body{
+    text-align: center;
+}
+.navbar{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+}
+.navbar p{
+    margin-right: 20px;
+}
