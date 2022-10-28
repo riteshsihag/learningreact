@@ -1,12 +1,11 @@
 import './App.css';
 import { Component } from 'react';
 import { BrowserRouter, Route, Switch } from "react-router-dom"
-import Home from './Component/MainPage/home';
-import NotFound from './Component/NotFound/notfound';
-import Login from './Component/LoginPage/login';
-import Product from './Component/Products/product';
-import Cart from './Component/Cart/cart';
-import ProtectedRoute from './Component/ProtectedRoute/protectedRoute';
+import { ProtectedRoute } from './Components/ProtectedRoute/protectedroute';
+import { Home } from './Components/Home/home';
+import { About } from './Components/About/about';
+import { Login } from './Components/Login/login';
+import { NotFound } from './Components/NotFound/notfound';
 class App extends Component {
   
   render() {
@@ -14,13 +13,11 @@ class App extends Component {
     return (
       <BrowserRouter>
       <Switch>
-      <Route exact path="/login" component={Login}/>
-      <ProtectedRoute exact path="/" component={Home}/>
-      <ProtectedRoute exact path="/products" component={Product}/>
-      <ProtectedRoute exact path="/cart" component={Cart}/>
-      <ProtectedRoute path='*' component={NotFound}/>
+        <Route exact path='/login' component={Login}/>
+      <ProtectedRoute exact path='/' component={Home} />
+      <ProtectedRoute exact path='/about' component={About} />
+      <NotFound/>
       </Switch>
-     
       </BrowserRouter>
     );
   }
