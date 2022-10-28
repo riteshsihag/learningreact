@@ -1,86 +1,62 @@
 import { Component } from 'react';
-import Navbar from '../NavBar/navbar';
 import './login.css'
 class Login extends Component {
     state = {
-        username: '',
-        password: '',
-        enterPassword: '',
-        enterUsername: '',
-        error_msg: ''
+        firstname: '',
+        lastname: '',
+        enterlastname: '',
+        enterfirstname: '',
     }
     onSuccess = () => {
         const {history} = this.props
-        history.replace('/')
+        history.replace('/submitted')
       }
     
-    onSubmitForm= async(event)=>{
-        event.preventDefault();
-        const {username,password} = this.state;
-        const userDetails = {username, password}
-        const url = "https://apis.ccbp.in/login"
-        const options = {
-            method: "POST",
-            body: JSON.stringify(userDetails)
-        }
-        const response = await fetch(url,options)
-        const data = await response.json()
-        
-        if(response.ok === true){
-            this.onSuccess();
-        }
-        else{
-            this.setState({error_msg:data.error_msg})
-        }
+    onChangefirstname=(event)=>{
+        this.setState({firstname:event.target.value})
     }
-    onChangeUsername=(event)=>{
-        this.setState({username:event.target.value})
+    onChangelastname=(event)=>{
+        this.setState({lastname:event.target.value})
     }
-    onChangePassword=(event)=>{
-        this.setState({password:event.target.value})
-    }
-    checkInput=()=>{
-       const {username,password} = this.state;
-       if(username===''){
-       this.setState({enterUsername: 'Enter Username'})
+    checkInput=(event)=>{
+        event.preventDefault()
+       const {firstname,lastname} = this.state;
+       if(firstname!=="" && lastname!==""){
+        this.onSuccess()
+       }
+       if(firstname===''){
+       this.setState({enterfirstname: 'Required'})
        }
        else{
-        this.setState({enterUsername: ''})
+        this.setState({enterfirstname: ''})
        }
-       if(password===''){
-        this.setState({enterPassword: 'Enter Password'})
+       if(lastname===''){
+        this.setState({enterlastname: 'Required'})
         }
         else{
-        this.setState({enterPassword: ''})
+        this.setState({enterlastname: ''})
 
         }
     }
 
     render() {
-       const {username,password,enterUsername,enterPassword,error_msg} = this.state;
+       const {firstname,lastname,enterfirstname,enterlastname} = this.state;
        
         return (
-            <>
-                <div className='login'>
-                    <div className='login-banner'>
-                        <img src='https://assets.ccbp.in/frontend/react-js/nxt-trendz-login-img.png' />
-                    </div>
+            <div className='container'>
                     <div className='login-content'>
-                        <img src='https://assets.ccbp.in/frontend/react-js/nxt-trendz-logo-img.png' />
-                        <form onSubmit={this.onSubmitForm}>
-                            <p className='head'>USERNAME</p>
-                            <input type={'text'} value={username} onChange={this.onChangeUsername} placeholder="Username" />
-                            <p className='error'>{enterUsername}</p>
-                            <p className='head'>PASSWORD</p>
-                            <input type={'password'} value={password} onChange={this.onChangePassword} placeholder="Password" />
-                            <p className='error'>{enterPassword}</p>
-                        <button type='submit' onClick={this.checkInput}>Login</button>
-                        <p className='error'>{error_msg}</p>
+                        <form>
+                            <p className='head'>FIRST NAME</p>
+                            <input type={'text'} value={firstname} onChange={this.onChangefirstname} placeholder="First name" />
+                            <p className='error'>{enterfirstname}</p>
+                            <p className='head'>LAST NAME</p>
+                            <input type={'lastname'} value={lastname} onChange={this.onChangelastname} placeholder="Last name" />
+                            <p className='error'>{enterlastname}</p>
+                        <button type='submit' onClick={this.checkInput}>Submit</button>
                         </form>
                     </div>
-                </div>
 
-            </>
+            </div>
         )
     }
 }
