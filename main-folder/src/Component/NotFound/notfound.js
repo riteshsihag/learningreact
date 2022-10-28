@@ -1,5 +1,6 @@
 import {Component} from 'react';
-class NotFound2 extends Component{
+import './notfound.css'
+class NotFound extends Component{
    
     render(){
        
@@ -10,4 +11,4 @@ class NotFound2 extends Component{
         )
     }
 }
-export default NotFound2;
+export default NotFound;
