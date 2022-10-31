@@ -4,7 +4,7 @@ class Card extends Component{
     render(){
         const {details,displayView} = this.props
         const checkStatus =()=>{
-             displayView(details.status)
+             displayView(details)
         }
         return(
             <div className='main'>
