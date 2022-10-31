@@ -5,15 +5,15 @@
 }
 .navigations{
     display: flex;
-    width: 400px;
+    width: 360px;
     justify-content: space-between;
     margin-right: 250px;
     margin-top: 50px;
 }
 .logo img{
-    width: 300px;
+    width: 200px;
     margin-left: 250px;
-    margin-top: 50px;
+    margin-top: 45px;
 }
 .logout-btn{
     width: 80px;
@@ -25,7 +25,11 @@
     border-radius: 5px;
 }
 .navigations p{
-    font-size: 25px;
-    margin-top: 3px;
+    font-size: 22px;
+    margin-top: 6px;
     color: #475569;
+}
+.navigations p a{
+    text-decoration: none;
+
 }

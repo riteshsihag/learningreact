@@ -5,7 +5,7 @@
 }
 .home-content{
     width: 525px;
-    margin-left: 100px;
+    margin-left: 160px;
     margin-right: 50px;
 }
 .home-content h1{
@@ -27,5 +27,5 @@
     border-radius: 5px;
 }
 .home-banner img{
-    margin-right: 100px;
+    margin-right: 180px;
 }
