@@ -1,5 +1,5 @@
 import {Component} from 'react';
-import './card.css';
+import './card.css'
 const status = {
     initial:'initial',
     registered: 'REGISTERED',
@@ -46,41 +46,31 @@ const status = {
     }
   ]
 class Display extends Component{
-    state = {
-        registrationStatus: status.initial
-      }
-      
-        displayView=(registration)=>{
-          if(registration===status.registered){
-            this.setState({registrationStatus:status.registered})
-            
-          }
-          if(registration===status.registrationClosed){
-            this.setState({registrationStatus:status.registrationClosed})
-            return <div>
-              <img src='https://assets.ccbp.in/frontend/react-js/events-registrations-closed-img.png'/>
-            </div>
-          }
-          if(registration===status.notRegistered){
-            this.setState({registrationStatus:status.notRegistered})
-            return <div>
-              <img src='https://assets.ccbp.in/frontend/react-js/events-register-img.png'/>
-            </div>
-          }
-          else{
-            return null;
-          }
-        }
+   
     render(){
-    const {registrationStatus} = this.state
-       switch(registrationStatus){
-        case status.registered
-        return <div>
-              <img src='https://assets.ccbp.in/frontend/react-js/events-regestered-img.png'/>
-            </div>
-            break;
-       }
-        
+       
+        const { registrationStatus } = this.props
+        switch (registrationStatus) {
+            
+            case status.registered:
+                return <div className='not'>
+                    <img className='registered' src='https://assets.ccbp.in/frontend/react-js/events-regestered-img.png' />
+                    <h2>You have already registered for the event</h2>
+                </div>
+            case status.notRegistered:
+                return <div className='not'>
+                    <img className='not-regis' src='https://assets.ccbp.in/frontend/react-js/events-register-img.png' />
+                    <p className='not-regis-para'>A live performance brings so much to your relationship with dance. Seeing dance live can often make you fall totally in love with this beautiful art form.</p>
+                    <button className='not-btn'>Register Now</button>
+                </div>
+            case status.registrationClosed:
+                return <div className='not regis'>
+                    <img className='regis-closed' src='https://assets.ccbp.in/frontend/react-js/events-registrations-closed-img.png' />
+                    <h2>Registrations Are Closed Now!</h2>
+                    <p>Stay tuned. We will reopen the registrations soon!</p>
+                </div>
+        }
+       
     }
 }
 export default Display;

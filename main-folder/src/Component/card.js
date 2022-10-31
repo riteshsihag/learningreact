@@ -2,7 +2,7 @@ import {Component} from 'react';
 import './card.css';
 class Card extends Component{
     render(){
-        const {details, displayView} = this.props
+        const {details,displayView} = this.props
         const checkStatus =()=>{
              displayView(details.status)
         }
