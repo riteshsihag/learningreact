@@ -2,10 +2,14 @@ import {Component} from 'react';
 import './card.css';
 class Card extends Component{
     render(){
+        const {details, displayView} = this.props
+        const checkStatus =()=>{
+         displayView(details.status)
+        }
         return(
             <div className='main'>
-               <img src={this.props.url}/>
-               <p>{this.props.name}</p>
+               <img onClick={checkStatus} src={details.link}/>
+               <p>{details.heading}</p>
             </div>
         )
     }
