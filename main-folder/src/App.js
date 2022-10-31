@@ -1,8 +1,9 @@
 import './App.css';
 import Card from './Component/card';
 import { Component } from 'react';
-
+import Display from './Component/displayStatus/display';
 const status = {
+  initial:'initial',
   registered: 'REGISTERED',
   registrationClosed: 'REGISTRATIONS_CLOSED',
   notRegistered: 'YET_TO_REGISTER'
@@ -47,29 +48,22 @@ const content = [
   }
 ]
 class App extends Component {
- 
-  displayView=(status)=>{
-    if(status===status.registered){
-      return <div>
-        <img src='https://assets.ccbp.in/frontend/react-js/events-regestered-img.png'/>
+
+  render() {
+
+    return (
+
+      <div>
+        <div className='container'>
+          {content.map(item => {
+            return (
+              <Card key={item.id} displayView={this.displayView} details={item} />)
+          })}
+        </div>
+        <Display/>
       </div>
-    }
+    );
   }
- 
-  render(){
-   
-  return(
-      
-  <div>
-    <div className='container'>
-        {content.map(item => {
-          return(
-            <Card displayView = {this.displayView} details={item} />)
-        })}
-      </div>
-    </div>
-  );
-      }
 }
 
 export default App;
