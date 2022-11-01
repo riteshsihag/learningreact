@@ -1,15 +1,20 @@
 import Cookies from 'js-cookie';
 import { Component } from 'react';
-import './details.css'
+import Navbar from '../NavBar/navbar';
+import Similar from '../SimilarProduct/similar';
+// import './details.css'
+import { withRouter } from 'react-router-dom';
 import ProductDetail from './displayDetails';
 
 class Details extends Component {
  state = {
     allDetails : [],
     isLoading : false,
+    similarProducts: []
  }
 
  componentDidMount(){
+    console.log("mounting")
    this.getProducts()
  }
  getProducts= async()=>{
@@ -24,33 +29,45 @@ class Details extends Component {
         headers :  {Authorization: `Bearer ${jwtToken}`,}
     }
     const response = await fetch(url,options)
-    console.log(response)
     if(response.ok === true){
-        this.setState({apiStatus: apiStatusConstants.success})
         const data = await response.json()
 
-        const updatedData = data.products.map((product)=>({
-            title: product.title,
-            brand: product.brand,
-            price: product.price,
-            id: product.id,
-            imageUrl: product.image_url,
-            rating: product.rating,
-            totalReviews: product.total_reviews,
-            availability: product.availability,
-            description: product.description,
-            similarProducts: product.similar_products
-        }))
-      
-        this.setState({allDetails: updatedData, isLoading: false})
+        const updatedData = {
+            title: data.title,
+            brand: data.brand,
+            price: data.price,
+            id: data.id,
+            imageUrl: data.image_url,
+            rating: data.rating,
+            totalReviews: data.total_reviews,
+            availability: data.availability,
+            description: data.description,
+            similarProducts: data.similar_products
+        }
+        const updateSimilarData = updatedData.similarProducts.map((item=>({
+            title: item.title,
+            brand: item.brand,
+            price: item.price,
+            id: item.id,
+            imageUrl: item.image_url,
+            rating: item.rating,
+            totalReviews: item.total_reviews
+        })))
+            
+        
+        this.setState({allDetails: updatedData, similarProducts: updateSimilarData, isLoading: false})
     }  
  }
  
   render() {
-   const {allDetails} = this.state
+   const {allDetails,similarProducts} = this.state
     return(
         <>
+        <Navbar/>
         <ProductDetail allDetails={allDetails}/>
+        {similarProducts.map((item)=>{
+        return <Similar key={item.id} productList={item}/>
+        })}
         </>
     )
        
@@ -58,4 +75,4 @@ class Details extends Component {
    
   }
 
-export default Details;
+export default withRouter(Details)

@@ -7,6 +7,7 @@ import Login from './Component/LoginPage/login';
 import Cart from './Component/Cart/cart';
 import ProtectedRoute from './Component/ProtectedRoute/protectedRoute';
 import DisplayProducts from './Component/Products/displayProducts';
+import Details from './Component/ProductDetails/details';
 class App extends Component {
   
   render() {
@@ -18,6 +19,7 @@ class App extends Component {
       <ProtectedRoute exact path="/" component={Home}/>
       <ProtectedRoute exact path="/products" component={DisplayProducts}/>
       <ProtectedRoute exact path="/cart" component={Cart}/>
+      <Route exact path="/products/:id" component={Details} />
       <ProtectedRoute path='*' component={NotFound}/>
       </Switch>
      
