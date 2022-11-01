@@ -1,11 +1,12 @@
 import { Component } from 'react';
+import { Link } from 'react-router-dom';
 import './product.css'
 class Product extends Component {
  
   render() {
    const {productList} = this.props
     return (
-     <>
+      <Link to={`/products/${productList.id}`}>
      <div className='products'>
       <img className='product-img' src={productList.imageUrl}/>
       <h2 className='product-title'>{productList.title}</h2>
@@ -15,7 +16,7 @@ class Product extends Component {
         <span className='product-rating'>{productList.rating}<img className='rating-icon' src="https://img.icons8.com/material-rounded/24/FFFFFF/hand-drawn-star.png"/></span>
       </div>
      </div>
-     </>
+     </Link>
     )
   }
 }

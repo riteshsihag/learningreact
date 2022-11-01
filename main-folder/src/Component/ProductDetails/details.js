@@ -1,10 +1,11 @@
 import Cookies from 'js-cookie';
 import { Component } from 'react';
 import './details.css'
+import ProductDetail from './displayDetails';
 
-class AllProduct extends Component {
+class Details extends Component {
  state = {
-    allProducts : [],
+    allDetails : [],
     isLoading : false,
  }
 
@@ -13,8 +14,10 @@ class AllProduct extends Component {
  }
  getProducts= async()=>{
   this.setState({isLoading:true})
-
-    const url = `https://apis.ccbp.in/products/:id`
+  const { match } = this.props
+  const { params } = match
+  const { id } = params
+    const url = `https://apis.ccbp.in/products/${id}`
     const jwtToken = Cookies.get('jwt_token')
     const options = {
         method: 'GET',
@@ -39,15 +42,15 @@ class AllProduct extends Component {
             similarProducts: product.similar_products
         }))
       
-        this.setState({allProducts: updatedData, isLoading: false})
+        this.setState({allDetails: updatedData, isLoading: false})
     }  
  }
  
   render() {
-   
+   const {allDetails} = this.state
     return(
         <>
-
+        <ProductDetail allDetails={allDetails}/>
         </>
     )
        
@@ -55,4 +58,4 @@ class AllProduct extends Component {
    
   }
 
-export default AllProduct;
+export default Details;
