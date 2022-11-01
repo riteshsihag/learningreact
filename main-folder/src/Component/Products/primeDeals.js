@@ -58,10 +58,10 @@ class PrimeDeal extends Component {
             case apiStatusConstants.success:
                 return (
                     <>
-                        <h1 className='product-heading'>Prime Deal</h1>
-                        <div className='all-products'>
+                        <h1 className='prime-heading'>Prime Deal</h1>
+                        <div className='prime-products'>
                             {primeDeal.map(product => {
-                                return <Product productList={product} />
+                                return <Product key={product.id} productList={product} />
                             })}
                         </div>
                     </>
