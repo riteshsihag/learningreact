@@ -1,24 +1,33 @@
 import Cookies from 'js-cookie';
 import { Component } from 'react';
+import { withRouter } from 'react-router-dom';
 import Navbar from '../NavBar/navbar';
 import Similar from '../SimilarProduct/similar';
+import { ThreeDots } from 'react-loader-spinner';
 // import './details.css'
-import { withRouter } from 'react-router-dom';
 import ProductDetail from './displayDetails';
+
+const apiStatusConstants = {
+    initial: 'INITIAL',
+    failure: 'FAILURE',
+    success: 'SUCCESS',
+    inProgress: 'INPROGRESS'
+  }
+  
 
 class Details extends Component {
  state = {
     allDetails : [],
     isLoading : false,
-    similarProducts: []
+    similarProducts: [],
+    apiStatus : apiStatusConstants.initial
  }
 
  componentDidMount(){
-    console.log("mounting")
    this.getProducts()
  }
  getProducts= async()=>{
-  this.setState({isLoading:true})
+  this.setState({apiStatus: apiStatusConstants.inProgress})
   const { match } = this.props
   const { params } = match
   const { id } = params
@@ -31,7 +40,7 @@ class Details extends Component {
     const response = await fetch(url,options)
     if(response.ok === true){
         const data = await response.json()
-
+    
         const updatedData = {
             title: data.title,
             brand: data.brand,
@@ -55,21 +64,36 @@ class Details extends Component {
         })))
             
         
-        this.setState({allDetails: updatedData, similarProducts: updateSimilarData, isLoading: false})
-    }  
+        this.setState({allDetails: updatedData, similarProducts: updateSimilarData, apiStatus: apiStatusConstants.success})
+    } 
+    else{
+        this.setState({apiStatus:apiStatusConstants.failure})
+    } 
  }
  
   render() {
-   const {allDetails,similarProducts} = this.state
-    return(
-        <>
-        <Navbar/>
-        <ProductDetail allDetails={allDetails}/>
-        {similarProducts.map((item)=>{
-        return <Similar key={item.id} productList={item}/>
-        })}
-        </>
-    )
+   const {allDetails,similarProducts,apiStatus} = this.state
+   switch(apiStatus){
+    case apiStatusConstants.success:
+        return(
+            <>
+            <Navbar/>
+            <ProductDetail allDetails={allDetails}/>
+            {similarProducts.map((item)=>{
+            return <Similar key={item.id} productList={item}/>
+            })}
+            </>
+        )
+    case apiStatusConstants.failure:
+        return <div>
+            <h1>Failed</h1>
+        </div>
+    case apiStatusConstants.inProgress:
+        return <div className='loader'>
+        <ThreeDots color="#0b69ff" height="50" width="50" />
+        </div>
+   }
+    
        
    }
    

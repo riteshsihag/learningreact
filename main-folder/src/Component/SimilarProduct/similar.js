@@ -6,10 +6,9 @@ class Similar extends Component {
  
   render() {
    const {productList} = this.props
-   const {history} = this.props 
     return (
-      
-     <div onClick={()=>history.push(`/products/${productList.id}`)} className='products'>
+      <Link to={`/products/${productList.id}`}>
+     <div className='products'>
       <img className='product-img' src={productList.imageUrl}/>
       <h2 className='product-title'>{productList.title}</h2>
       <p className='product-brand'>by {productList.brand}</p>
@@ -18,7 +17,7 @@ class Similar extends Component {
         <span className='product-rating'>{productList.rating}<img className='rating-icon' src="https://img.icons8.com/material-rounded/24/FFFFFF/hand-drawn-star.png"/></span>
       </div>
      </div>
-     
+     </Link>
     )
   }
 }
