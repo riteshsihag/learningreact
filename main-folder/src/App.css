@@ -1,19 +1,21 @@
+.main{
+  display: flex;
+  border: 1px solid #e5e5e5;
+  padding: 9px;
+  padding-left: 40px;
+  margin: 20px;
+}
 body{
   display: flex;
-  align-items: center;
   justify-content: center;
-  height: 100vh;
-  background-color: #ffc2a0;
 }
-h1{
+.icon{
+ margin-top: 31px;
+ margin-right: 20px;
+
+}
+.heading{
+  margin-top: 160px;
+  margin-bottom: 40px;
   text-align: center;
-  margin-bottom: 47px;
-  margin-top: 0px;
-  color: #ff8542;
-  font-size: 47px;
-}
-.container{
-  background-color: white;
-  padding: 100px;
-    border-radius: 102px;
 }
