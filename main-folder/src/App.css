@@ -1,21 +1,35 @@
-.main{
-  display: flex;
-  border: 1px solid #e5e5e5;
-  padding: 9px;
-  padding-left: 40px;
-  margin: 20px;
-}
 body{
   display: flex;
   justify-content: center;
+  background-color: #1c1c2b;
 }
-.icon{
- margin-top: 31px;
- margin-right: 20px;
-
+.dashboard{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.logo{
+  display: flex;
+margin: 20px;
+margin-top: 50px;
+margin-bottom: 50px;
+}
+.logo img{
+  width: 50px;
+  height: 50px;
+}
+.logo h1{
+  line-height: 0px;
+  margin-left: 10px;
+  color: #2cc6c6;
+}
+.coverage{
+  width: 100%;
+  margin-top: 50px;
+  color: #cbd5e1;
+  text-align: left;
 }
 .heading{
-  margin-top: 160px;
-  margin-bottom: 40px;
-  text-align: center;
+  color: #cbd5e1;
+
 }
