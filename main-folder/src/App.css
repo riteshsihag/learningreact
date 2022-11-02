@@ -1,35 +1,25 @@
+.project-img{
+  width: 473px;
+    height: 314px;
+}
 body{
   display: flex;
   justify-content: center;
-  background-color: #1c1c2b;
 }
-.dashboard{
-  display: flex;
-  flex-direction: column;
+.tags{
+  display: grid;
+  grid-template-columns: auto auto auto;
+  grid-gap: 10px;
   align-items: center;
 }
-.logo{
-  display: flex;
-margin: 20px;
-margin-top: 50px;
-margin-bottom: 50px;
-}
-.logo img{
-  width: 50px;
-  height: 50px;
-}
-.logo h1{
-  line-height: 0px;
-  margin-left: 10px;
-  color: #2cc6c6;
-}
-.coverage{
-  width: 100%;
-  margin-top: 50px;
-  color: #cbd5e1;
-  text-align: left;
-}
-.heading{
-  color: #cbd5e1;
-
+.tags p{
+  border: 1px solid aliceblue;
+  margin: 0px;
+  text-align: center;
+  border-radius: 5px;
+  color: rgb(68, 67, 67);
+  background-color: rgb(204, 223, 240);
+  font-weight: 600;
+  font-size: 14px;
+  padding: 4px;
 }
