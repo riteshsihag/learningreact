@@ -1,10 +1,9 @@
 import Cookies from 'js-cookie';
 import { Component } from 'react';
-import { withRouter } from 'react-router-dom';
 import Navbar from '../NavBar/navbar';
 import Similar from '../SimilarProduct/similar';
 import { ThreeDots } from 'react-loader-spinner';
-// import './details.css'
+import './display.css'
 import ProductDetail from './displayDetails';
 
 const apiStatusConstants = {
@@ -19,7 +18,6 @@ class Details extends Component {
  state = {
     allDetails : [],
     isLoading : false,
-    similarProducts: [],
     apiStatus : apiStatusConstants.initial
  }
 
@@ -52,38 +50,44 @@ class Details extends Component {
             availability: data.availability,
             description: data.description,
             similarProducts: data.similar_products
-        }
-        const updateSimilarData = updatedData.similarProducts.map((item=>({
-            title: item.title,
-            brand: item.brand,
-            price: item.price,
-            id: item.id,
-            imageUrl: item.image_url,
-            rating: item.rating,
-            totalReviews: item.total_reviews
-        })))
-            
+        }  
         
-        this.setState({allDetails: updatedData, similarProducts: updateSimilarData, apiStatus: apiStatusConstants.success})
+        this.setState({allDetails: updatedData, apiStatus: apiStatusConstants.success})
     } 
     else{
         this.setState({apiStatus:apiStatusConstants.failure})
     } 
  }
- 
+ renderSimilarProducts=()=>{
+    const {allDetails} = this.state
+    return allDetails.similarProducts.map((item)=>{
+        return (<Similar key={item.id} productList={item}/>)
+        })
+ }
+ renderAllDetails=()=>{
+    const {allDetails} = this.state
+    return(
+        <>
+        <Navbar/>
+        <ProductDetail allDetails={allDetails}/>
+        <div>
+        <h1 id='product-heading'>Similar Products</h1>
+
+        <div className='similar-container'>
+        {this.renderSimilarProducts()}
+
+        </div>
+        </div>
+
+        </>
+    )
+ }
   render() {
-   const {allDetails,similarProducts,apiStatus} = this.state
+   const {apiStatus} = this.state
    switch(apiStatus){
     case apiStatusConstants.success:
-        return(
-            <>
-            <Navbar/>
-            <ProductDetail allDetails={allDetails}/>
-            {similarProducts.map((item)=>{
-            return <Similar key={item.id} productList={item}/>
-            })}
-            </>
-        )
+       return (this.renderAllDetails())
+
     case apiStatusConstants.failure:
         return <div>
             <h1>Failed</h1>
@@ -93,10 +97,9 @@ class Details extends Component {
         <ThreeDots color="#0b69ff" height="50" width="50" />
         </div>
    }
-    
        
    }
    
   }
 
-export default withRouter(Details)
+export default Details

@@ -20,7 +20,7 @@ class App extends Component {
       <ProtectedRoute exact path="/" component={Home}/>
       <ProtectedRoute exact path="/products" component={DisplayProducts}/>
       <ProtectedRoute exact path="/cart" component={Cart}/>
-      <ProtectedRoute  path="/products/:id" component={withRouter(Details)} />
+      <ProtectedRoute exact path="/products/:id" component={withRouter(Details)} />
       <ProtectedRoute path='*' component={NotFound}/>
       </Switch>
      

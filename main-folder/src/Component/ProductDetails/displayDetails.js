@@ -1,5 +1,5 @@
 import { Component } from 'react';
-// import './details.css'
+import './display.css'
 
 class ProductDetail extends Component {
     state = {
@@ -24,23 +24,23 @@ class ProductDetail extends Component {
         return (
             <>
                 <div className='product-detail'>
-                    <img src={allDetails.imageUrl} />
+                    <img className='main-img' src={allDetails.imageUrl} />
                     <div className='alldetails'>
                         <h1>{allDetails.title}</h1>
-                        <p>{allDetails.price}</p>
+                        <p>Rs {allDetails.price}/-</p>
                         <div className='rating-review'>
-                            <p>{allDetails.rating}</p>
-                            <p>{allDetails.totalReviews}</p>
+                        <span className='product-rating'>{allDetails.rating}<img className='rating-icon' src="https://img.icons8.com/material-rounded/24/FFFFFF/hand-drawn-star.png"/></span>
+                            <p>{allDetails.totalReviews} Reviews</p>
                         </div>
-                        <p>{allDetails.description}</p>
-                        <p>Available {allDetails.availability}</p>
-                        <p>Brand {allDetails.brand}</p>
+                        <p className='discription'>{allDetails.description}</p>
+                        <p>Available: {allDetails.availability}</p>
+                        <p className='brand'>Brand: {allDetails.brand}</p>
                         <div className='setItem'>
-                            <p onClick={this.decreaseItem}>-</p>
-                            <p>{noOfItems}</p>
-                            <p onClick={this.increaseItem}>+</p>
+                            <p className='decrease' onClick={this.decreaseItem}>-</p>
+                            <p className='count'>{noOfItems}</p>
+                            <p className='increase' onClick={this.increaseItem}>+</p>
                         </div>
-                        <button>Add to Cart</button>
+                        <button className='add-btn'>Add to Cart</button>
                     </div>
                 </div>
 
