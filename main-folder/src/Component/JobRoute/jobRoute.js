@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import DisplayJob from '../DisplayJobs/displayJobs';
+import Cookies from 'js-cookie';
 
 class JobRoute extends Component {
   state = {
@@ -10,9 +11,10 @@ class JobRoute extends Component {
   }
     getJobs= async ()=>{
         const url = "https://apis.ccbp.in/jobs"
+    const jwtToken = Cookies.get('jwt_token')
         const options={
             method: 'GET',
-          
+            headers :  {Authorization: `Bearer ${jwtToken}`,}
         }
         const response = await fetch(url,options)
         const data = await response.json()

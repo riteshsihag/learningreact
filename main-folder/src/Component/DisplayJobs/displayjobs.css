@@ -1,0 +1,23 @@
+.job-type-container{
+    display: flex;
+    justify-content: space-between;
+    width: 600px;
+}
+.job-container{
+    width: 650px;
+    border: 1px solid grey;
+    padding: 10px;
+    margin: 20px;
+}
+.roll-container{
+    display: flex;
+}
+.type-container{
+    display: flex;
+}
+.logo{
+    width: 50px;
+    height: 50px;
+    margin-top: 16px;
+    margin-right: 10px;
+}
