@@ -1,25 +1,13 @@
 import { Component } from 'react';
 import './displayjobs.css'
+
+
 class DisplayJob extends Component {
-state={
-    searchValue:''
-}
-onChangeSearchValue=(event)=>[
-  this.setState({searchValue: event.target.value})
-]
+
     render() {
-        const { allJobs } = this.props
-        const {searchValue} = this.state
-        const displaySearchItem = allJobs.filter((eachJob)=>{
-            if(eachJob.title.toLowerCase().includes(searchValue.toLowerCase())){
-                return eachJob
-            }
-        })
+        const {displaySearchItem} = this.props
         return (
             <>
-            <div className='search-container'>
-            <input type={'text'} value={searchValue} onChange={this.onChangeSearchValue} />
-            </div>
             {displaySearchItem.map((eachJob)=>{
                 return <div className='job-container'>
                     <div className='roll-container'>
@@ -44,7 +32,6 @@ onChangeSearchValue=(event)=>[
                 </div>
             </div>
             })}
-
             </>
         );
     }

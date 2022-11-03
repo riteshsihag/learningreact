@@ -1,6 +1,8 @@
 import { Component } from 'react';
-import DisplayJob from '../DisplayJobs/displayJobs';
 import Cookies from 'js-cookie';
+import Search from '../Search/search';
+
+
 
 class JobRoute extends Component {
   state = {
@@ -36,7 +38,7 @@ class JobRoute extends Component {
     const {allJobs} = this.state
     return (
       <>
-      <DisplayJob allJobs={allJobs}/>
+      <Search allJobs={allJobs}/>
       </>
     );
   }
