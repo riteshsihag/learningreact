@@ -11,11 +11,10 @@ onChangeSearchValue=(event)=>[
         const { allJobs } = this.props
         const {searchValue} = this.state
         const displaySearchItem = allJobs.filter((eachJob)=>{
-            if(eachJob.title.includes(searchValue)){
+            if(eachJob.title.toLowerCase().includes(searchValue.toLowerCase())){
                 return eachJob
             }
         })
-        console.log(displaySearchItem)
         return (
             <>
             <div className='search-container'>
