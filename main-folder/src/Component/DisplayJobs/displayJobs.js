@@ -10,7 +10,7 @@ onChangeSearchValue=(event)=>[
     render() {
         const { allJobs } = this.props
         const {searchValue} = this.state
-        const displaySearchItem = allJobs.map((eachJob)=>{
+        const displaySearchItem = allJobs.filter((eachJob)=>{
             if(eachJob.title.includes(searchValue)){
                 return eachJob
             }
