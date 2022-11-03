@@ -14,7 +14,7 @@ class PrimeVideo extends Component {
           )
         return (
             <div className='prime-container'>
-               <img src='https://assets.ccbp.in/frontend/react-js/prime-video-img.png'/>
+               <img className='prime-img' src='https://assets.ccbp.in/frontend/react-js/prime-video-img.png'/>
                <h1>Action Movies</h1>
                <Slick moviesList={actionMoviesList}/>
                <h1>Comedy Movies</h1>
