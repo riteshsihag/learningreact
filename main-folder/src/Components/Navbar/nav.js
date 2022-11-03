@@ -24,7 +24,7 @@ class Navbar extends Component {
                             <div className='close'>
                                 <AiOutlineClose style={{ position: "absolute", right: "100px", top: "25px", fontSize: "40px" }} onClick={() => close()} />
                                 <div className='content'>
-                                <p onClick={() => close()}><Link to="/home">Home</Link></p>
+                                <p onClick={() => close()}><Link to="/">Home</Link></p>
                                 <p onClick={() => close()}><Link to="/about">About</Link></p>
                                 </div>
                                
