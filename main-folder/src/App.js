@@ -1,13 +1,14 @@
 import './App.css';
 import { Component } from 'react';
-import View from './Components/TimelineView/view';
+import Slick from './Components/Slick/slick';
 
 class App extends Component {
  
   render() {
     return (
       <div className='container'>
-        <View/>
+        <h1 className='heading'>Planets</h1>
+        <Slick/>
       </div>
     );
   }
