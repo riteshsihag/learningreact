@@ -2,27 +2,31 @@
     display: flex;
     width: 100%;
     justify-content: space-between;
+    height: 98px;
+    background-color: #202020;
 }
 .navigations{
     display: flex;
-    width: 360px;
+    width: 132px;
     justify-content: space-between;
-    margin-right: 250px;
-    margin-top: 50px;
+    margin-top: 32px;
+    color: white;
 }
 .logo img{
-    width: 200px;
-    margin-left: 250px;
-    margin-top: 45px;
+    width: 155px;
+    margin-left: 159px;
+    margin-top: 23px;
 }
 .logout-btn{
-    width: 80px;
-    height: 33px;
+    width: 97px;
+    height: 31px;
     font-size: 15px;
     border: none;
-    background-color: #0967d2;
+    background-color: #4f46e5;
     color: white;
     border-radius: 5px;
+    margin-top: 32px;
+    margin-right: 159px;
 }
 .navigations p{
     font-size: 22px;
@@ -31,5 +35,5 @@
 }
 .navigations p a{
     text-decoration: none;
-
+    color: white;
 }

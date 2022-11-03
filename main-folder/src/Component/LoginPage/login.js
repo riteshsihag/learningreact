@@ -69,11 +69,8 @@ class Login extends Component {
         return (
             <>
                 <div className='login'>
-                    <div className='login-banner'>
-                        <img src='https://assets.ccbp.in/frontend/react-js/nxt-trendz-login-img.png' />
-                    </div>
                     <div className='login-content'>
-                        <img src='https://assets.ccbp.in/frontend/react-js/nxt-trendz-logo-img.png' />
+                        <img src='https://assets.ccbp.in/frontend/react-js/logo-img.png' />
                         <form onSubmit={this.onSubmitForm}>
                             <p className='head'>USERNAME</p>
                             <input type={'text'} value={username} onChange={this.onChangeUsername} placeholder="Username" />

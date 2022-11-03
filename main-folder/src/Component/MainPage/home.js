@@ -10,12 +10,9 @@ class Home extends Component {
      <Navbar/>
      <div className='home'>
       <div className='home-content'>
-      <h1>Clothes That Get YOU Noticed</h1>
-      <p>Fashion is part of the daily air and it does not quite help that it changes all the time. Clothes have always been a marker of the era and we are in a revolution. Your fashion makes you been seen and heard that way you are. So, celebrate the seasons new and exciting fashion in your own way.</p>
-      <button>Shop Now</button>
-      </div>
-      <div className='home-banner'>
-       <img src='https://assets.ccbp.in/frontend/react-js/nxt-trendz-home-img.png'/>
+      <h1>Find The Job That Fits Your Life</h1>
+      <p>Millions of people are searching for jobs, salary information, company reviews. Find the job that fits your abilities and potential.</p>
+      <button>Find Jobs</button>
       </div>
      </div>
      </>
