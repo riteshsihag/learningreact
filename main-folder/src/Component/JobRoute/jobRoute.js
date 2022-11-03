@@ -1,13 +1,34 @@
 import { Component } from 'react';
 import Cookies from 'js-cookie';
 import Search from '../Search/search';
+import Filter from '../FilterProducts/filter';
 
-
+const typeOfEmployment = [
+  {
+    id: '1',
+    type: 'Full Time'
+  },
+  {
+    id: '2',
+    type: 'Part Time'
+  },
+  {
+    id: '3',
+    type: 'Freelance'
+  },
+  {
+    id: '4',
+    type: 'Internship'
+  },
+]
 
 class JobRoute extends Component {
   state = {
-    allJobs : []
+    allJobs : [],
+    filterJobs: []
   }
+ 
+
   componentDidMount(){
     this.getJobs()
   }
@@ -34,10 +55,24 @@ class JobRoute extends Component {
             this.setState({allJobs: updatedData})
         }
     }
+    checkBox = (id,checked) => {
+      const {allJobs } = this.state
+      console.log(checked)
+      if (checked === true) {
+          const updatedJob = allJobs.filter((item) => {
+              if (id === item.id) {
+                  return item
+              }
+          })
+          this.setState({ filterJobs: updatedJob })
+      }
+  }
   render() {
-    const {allJobs} = this.state
+    const {allJobs,filterJobs} = this.state
+    console.log(filterJobs)
     return (
       <>
+      <Filter checkBox={this.checkBox} typeOfEmployment={typeOfEmployment}/>
       <Search allJobs={allJobs}/>
       </>
     );

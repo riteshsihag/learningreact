@@ -3,24 +3,7 @@ import '../DisplayJobs/displayjobs.css'
 import Filter from '../FilterProducts/filter';
 import DisplayJob from '../DisplayJobs/displayJobs';
 
-const typeOfEmployment = [
-    {
-      id: '1',
-      type: 'Full Time'
-    },
-    {
-      id: '2',
-      type: 'Part Time'
-    },
-    {
-      id: '3',
-      type: 'Freelance'
-    },
-    {
-      id: '4',
-      type: 'Internship'
-    },
-  ]
+
 class Search extends Component {
 state={
     searchValue:''

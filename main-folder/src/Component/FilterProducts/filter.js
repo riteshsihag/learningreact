@@ -1,34 +1,18 @@
 import { Component } from 'react';
 
 class Filter extends Component {
-    state = {
-        checkedValue: false,
-        filterJobs: []
-    }
-    onChangeCheckBox = (event) => {
-        const { checkedValue } = this.setState
-
-        this.setState(prevState => ({
-            checkedValue: !prevState.checkedValue
-        }))
-        if (checkedValue === true) {
-            const updatedJob = allJobs.filter((item) => {
-                if (event.target.value === item.id) {
-                    return item
-                }
-            })
-            this.setState({ filterJobs: updatedJob })
-        }
-    }
+   
     render() {
-        const { typeOfEmployment } = this.props
-        const { checkedValue } = this.setState
-
+        const { typeOfEmployment, checkBox } = this.props
+          const onChangeCheckBox=(event)=>{
+            const checked = !event.target.checked
+            checkBox(event.target.value, checked)
+          }
         return (
             <>
                 {typeOfEmployment.map(item => {
                     return <div>
-                        <input type={'checkbox'} value={item.id} onChange={this.onChangeCheckBox} checked={checkedValue} />
+                        <input type={'checkbox'} value={item.id} onChange={onChangeCheckBox} checked={false} />
                         <p>{item.type}</p>
                     </div>
                 })}
