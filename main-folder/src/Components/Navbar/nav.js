@@ -2,7 +2,7 @@ import { Component } from 'react';
 import Popup from 'reactjs-popup'
 import { GiHamburgerMenu } from 'react-icons/gi'
 import { AiOutlineClose } from 'react-icons/ai'
-import {Link} from 'react-router-dom'
+import {Link, withRouter} from 'react-router-dom'
 
 class Navbar extends Component {
 
@@ -39,4 +39,4 @@ class Navbar extends Component {
     }
 }
 
-export default Navbar;
+export default withRouter(Navbar);
