@@ -1,15 +1,23 @@
 import './App.css';
 import { Component } from 'react';
-import Slick from './Components/Slick/slick';
+import Navbar from './Components/Navbar/nav';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Home from './Components/Home/home';
+import About from './Components/About/about';
 
 class App extends Component {
  
   render() {
     return (
-      <div className='container'>
-        <h1 className='heading'>Planets</h1>
-        <Slick/>
+      <BrowserRouter>
+       <div className='container'>
+        <Navbar/>
+      <Switch>
+       <Route exact path={'./home'} component={<Home/>}/>
+       <Route exact path={'./about'} component={<About/>}/>
+      </Switch>
       </div>
+      </BrowserRouter>
     );
   }
 }
