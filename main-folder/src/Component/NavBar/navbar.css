@@ -11,11 +11,12 @@
     justify-content: space-between;
     margin-top: 32px;
     color: white;
+    margin-left: 250px;
 }
 .logo img{
     width: 155px;
-    margin-left: 159px;
-    margin-top: 23px;
+    margin-left: 270px;
+    margin-top: 14px;
 }
 .logout-btn{
     width: 97px;
@@ -26,7 +27,7 @@
     color: white;
     border-radius: 5px;
     margin-top: 32px;
-    margin-right: 159px;
+    margin-right: 270px;
 }
 .navigations p{
     font-size: 22px;

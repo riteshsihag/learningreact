@@ -10,8 +10,9 @@ class Package extends Component {
           }
         return (
             <>
+                        <h3>Salary Range</h3>
                 {minPackage.map(item => {
-                    return <div>
+                    return <div className='filter-container'>
                         <input type={'radio'} name="salary" value={item.id} onChange={onChangeRadioBtn} />
                         <p>{item.type}</p>
                     </div>

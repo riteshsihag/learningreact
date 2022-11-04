@@ -1,8 +1,7 @@
 import { Component } from 'react';
 import '../DisplayJobs/displayjobs.css'
-import Filter from '../FilterProducts/filter';
 import DisplayJob from '../DisplayJobs/displayJobs';
-
+import {AiOutlineSearch} from 'react-icons/ai'
 
 class Search extends Component {
 state={
@@ -22,10 +21,15 @@ onChangeSearchValue=(event)=>[
         
         return (
             <>
+            <div className='main-search-container'>
              <div className='search-container'>
-            <input type={'text'} value={searchValue} onChange={this.onChangeSearchValue} />
+            <input placeholder='Search' type={'text'} value={searchValue} onChange={this.onChangeSearchValue} />
+            <div className='search-btn'>
+            <AiOutlineSearch/>
             </div>
-         <DisplayJob displaySearchItem={displaySearchItem}/>
+            </div>
+             <DisplayJob displaySearchItem={displaySearchItem}/>
+            </div>
             </>
         );
     }

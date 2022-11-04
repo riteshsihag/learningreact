@@ -33,9 +33,9 @@ class Profile extends Component {
         const { allDetails } = this.state
 
         return (
-             <div>
+             <div className='profile-container'>
                     <img src={allDetails.profileUrl} />
-                    <h1>{allDetails.name}</h1>
+                    <h2>{allDetails.name}</h2>
                     <p>{allDetails.bio}</p>
                 </div>
         )

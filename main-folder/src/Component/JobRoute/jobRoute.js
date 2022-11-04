@@ -4,6 +4,8 @@ import Search from '../Search/search';
 import Filter from '../FilterProducts/filter';
 import Package from '../FilterProducts/minPackage';
 import Profile from '../Profile/profile';
+import './jobRoute.css'
+import Navbar from '../NavBar/navbar';
 
 const typeOfEmployment = [
   {
@@ -104,10 +106,15 @@ class JobRoute extends Component {
 
     return (
       <>
+      <Navbar/>
+      <div className='main-job-container'>
+      <div className='profile-filter-container'>
       <Profile/>
         <Filter checkBox={this.checkBox} typeOfEmployment={typeOfEmployment} />
         <Package minPackage={minPackage} findMinPackageJobs={this.findMinPackageJobs}/>
+      </div>
         <Search allJobs={allJobs} />
+        </div>
       </>
     );
   }

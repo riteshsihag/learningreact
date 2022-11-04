@@ -16,6 +16,7 @@ const apiStatusConstants = {
 class Details extends Component {
  state = {
     allDetails : [],
+    skills: [],
     isLoading : false,
     apiStatus : apiStatusConstants.initial
  }
@@ -41,7 +42,7 @@ class Details extends Component {
         const updatedData = {
             title: data.job_details.title,
             id: data.job_details.id,
-            imageUrl: data.job_details.company_logo_url,
+            logoUrl: data.job_details.company_logo_url,
             websiteUrl: data.job_details.company_website_url,
             employmentType: data.job_details.employment_type,
             description: data.job_details.job_description,
@@ -49,10 +50,15 @@ class Details extends Component {
             life: data.job_details.life_at_company,
             salary: data.job_details.package_per_annum,
             rating: data.job_details.rating,
-            similarJobs: data.job_details.similar_jobs
-        }  
+            similarJobs: data.similar_jobs,
+            location: data.job_details.location
+        }
+        const updatedSkills = updatedData.skills.map(skill=>({
+            imageUrl : skill.image_url,
+            name : skill.name
+        }))  
         
-        this.setState({allDetails: updatedData, apiStatus: apiStatusConstants.success})
+        this.setState({allDetails: updatedData, apiStatus: apiStatusConstants.success, skills: updatedSkills})
     } 
     else{
         this.setState({apiStatus:apiStatusConstants.failure})
@@ -65,13 +71,13 @@ class Details extends Component {
         })
  }
  renderAllDetails=()=>{
-    const {allDetails} = this.state
+    const {allDetails,skills} = this.state
     return(
         <>
         <Navbar/>
-        <ShowJobDetails allDetails={allDetails}/>
+        <ShowJobDetails skills={skills} allDetails={allDetails}/>
         <div>
-        <h1 id='product-heading'>Similar Products</h1>
+        <h1 id='similar-heading'>Similar Jobs</h1>
 
         <div className='similar-container'>
         {this.renderSimilarProducts()}
