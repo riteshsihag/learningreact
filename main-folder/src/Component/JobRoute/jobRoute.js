@@ -55,16 +55,31 @@ class JobRoute extends Component {
             this.setState({allJobs: updatedData})
         }
     }
-    checkBox = (id,checked) => {
-      const {allJobs } = this.state
-      console.log(checked)
+    checkBox = (type,checked) => {
+      const {allJobs, filterJobs } = this.state
       if (checked === true) {
           const updatedJob = allJobs.filter((item) => {
-              if (id === item.id) {
+              if (type === item.employmentType) {
                   return item
               }
           })
-          this.setState({ filterJobs: updatedJob })
+          this.setState(prevState=>({
+            filterJobs: [...prevState.filterJobs, updatedJob]
+          }))
+      }
+      if(checked===false){
+       const removeJob =  filterJobs.map(job=>{
+       return job.filter((item)=>{
+          if (type !== item.employmentType) {
+            return item
+        }
+        })
+        
+        })
+        this.setState({
+          filterJobs : removeJob
+        })
+       
       }
   }
   render() {
