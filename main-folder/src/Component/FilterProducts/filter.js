@@ -3,7 +3,7 @@ import { Component } from 'react';
 class Filter extends Component {
   
     render() {
-        const { typeOfEmployment, checkBox, checkedArray } = this.props
+        const { typeOfEmployment, checkBox } = this.props
           const onChangeCheckBox=(event)=>{
             const checked = event.target.checked
             checkBox(event.target.value, checked)
@@ -12,7 +12,7 @@ class Filter extends Component {
             <>
                 {typeOfEmployment.map(item => {
                     return <div>
-                        <input type={'checkbox'} value={item.type} onChange={onChangeCheckBox} />
+                        <input type={'checkbox'}  value={item.id} onChange={onChangeCheckBox} />
                         <p>{item.type}</p>
                     </div>
                 })}
