@@ -56,7 +56,8 @@ class JobRoute extends Component {
     allJobs: [],
     employmentType: [],
     minPackage: '',
-    apiStatus: apiStatusConstants.initial
+    apiStatus: apiStatusConstants.initial,
+    searchValue: ''
   }
 
 
@@ -64,8 +65,8 @@ class JobRoute extends Component {
     this.getJobs()
   }
   getJobs = async () => {
-    const { employmentType, minPackage } = this.state
-    const url = `https://apis.ccbp.in/jobs?employment_type=${employmentType}&minimum_package=${minPackage}`
+    const { employmentType, minPackage, searchValue } = this.state
+    const url = `https://apis.ccbp.in/jobs?employment_type=${employmentType}&minimum_package=${minPackage}&search=${searchValue}`
     const jwtToken = Cookies.get('jwt_token')
     const options = {
       method: 'GET',
@@ -112,6 +113,9 @@ class JobRoute extends Component {
       this.setState({ minPackage: salary }, this.getJobs)
     }
   }
+  changeSearchValue=(value)=>{
+    this.setState({searchValue: value})
+  }
 
   render() {
     const { allJobs, apiStatus } = this.state
@@ -126,7 +130,7 @@ class JobRoute extends Component {
                 <Filter checkBox={this.checkBox} typeOfEmployment={typeOfEmployment} />
                 <Package minPackage={minPackage} findMinPackageJobs={this.findMinPackageJobs} />
               </div>
-              <Search allJobs={allJobs} />
+              <Search changeSearchValue={this.changeSearchValue} allJobs={allJobs} />
             </div>
           </>
         )
@@ -134,7 +138,6 @@ class JobRoute extends Component {
         return (
           <div className='allFilter-container'>
             <Filter checkBox={this.checkBox} typeOfEmployment={typeOfEmployment} />
-
             <div className='no-product'> <img src="https://assets.ccbp.in/frontend/react-js/nxt-trendz/nxt-trendz-no-products-view.png" />
               <h2>No Products Found</h2>
               <p>We could not find any products. Please try other filters</p>
@@ -145,7 +148,6 @@ class JobRoute extends Component {
         return (
           <div className='allFilter-container'>
             <Filter checkBox={this.checkBox} typeOfEmployment={typeOfEmployment} />
-
             <div className='no-product'><img src="https://assets.ccbp.in/frontend/react-js/nxt-trendz/nxt-trendz-products-error-view.png" />
               <h2>Oops! Something Went Wrong</h2>
               <p>We are having some trouble processing your request. Please try again.</p>
