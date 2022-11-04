@@ -1,9 +1,9 @@
 import Cookies from 'js-cookie';
 import { Component } from 'react';
 import Navbar from '../NavBar/navbar';
-import Similar from '../SimilarProduct/similar';
 import { ThreeDots } from 'react-loader-spinner';
 import ShowJobDetails from './showDetails';
+import Similar from '../SimilarProducts/similar';
 
 const apiStatusConstants = {
     initial: 'INITIAL',

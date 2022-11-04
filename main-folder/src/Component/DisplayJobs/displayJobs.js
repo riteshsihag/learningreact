@@ -1,12 +1,17 @@
 import { Component } from 'react';
 import './displayjobs.css'
-
+import {Link} from 'react-router-dom'
 
 class DisplayJob extends Component {
 
     render() {
         const {displaySearchItem} = this.props
+        const id = displaySearchItem.map(item=>{
+            return item.id
+        })
+        console.log(id)
         return (
+      <Link to={`/jobs/${id}`}>
             <>
             {displaySearchItem.map((eachJob)=>{
                 return <div className='job-container'>
@@ -33,6 +38,7 @@ class DisplayJob extends Component {
             </div>
             })}
             </>
+            </Link>
         );
     }
 }

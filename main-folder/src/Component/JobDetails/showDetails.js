@@ -6,7 +6,7 @@ class ShowJobDetails extends Component {
        
         return (
             <>
-               
+               DEtails
 
             </>
         )

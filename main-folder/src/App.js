@@ -6,6 +6,7 @@ import NotFound from './Component/NotFound/notfound';
 import Login from './Component/LoginPage/login';
 import ProtectedRoute from './Component/ProtectedRoute/protectedRoute';
 import JobRoute from './Component/JobRoute/jobRoute';
+import Details from './Component/JobDetails/details';
 class App extends Component {
   
   render() {
@@ -16,7 +17,7 @@ class App extends Component {
       <Route exact path="/login" component={Login}/>
       <ProtectedRoute exact path="/" component={Home}/>
       <ProtectedRoute exact path="/jobs" component={JobRoute}/>
-      <ProtectedRoute />
+      <ProtectedRoute exact path="/jobs/:id" component={Details}/>
       <ProtectedRoute path='*' component={NotFound}/>
       </Switch>
       </BrowserRouter>
