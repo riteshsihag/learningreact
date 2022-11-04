@@ -100,7 +100,7 @@ class Details extends Component {
         </div>
     case apiStatusConstants.inProgress:
         return <div className='loader'>
-        <ThreeDots color="#0b69ff" height="50" width="50" />
+        <ThreeDots color="white" height="50" width="50" />
         </div>
    }
        

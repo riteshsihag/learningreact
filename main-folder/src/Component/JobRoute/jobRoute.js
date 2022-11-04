@@ -45,12 +45,18 @@ const minPackage = [
     type: '40 LPA and above'
   },
 ]
-
+const apiStatusConstants = {
+  initial: 'INITIAL',
+  noJobs: 'NOJOBS',
+  failure: 'FAILURE',
+  success: 'SUCCESS'
+}
 class JobRoute extends Component {
   state = {
     allJobs: [],
     employmentType: [],
-    minPackage: ''
+    minPackage: '',
+    apiStatus: apiStatusConstants.initial
   }
 
 
@@ -78,13 +84,19 @@ class JobRoute extends Component {
         rating: job.rating,
         title: job.title
       }))
-      this.setState({ allJobs: updatedData })
+      if (updatedData.length === 0) {
+        this.setState({ apiStatus: apiStatusConstants.noJobs })
+      }
+      this.setState({ allJobs: updatedData , apiStatus:apiStatusConstants.success})
+    }
+    else {
+      this.setState({ apiStatus: apiStatusConstants.failure})
     }
   }
   checkBox = (type, checked) => {
     const { employmentType } = this.state
     if (checked === true) {
-      this.setState(prevState => ({employmentType: [...prevState.employmentType, type.toUpperCase()]} ),this.getJobs)
+      this.setState(prevState => ({ employmentType: [...prevState.employmentType, type.toUpperCase()] }), this.getJobs)
     }
     else {
       const updatedData = employmentType.filter(item => {
@@ -95,28 +107,53 @@ class JobRoute extends Component {
       this.setState({ employmentType: updatedData }, this.getJobs)
     }
   }
-  findMinPackageJobs = (salary,checked) =>{
+  findMinPackageJobs = (salary, checked) => {
     if (checked === true) {
-      this.setState({minPackage: salary} ,this.getJobs)
+      this.setState({ minPackage: salary }, this.getJobs)
     }
-    }
-  
-  render() {
-    const { allJobs } = this.state
+  }
 
-    return (
-      <>
-      <Navbar/>
-      <div className='main-job-container'>
-      <div className='profile-filter-container'>
-      <Profile/>
-        <Filter checkBox={this.checkBox} typeOfEmployment={typeOfEmployment} />
-        <Package minPackage={minPackage} findMinPackageJobs={this.findMinPackageJobs}/>
-      </div>
-        <Search allJobs={allJobs} />
-        </div>
-      </>
-    );
+  render() {
+    const { allJobs, apiStatus } = this.state
+    switch (apiStatus) {
+      case apiStatusConstants.success:
+        return (
+          <>
+            <Navbar />
+            <div className='main-job-container'>
+              <div className='profile-filter-container'>
+                <Profile />
+                <Filter checkBox={this.checkBox} typeOfEmployment={typeOfEmployment} />
+                <Package minPackage={minPackage} findMinPackageJobs={this.findMinPackageJobs} />
+              </div>
+              <Search allJobs={allJobs} />
+            </div>
+          </>
+        )
+      case apiStatusConstants.noJobs:
+        return (
+          <div className='allFilter-container'>
+            <Filter checkBox={this.checkBox} typeOfEmployment={typeOfEmployment} />
+
+            <div className='no-product'> <img src="https://assets.ccbp.in/frontend/react-js/nxt-trendz/nxt-trendz-no-products-view.png" />
+              <h2>No Products Found</h2>
+              <p>We could not find any products. Please try other filters</p>
+            </div>
+          </div>
+        )
+      case apiStatusConstants.failure:
+        return (
+          <div className='allFilter-container'>
+            <Filter checkBox={this.checkBox} typeOfEmployment={typeOfEmployment} />
+
+            <div className='no-product'><img src="https://assets.ccbp.in/frontend/react-js/nxt-trendz/nxt-trendz-products-error-view.png" />
+              <h2>Oops! Something Went Wrong</h2>
+              <p>We are having some trouble processing your request. Please try again.</p>
+            </div>
+          </div>
+        )
+
+    }
   }
 }
 
