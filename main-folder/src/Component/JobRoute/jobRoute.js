@@ -56,8 +56,7 @@ class JobRoute extends Component {
     allJobs: [],
     employmentType: [],
     minPackage: '',
-    apiStatus: apiStatusConstants.initial,
-    searchValue: ''
+    apiStatus: apiStatusConstants.initial
   }
 
 
@@ -65,8 +64,8 @@ class JobRoute extends Component {
     this.getJobs()
   }
   getJobs = async () => {
-    const { employmentType, minPackage, searchValue } = this.state
-    const url = `https://apis.ccbp.in/jobs?employment_type=${employmentType}&minimum_package=${minPackage}&search=${searchValue}`
+    const { employmentType, minPackage } = this.state
+    const url = `https://apis.ccbp.in/jobs?employment_type=${employmentType}&minimum_package=${minPackage}`
     const jwtToken = Cookies.get('jwt_token')
     const options = {
       method: 'GET',
@@ -113,9 +112,6 @@ class JobRoute extends Component {
       this.setState({ minPackage: salary }, this.getJobs)
     }
   }
-  changeSearchValue=(value)=>{
-    this.setState({searchValue: value})
-  }
 
   render() {
     const { allJobs, apiStatus } = this.state
@@ -130,7 +126,7 @@ class JobRoute extends Component {
                 <Filter checkBox={this.checkBox} typeOfEmployment={typeOfEmployment} />
                 <Package minPackage={minPackage} findMinPackageJobs={this.findMinPackageJobs} />
               </div>
-              <Search changeSearchValue={this.changeSearchValue} allJobs={allJobs} />
+              <Search allJobs={allJobs} />
             </div>
           </>
         )
