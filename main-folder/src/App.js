@@ -16,6 +16,7 @@ class App extends Component {
       <Route exact path="/login" component={Login}/>
       <ProtectedRoute exact path="/" component={Home}/>
       <ProtectedRoute exact path="/jobs" component={JobRoute}/>
+      <ProtectedRoute />
       <ProtectedRoute path='*' component={NotFound}/>
       </Switch>
       </BrowserRouter>
