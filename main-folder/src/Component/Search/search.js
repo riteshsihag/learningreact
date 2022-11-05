@@ -22,13 +22,18 @@ onChangeSearchValue=(event)=>[
         return (
             <>
             <div className='main-search-container'>
+                <div className='search'>
              <div className='search-container'>
             <input placeholder='Search' type={'text'} value={searchValue} onChange={this.onChangeSearchValue} />
             <div className='search-btn'>
             <AiOutlineSearch/>
             </div>
             </div>
+
+            </div>
+            <div className='display-job'>
              <DisplayJob displaySearchItem={displaySearchItem}/>
+             </div>
             </div>
             </>
         );

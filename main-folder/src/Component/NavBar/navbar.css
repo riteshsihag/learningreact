@@ -4,6 +4,7 @@
     justify-content: space-between;
     height: 98px;
     background-color: #202020;
+    position: fixed;
 }
 .navigations{
     display: flex;
@@ -11,12 +12,11 @@
     justify-content: space-between;
     margin-top: 32px;
     color: white;
-    margin-left: 250px;
 }
 .logo img{
     width: 155px;
-    margin-left: 270px;
-    margin-top: 14px;
+    margin-left: 80px;
+    margin-top: 17px;
 }
 .logout-btn{
     width: 97px;
@@ -26,8 +26,8 @@
     background-color: #4f46e5;
     color: white;
     border-radius: 5px;
-    margin-top: 32px;
-    margin-right: 270px;
+    margin-top: 38px;
+    margin-right: 80px;
 }
 .navigations p{
     font-size: 22px;
@@ -37,4 +37,25 @@
 .navigations p a{
     text-decoration: none;
     color: white;
+}
+.mobile-nav{
+    display: none;
+}
+.desktop-nav{
+    display: flex;
+    width: 50%;
+    justify-content: space-between;
+}
+@media screen and (max-width:800px) {
+    .mobile-nav{
+        display: block;
+    margin-top: 22px;
+    font-size: 40px;
+    }
+    .mobile-nav svg{
+        margin: 10px;
+    }
+    .desktop-nav{
+        display: none;
+    }
 }

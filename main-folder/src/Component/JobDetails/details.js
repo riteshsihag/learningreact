@@ -76,9 +76,8 @@ class Details extends Component {
         <>
         <Navbar/>
         <ShowJobDetails skills={skills} allDetails={allDetails}/>
-        <div>
         <h1 id='similar-heading'>Similar Jobs</h1>
-
+        <div className='similar-flex-container'>
         <div className='similar-container'>
         {this.renderSimilarProducts()}
 

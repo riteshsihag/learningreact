@@ -13,9 +13,9 @@ class Similar extends Component {
      <>
         <div id='job-container1'>
           <div id='roll-container'>
-            <img id='logo' src={jobs.company_logo_url} />
+            <img id='logo1' src={jobs.company_logo_url} />
             <div id='roll-detail'>
-              <h2 id='roll-title'>{jobs.title}</h2>
+              <h2 className='job-title'>{jobs.title}</h2>
               <div id='rating-container'>
                 <AiFillStar />
                 <p>{jobs.rating}</p>

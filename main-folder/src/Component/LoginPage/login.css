@@ -9,9 +9,8 @@
 }
 .login-content{
     padding: 60px;
-    margin-right: 200px;
     background-color: #202020;
-    width: 333px;
+    max-width: 333px;
     display: flex;
     flex-direction: column;
     justify-content: center;
