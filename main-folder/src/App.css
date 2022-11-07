@@ -1,26 +1,70 @@
 body{
+  display: flex;
+  justify-content: center;
+  width: 100%;
+
+}
+
+.nav-content{
+  display: flex ;
+}
+.all-content{
+  margin-top: 40px;
+  width: 1200px;
   text-align: center;
-  background-color: #1e293b;
-  font-family: Bree Serif;
+  margin-left: 300px;
 }
-h2{
-  margin-top: 320px;
-  color: #f0bb03;
-  font-size: 80px;
-  margin-bottom: 45px;
+.left{
+  width: 200px;
+    background-color: #cbd5e1;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
 }
-p{
+.right{
+  width: 200px;
+  background-color: #cbd5e1;
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.left-none{
+  display: none;
+}
+.right-none{
+  display: none;
+}
+.content-none{
+  visibility: hidden;
+}
+.checkbox span{
+  display: block;
+  margin: 10px;
+}
+.navbar{
+  background-color: #475569;
+  width: 88vw;
   color: white;
-    font-size: 30px;
-    line-height: 0px;
-    margin-bottom: 51px;
+  padding: 20px;
+  padding-left: 200px;
 }
-Button{
-  font-size: 15px;
-  padding: 10px;
-  width: 120px;
-  font-weight: 600;
-  color: #1e293b;
-  border-radius: 11px;
-  border: none;
+.heading{
+  background-color: #e2e8f0;
+  padding: 30px;
+}
+.box{
+  border: 1px solid;
+    width: 150px;
+    height: 113px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 10px;
+}
+.content{
+  background-color: #f1f5f9;
+  height: 310px;
+  padding: 20px;
 }
