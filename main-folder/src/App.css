@@ -1,0 +1,19 @@
+body{
+  text-decoration: none;
+  background-color: black;
+    height: 100vh;
+   color: white;
+  }
+  .loader{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 500px;
+  }
+  #root{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  

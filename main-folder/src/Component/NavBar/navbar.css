@@ -1,0 +1,60 @@
+.navbar{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    height: 98px;
+    background-color: #202020;
+}
+.navigations{
+    display: flex;
+    width: 132px;
+    justify-content: space-between;
+    margin-top: 32px;
+    color: white;
+}
+.logo img{
+    width: 155px;
+    margin-left: 80px;
+    margin-top: 17px;
+}
+.logout-btn{
+    width: 97px;
+    height: 31px;
+    font-size: 15px;
+    border: none;
+    background-color: #4f46e5;
+    color: white;
+    border-radius: 5px;
+    margin-top: 38px;
+    margin-right: 80px;
+}
+.navigations p{
+    font-size: 22px;
+    margin-top: 6px;
+    color: #475569;
+}
+.navigations p a{
+    text-decoration: none;
+    color: white;
+}
+.mobile-nav{
+    display: none;
+}
+.desktop-nav{
+    display: flex;
+    width: 50%;
+    justify-content: space-between;
+}
+@media screen and (max-width:800px) {
+    .mobile-nav{
+        display: block;
+    margin-top: 22px;
+    font-size: 40px;
+    }
+    .mobile-nav svg{
+        margin: 10px;
+    }
+    .desktop-nav{
+        display: none;
+    }
+}
