@@ -1,5 +1,4 @@
 import {Component} from 'react';
-import ImageComponent from '../Image/image';
 import { Button, Heading, Input, InputContainer, InputHeading, MainInputContainer, Select } from './styledComponent';
 class InputComponent extends Component {
 
@@ -8,11 +7,10 @@ class InputComponent extends Component {
         topText : '',
         bottomText : '',
         fontSize : 8,
-        generate: false
+
     }
-    generate=()=>{
-        this.setState({generate: true})
-    }
+   
+
     onChangeImgUrl=(event)=>{
        this.setState({imgUrl: event.target.value})
     }
@@ -27,10 +25,14 @@ class InputComponent extends Component {
      }
 
 render(){
-    const {imgUrl,topText,bottomText,fontSize,generate} = this.state
+    const {imgUrl,topText,bottomText,fontSize} = this.state
+    const {onGenerate} = this.props
+    const generate=()=>{
+        onGenerate(imgUrl,topText,bottomText,fontSize)
+    }
   return(
 
-    <MainInputContainer>
+   
         <InputContainer>
         <Heading>Meme Generator</Heading>
         <InputHeading>Image URL</InputHeading>
@@ -50,13 +52,9 @@ render(){
             <option value={'32'}>32</option>
             <option value={'36'}>36</option>
         </Select>
-        <Button onClick={this.generate}>Generate</Button>
+        <Button onClick={generate}>Generate</Button>
         </InputContainer>
-          {generate?
-        <ImageComponent imgUrl={imgUrl} topText={topText} bottomText={bottomText} fontSize={fontSize}/>
-        : ''  
-        }
-    </MainInputContainer>
+   
   )
 }
 }
