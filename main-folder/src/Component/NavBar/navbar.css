@@ -33,3 +33,10 @@
     text-decoration: none;
 
 }
+.cart-no{
+    font-size: 15px;
+    background-color: rgb(188, 239, 255);
+    border-radius: 10px;
+    padding: 3px;
+    color: #0967d2;
+}

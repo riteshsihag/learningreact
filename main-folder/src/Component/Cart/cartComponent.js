@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import CartContext from '../../CartContext/cartContext';
 import './cart.css'
+import {MdCancel} from 'react-icons/md'
 class CartComponent extends Component {
  
   render() {
@@ -8,16 +9,17 @@ class CartComponent extends Component {
     return (
       <CartContext.Consumer>
         {value => {
-          const { decreaseItem, increaseItem ,totalCartValue} = value
+          const { decreaseItem, increaseItem, deleteCartItem } = value
           const {cartItem} = this.props
-
+          
           const onDecreaseItem=()=>{
             decreaseItem(cartItem.id)
-            totalCartValue()
           }
           const onIncreaseItem=()=>{
             increaseItem(cartItem.id)
-            totalCartValue()
+          }
+          const deleteItem=()=>{
+            deleteCartItem(cartItem.id)
           }
           return (
             <>
@@ -34,7 +36,11 @@ class CartComponent extends Component {
                     <p className='count'>{cartItem.noOfItems}</p>
                     <p className='increase' onClick={onIncreaseItem}>+</p>
                   </div>
+                  <div className='delete-item'>
                   <p>Rs {cartItem.noOfItems*cartItem.price}</p>
+                  <MdCancel onClick={deleteItem}/>
+                  </div>
+                  
                 </div>
             </>
           )

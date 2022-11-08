@@ -44,10 +44,16 @@ class App extends Component {
     }
    
 
-      deleteCartItem = () => { }
+      deleteCartItem = (id) => { 
+        const {cartList} = this.state
+        this.setState(prevState=>({cartList: prevState.cartList.filter(item=>{
+          if(id!==item.id){
+           return item
+          }
+         })}))
+      }
   render() {
-    const { cartList , totalValue} = this.state
-    console.log(totalValue)
+    const { cartList} = this.state
 
     return (
       <CartContext.Provider value={{ cartList, addCartItem: this.addCartItem, deleteCartItem: this.deleteCartItem , decreaseItem: this.decreaseItem, increaseItem:this.increaseItem}}>

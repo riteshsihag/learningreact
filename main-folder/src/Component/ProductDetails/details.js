@@ -19,7 +19,7 @@ class Details extends Component {
         allDetails: {},
         isLoading: false,
         apiStatus: apiStatusConstants.initial,
-        noOfItems: 1
+        noOfItems: 1,
     }
 
     componentDidMount() {
@@ -78,55 +78,62 @@ class Details extends Component {
         })
     }
     renderAllDetails = () => {
-        return(
-        <CartContext.Consumer>
-            {(value) => {
-                const { allDetails, noOfItems } = this.state
-                const { addCartItem, totalCartValue } = value;
-                const onClickAddToCart = () => {
-                    addCartItem({ ...allDetails, noOfItems });
-                     totalCartValue()
-                };
-                return (
-                    <>
-                        <Navbar />
+        return (
+            <CartContext.Consumer>
+                {(value) => {
+                    const { allDetails, noOfItems } = this.state
+                    const { addCartItem, cartList, increaseItem } = value;
+                   
+                    const onClickAddToCart = () => {
+                      
+                      if(cartList.find(item => item.id==allDetails.id)){
+                                 increaseItem(allDetails.id)                 
+                      }
+                        else {
+                            return addCartItem({ ...allDetails, noOfItems });
+                         }
+
+                    };
+                    return (
                         <>
-                            <div className='product-detail'>
-                                <img className='main-img' src={allDetails.imageUrl} />
-                                <div className='alldetails'>
-                                    <h1>{allDetails.title}</h1>
-                                    <p>Rs {allDetails.price}/-</p>
-                                    <div className='rating-review'>
-                                        <span className='product-rating'>{allDetails.rating}<img className='rating-icon' src="https://img.icons8.com/material-rounded/24/FFFFFF/hand-drawn-star.png" /></span>
-                                        <p>{allDetails.totalReviews} Reviews</p>
+                            <Navbar />
+                            <>
+                                <div className='product-detail'>
+                                    <img className='main-img' src={allDetails.imageUrl} />
+                                    <div className='alldetails'>
+                                        <h1>{allDetails.title}</h1>
+                                        <p>Rs {allDetails.price}/-</p>
+                                        <div className='rating-review'>
+                                            <span className='product-rating'>{allDetails.rating}<img className='rating-icon' src="https://img.icons8.com/material-rounded/24/FFFFFF/hand-drawn-star.png" /></span>
+                                            <p>{allDetails.totalReviews} Reviews</p>
+                                        </div>
+                                        <p className='discription'>{allDetails.description}</p>
+                                        <p>Available: {allDetails.availability}</p>
+                                        <p className='brand'>Brand: {allDetails.brand}</p>
+                                        <div className='setItem'>
+                                            <p className='decrease' onClick={this.decreaseItem}>-</p>
+                                            <p className='count'>{noOfItems}</p>
+                                            <p className='increase' onClick={this.increaseItem}>+</p>
+                                        </div>
+                                        <button className='add-btn' onClick={onClickAddToCart}>Add to Cart</button>
                                     </div>
-                                    <p className='discription'>{allDetails.description}</p>
-                                    <p>Available: {allDetails.availability}</p>
-                                    <p className='brand'>Brand: {allDetails.brand}</p>
-                                    <div className='setItem'>
-                                        <p className='decrease' onClick={this.decreaseItem}>-</p>
-                                        <p className='count'>{noOfItems}</p>
-                                        <p className='increase' onClick={this.increaseItem}>+</p>
-                                    </div>
-                                    <button className='add-btn' onClick={onClickAddToCart}>Add to Cart</button>
+                                </div>
+
+                            </>
+                            <div>
+                                <h1 id='product-heading'>Similar Products</h1>
+
+                                <div className='similar-container'>
+                                    {this.renderSimilarProducts()}
+
                                 </div>
                             </div>
 
                         </>
-                        <div>
-                            <h1 id='product-heading'>Similar Products</h1>
-
-                            <div className='similar-container'>
-                                {this.renderSimilarProducts()}
-
-                            </div>
-                        </div>
-
-                    </>
-                )
-            }
-            }
-             </CartContext.Consumer>)
+                    )
+                }
+                }
+            </CartContext.Consumer>)
     }
     render() {
         const { apiStatus } = this.state
