@@ -1,0 +1,64 @@
+import {Component} from 'react';
+import ImageComponent from '../Image/image';
+import { Button, Heading, Input, InputContainer, InputHeading, MainInputContainer, Select } from './styledComponent';
+class InputComponent extends Component {
+
+    state = {
+        imgUrl : '',
+        topText : '',
+        bottomText : '',
+        fontSize : 8,
+        generate: false
+    }
+    generate=()=>{
+        this.setState({generate: true})
+    }
+    onChangeImgUrl=(event)=>{
+       this.setState({imgUrl: event.target.value})
+    }
+    onChangeTopText=(event)=>{
+        this.setState({topText: event.target.value})
+     }
+     onChangeBottomText=(event)=>{
+        this.setState({bottomText: event.target.value})
+     }
+     onChangeFontSize=(event)=>{
+        this.setState({fontSize: event.target.value})
+     }
+
+render(){
+    const {imgUrl,topText,bottomText,fontSize,generate} = this.state
+  return(
+
+    <MainInputContainer>
+        <InputContainer>
+        <Heading>Meme Generator</Heading>
+        <InputHeading>Image URL</InputHeading>
+        <Input placeholder='Enter the image Url' value={imgUrl} onChange={this.onChangeImgUrl} type={'text'}/>
+        <InputHeading>Top Text</InputHeading>
+        <Input placeholder='Enter the Top text' value={topText} onChange={this.onChangeTopText} type={'text'}/>
+        <InputHeading>Bottom Text</InputHeading>
+        <Input placeholder='Enter the Bottom text' value={bottomText} onChange={this.onChangeBottomText} type={'text'}/>
+        <InputHeading>Font Size</InputHeading>
+        <Select value={fontSize} onChange={this.onChangeFontSize}>
+            <option value={'8'}>8</option>
+            <option value={'12'}>12</option>
+            <option value={'16'}>16</option>
+            <option value={'20'}>20</option>
+            <option value={'24'}>24</option>
+            <option value={'28'}>28</option>
+            <option value={'32'}>32</option>
+            <option value={'36'}>36</option>
+        </Select>
+        <Button onClick={this.generate}>Generate</Button>
+        </InputContainer>
+          {generate?
+        <ImageComponent imgUrl={imgUrl} topText={topText} bottomText={bottomText} fontSize={fontSize}/>
+        : ''  
+        }
+    </MainInputContainer>
+  )
+}
+}
+
+export default InputComponent;
