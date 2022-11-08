@@ -30,6 +30,7 @@ class Cart extends Component {
                 
               </div>:
                 <div>
+                  
                   <h1 className='cart-heading'>My Cart</h1>
                   <div className='cart'>
                     {cartList.map(item => {
