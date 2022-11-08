@@ -1,32 +1,23 @@
 import './App.css';
 import {Component} from 'react';
-import InputComponent from './Components/Input/input';
-import ImageComponent from './Components/Image/image';
-import { MainInputContainer } from './Components/Input/styledComponent';
+import ButtonContainer from './Components/Buttons/button';
+import { MainContainer } from './Components/Buttons/buttonStyle';
+
 class App extends Component {
   state = {
-    imgUrl : '',
-    topText : '',
-    bottomText : '',
-    fontSize : 8,
+    colorOne: '#76e5dd',
+    colorTwo: '#9bd4f8',
+  gradientType: 'top'
+ }
+onGenerate=(color1,color2,gradientType)=>{
+  this.setState({colorOne:color1,colorTwo:color2,gradientType:gradientType})
 }
-onGenerate=(imgUrl,topText,bottomText,fontSize)=>{
-   this.setState({
-    imgUrl : imgUrl,
-    topText : topText,
-    bottomText : bottomText,
-    fontSize : fontSize,
-   })
-}
-
 render(){
-  const {imgUrl,topText,bottomText,fontSize} = this.state
-
+  const {colorOne,colorTwo,gradientType} = this.state
   return(
-    <MainInputContainer>
-   <InputComponent onGenerate={this.onGenerate}/>
-   <ImageComponent imgUrl={imgUrl} topText={topText} bottomText={bottomText} fontSize={fontSize}/>
-   </MainInputContainer>
+   <MainContainer colorOne={colorOne} colorTwo={colorTwo} gradientType={gradientType}>
+   <ButtonContainer onGenerate={this.onGenerate}/>
+   </MainContainer>
   )
 }
 }

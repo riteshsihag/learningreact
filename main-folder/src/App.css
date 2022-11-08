@@ -1,0 +1,19 @@
+#root{
+    height: 100%;
+    margin: 0px;
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+body{
+    height: 100vh;
+    margin: 0px;
+    
+}
+button{
+    margin-top: 40px;
+    padding: 11px;
+    width: 128px;
+    border: none;
+    border-radius: 7px;
+}
