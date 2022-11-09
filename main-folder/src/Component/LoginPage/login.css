@@ -1,6 +1,7 @@
 .login{
     display: flex;
     justify-content: space-around;
+    padding-top: 200px;
 }
 .login-content img{
     width: 148px;

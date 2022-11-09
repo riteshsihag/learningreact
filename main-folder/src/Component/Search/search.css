@@ -1,0 +1,21 @@
+.search-input{
+    width: 397px;
+    padding: 10px;
+}
+.search-container{
+    padding-left: 60px;
+    padding-top: 40px;
+    display: flex;
+    align-items: center;
+}
+.search-container svg{
+    font-size: 18px;
+}
+.search{
+    display: flex;
+    align-items: center;
+    border: 1px solid;
+    width: 73px;
+    height: 37px;
+    justify-content: center;
+}

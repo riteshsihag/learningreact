@@ -1,5 +1,6 @@
 import { Component } from 'react';
-
+import { BsSearch } from 'react-icons/bs';
+import './search.css'
 class Search extends Component {
   state={
     searchValue: ''
@@ -15,9 +16,12 @@ class Search extends Component {
         this.setState({searchValue: event.target.value}, changeSearch)
       }
     return (
-     <>
-     <input type={'text'} value={searchValue} onChange={onChangeSearchValue}/>
-     </>
+     <div className='search-container'>
+        <input className='search-input' type={'text'} value={searchValue} placeholder={'Search'} onChange={onChangeSearchValue}/>
+        <div className='search'>
+        <BsSearch/>
+        </div>
+     </div>
     );
   }
 }

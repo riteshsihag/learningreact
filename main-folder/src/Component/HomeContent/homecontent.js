@@ -15,7 +15,6 @@ class HomeContent extends Component {
     }
     getVideoDetails = async () => {
         const {searchValue} = this.state
-        console.log(searchValue)
         const url = `https://apis.ccbp.in/videos/all?search=${searchValue}`
         const jwtToken = Cookies.get('jwt_token')
         const options = {
@@ -38,7 +37,7 @@ class HomeContent extends Component {
         }
     }
     changeSearchValue=(value)=>{
-        this.setState({searchValue: value})
+        this.setState({searchValue: value}, this.getVideoDetails)
     }
     render() {
         const {videoDetails} = this.state

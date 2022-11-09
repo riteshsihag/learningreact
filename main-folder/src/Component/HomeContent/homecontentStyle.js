@@ -2,7 +2,10 @@ import styled from "styled-components";
 
 export const HomeContentContainer = styled.div`
 width: 100%;
-height: 91%;
+height: 100%;
+background-color: #ebebeb;
+overflow-y: scroll;
+-webkit-overflow-scrolling: auto;
 `
 export const VideoGridContainer = styled.div`
 display: grid;
