@@ -8,7 +8,8 @@ class Login extends Component {
         password: '',
         enterPassword: '',
         enterUsername: '',
-        error_msg: ''
+        error_msg: '',
+        checked: false
     }
     onSuccess = (jwt_token) => {
         Cookies.set("jwt_token",jwt_token,30)
@@ -57,26 +58,33 @@ class Login extends Component {
 
         }
     }
+    onShowPassword=()=>{
+        this.setState(prevState=>({
+            checked: !prevState.checked
+        }))
+    }
 
     render() {
-       const {username,password,enterUsername,enterPassword,error_msg} = this.state;
+       const {username,password,enterUsername,enterPassword,error_msg,checked} = this.state;
     const jwtToken = Cookies.get("jwt_token")
      if(jwtToken !== undefined){
         return <Redirect to={'/'}/>
      }
-     
-       
         return (
             <>
                 <div className='login'>
                     <div className='login-content'>
-                        <img src='https://assets.ccbp.in/frontend/react-js/logo-img.png' />
+                        <img src='https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png' />
                         <form onSubmit={this.onSubmitForm}>
                             <p className='head'>USERNAME</p>
-                            <input type={'text'} value={username} onChange={this.onChangeUsername} placeholder="Username" />
+                            <input className='login-input' type={'text'} value={username} onChange={this.onChangeUsername} placeholder="Username" />
                             <p className='error'>{enterUsername}</p>
                             <p className='head'>PASSWORD</p>
-                            <input type={'password'} value={password} onChange={this.onChangePassword} placeholder="Password" />
+                            <input className='login-input' type={checked?'text':'password'} value={password} onChange={this.onChangePassword} placeholder="Password" />
+                            <div className='showPassword'>
+                            <input type={'checkbox'} onChange={this.onShowPassword}/>
+                            <p className='show'>Show Password</p>
+                            </div>
                             <p className='error'>{enterPassword}</p>
                         <button type='submit' onClick={this.checkInput}>Login</button>
                         <p className='error'>{error_msg}</p>

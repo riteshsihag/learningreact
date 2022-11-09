@@ -1,19 +1,6 @@
-body{
-  text-decoration: none;
-  background-color: black;
+body {
     height: 100vh;
-   color: white;
-  }
-  .loader{
     display: flex;
+    align-items: center;
     justify-content: center;
-    align-items: center;
-    margin-top: 500px;
-  }
-  #root{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
-  
-  
+}
