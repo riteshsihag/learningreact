@@ -4,16 +4,19 @@ class Search extends Component {
   state={
     searchValue: ''
   }
-  onChangeSearchValue=(event)=>{
-    this.setState({searchValue: event.target.value})
-  }
+  
   render() {
     const {searchValue} = this.state
     const {changeSearchValue} = this.props
-    
+    const changeSearch=()=>{
+        changeSearchValue(searchValue)
+    }
+    const onChangeSearchValue=(event)=>{
+        this.setState({searchValue: event.target.value}, changeSearch)
+      }
     return (
      <>
-     <input type={'text'} value={searchValue} onChange={this.onChangeSearchValue}/>
+     <input type={'text'} value={searchValue} onChange={onChangeSearchValue}/>
      </>
     );
   }

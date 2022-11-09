@@ -15,6 +15,7 @@ class HomeContent extends Component {
     }
     getVideoDetails = async () => {
         const {searchValue} = this.state
+        console.log(searchValue)
         const url = `https://apis.ccbp.in/videos/all?search=${searchValue}`
         const jwtToken = Cookies.get('jwt_token')
         const options = {
