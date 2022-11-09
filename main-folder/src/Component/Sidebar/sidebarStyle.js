@@ -21,6 +21,7 @@ margin-left: 27px;
 `
 export const ContactContainer = styled.div`
 padding-left: 40px;
+width: 200px;
 
 `
 export const SideLinkContainer = styled.div`

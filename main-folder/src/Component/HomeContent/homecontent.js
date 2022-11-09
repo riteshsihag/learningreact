@@ -1,30 +1,57 @@
 import { Component } from 'react';
 import Banner from '../Banner/banner';
-import VideoComponent from '../VideoContainer/videoComponent';
-import { HomeContentContainer } from './homecontentStyle';
-
+import VideoDetail from '../VideoContainer/videoComponent';
+import { HomeContentContainer, VideoGridContainer } from './homecontentStyle';
+import Cookies from 'js-cookie';
+import Search from '../Search/search';
 class HomeContent extends Component {
-  
-    state={
-        videoDetails : []
-    }
 
-    getVideoDetails=()=>{
-        const url = `https://apis.ccbp.in/videos/all?search=`
+    state = {
+        videoDetails: [],
+        searchValue: ''
+    }
+    componentDidMount(){
+        this.getVideoDetails();
+    }
+    getVideoDetails = async () => {
+        const {searchValue} = this.state
+        const url = `https://apis.ccbp.in/videos/all?search=${searchValue}`
+        const jwtToken = Cookies.get('jwt_token')
         const options = {
-            method : 'GET',
-            
+            method: 'GET',
+            headers: { Authorization: `Bearer ${jwtToken}`}
+        }
+        const response = await fetch(url,options)
+        const data = await response.json()
+        if(response.ok===true){
+            const updatedData = data.videos.map(eachVideo=>({
+                id: eachVideo.id,
+                title: eachVideo.title,
+                thumbnailUrl: eachVideo.thumbnail_url,
+                channelName: eachVideo.channel.name,
+                profileUrl: eachVideo.channel.profile_image_url,
+                views: eachVideo.view_count,
+                publishedAt: eachVideo.published_at
+            }))
+            this.setState({videoDetails: updatedData})
         }
     }
-  render() {
-    
-    return (
-     <HomeContentContainer>
-     <Banner/>
-     <VideoComponent/>
-     </HomeContentContainer>
-    );
-  }
+    changeSearchValue=(value)=>{
+        this.setState({searchValue: value})
+    }
+    render() {
+        const {videoDetails} = this.state
+        return (
+            <HomeContentContainer>
+                <Banner />
+                <Search changeSearchValue={this.changeSearchValue}/>
+                <VideoGridContainer>
+                {videoDetails.map(eachVideo=>{
+                return <VideoDetail key={eachVideo.id} videoDetails={eachVideo}/>
+                })}</VideoGridContainer>
+            </HomeContentContainer>
+        );
+    }
 }
 
 export default HomeContent;
