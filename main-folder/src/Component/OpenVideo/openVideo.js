@@ -2,10 +2,10 @@ import { Component } from 'react';
 import Cookies from 'js-cookie';
 import Navbar from '../Navbar/navbar';
 import Sidebar from '../Sidebar/sidebar';
-import {IoLogoGameControllerB} from 'react-icons/io'
-import { GamingContainer, GamingChild, GamingHeading } from './gamingStyle';
-import { HeadingContainer } from '../Trending/trendingStyle';
-import GamingVideo from '../GamingVideo/gamingVideo';
+import { GamingContainer, GamingChild } from './openedVideoStyle';
+import VideoPlayer from '../VideoPlayer/videoPlayer';
+import { withRouter } from 'react-router-dom';
+import VideoText from './displayOpenedVideo';
 class OpenedVideo extends Component {
 
     state = {
@@ -27,18 +27,18 @@ class OpenedVideo extends Component {
         const response = await fetch(url, options)
         const data = await response.json()
         if (response.ok === true) {
-            const updatedData = data.videos.map(eachVideo => ({
-                id: eachVideo.id,
-                title: eachVideo.title,
-                thumbnailUrl: eachVideo.thumbnail_url,
-                channelName: eachVideo.channel.name,
-                profileUrl: eachVideo.channel.profile_image_url,
-                views: eachVideo.view_count,
-                publishedAt: eachVideo.published_at,
-                videoUrl: eachVideo.video_url,
-                subscriber: eachVideo.channel.subscriber_count,
-                description: eachVideo.description
-            }))
+            const updatedData = {
+                id: data.video_details.id,
+                title: data.video_details.title,
+                thumbnailUrl: data.video_details.thumbnail_url,
+                channelName: data.video_details.channel.name,
+                profileUrl: data.video_details.channel.profile_image_url,
+                views: data.video_details.view_count,
+                publishedAt: data.video_details.published_at,
+                videoUrl: data.video_details.video_url,
+                subscriber: data.video_details.channel.subscriber_count,
+                description: data.video_details.description
+            }
             this.setState({ openedVideoDetails: updatedData })
         }
     }
@@ -51,14 +51,9 @@ class OpenedVideo extends Component {
                 <div className='home-content'>
                     <Sidebar />
                     <GamingContainer>
-                        <HeadingContainer>
-                 <IoLogoGameControllerB style={{fontSize:'27px', marginTop: '5px', color:'#ff0000'}}/>
-                       <GamingHeading>Gaming</GamingHeading>
-                       </HeadingContainer>
-                        <GamingChild display={'block'}>
-                            {gamingDetails.map(eachVideo => {
-                                return <GamingVideo videoDetails={eachVideo}/>
-                            })}
+                        <GamingChild>
+                                <VideoPlayer videoUrl={openedVideoDetails.videoUrl}/>
+                                <VideoText videoDetails={openedVideoDetails}/>
                         </GamingChild>
                         </GamingContainer>
 
@@ -70,4 +65,4 @@ class OpenedVideo extends Component {
     }
 }
 
-export default OpenedVideo;
+export default withRouter(OpenedVideo) ;

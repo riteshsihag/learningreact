@@ -28,7 +28,7 @@ class Sidebar extends Component {
             </NavLinkContainer>
             <NavLinkContainer>
                  <RiPlayListAddLine/>
-                <NavName>Saved videos</NavName>
+                <NavName><Link to={'/saved-videos'}>Saved videos</Link></NavName>
             </NavLinkContainer>
             </SideLinkContainer>
             <ContactContainer>

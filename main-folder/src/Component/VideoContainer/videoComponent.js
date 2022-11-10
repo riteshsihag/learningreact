@@ -1,12 +1,14 @@
 import { Component } from 'react';
 import { ChannelLogo, ChannelName, Thumbnail, VideoDescription, VideoDetailContainer, VideoInfoContainer, VideoParagraph, ViewsContainer } from './videoDetailStyle';
 import {BsDot} from 'react-icons/bs'
+import { Link } from 'react-router-dom';
 class VideoDetail extends Component {
   
   render() {
     const {videoDetails} = this.props
     const {id,title,thumbnailUrl,channelName,profileUrl,views,publishedAt} = videoDetails
     return (
+      <Link to={`/video/${id}`}>
      <VideoDetailContainer>
         <Thumbnail src={thumbnailUrl}/>
         <VideoInfoContainer>
@@ -22,6 +24,7 @@ class VideoDetail extends Component {
             </VideoDescription>
         </VideoInfoContainer>
      </VideoDetailContainer>
+     </Link>
     );
   }
 }

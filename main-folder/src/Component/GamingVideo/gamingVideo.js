@@ -1,4 +1,5 @@
 import { Component } from 'react';
+import { Link } from 'react-router-dom';
 import { ChannelViews, ChannelName, Thumbnail, VideoDescription, VideoDetailContainer, VideoInfoContainer, VideoParagraph, ViewsContainer } from './gamingVideoStyle';
 class GamingVideo extends Component {
   
@@ -6,6 +7,7 @@ class GamingVideo extends Component {
     const {videoDetails} = this.props
     const {id,title,thumbnailUrl,views} = videoDetails
     return (
+      <Link to={`/video/${id}`}>
      <VideoDetailContainer>
         <Thumbnail src={thumbnailUrl}/>
         <VideoInfoContainer>
@@ -18,6 +20,7 @@ class GamingVideo extends Component {
             </VideoDescription>
         </VideoInfoContainer>
      </VideoDetailContainer>
+     </Link>
     );
   }
 }
