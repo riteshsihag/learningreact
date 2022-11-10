@@ -6,10 +6,17 @@ import { GamingContainer, GamingChild } from './openedVideoStyle';
 import VideoPlayer from '../VideoPlayer/videoPlayer';
 import { withRouter } from 'react-router-dom';
 import VideoText from './displayOpenedVideo';
+import {ThreeDots} from 'react-loader-spinner'
+const apiStatusConstant = {
+    success: 'Success',
+    failed: 'Failed',
+    loading: 'loading'
+}
 class OpenedVideo extends Component {
 
     state = {
         openedVideoDetails: [],
+        apiStatus: apiStatusConstant.loading
     }
     componentDidMount() {
         this.getVideoDetails();
@@ -39,30 +46,45 @@ class OpenedVideo extends Component {
                 subscriber: data.video_details.channel.subscriber_count,
                 description: data.video_details.description
             }
-            this.setState({ openedVideoDetails: updatedData })
+            this.setState({ openedVideoDetails: updatedData, apiStatus: apiStatusConstant.success })
         }
+        else {
+            this.setState({ apiStatus: apiStatusConstant.failed })
+        }
+
     }
 
     render() {
-        const { openedVideoDetails } = this.state
-        return (
-            <>
-                <Navbar />
-                <div className='home-content'>
-                    <Sidebar />
-                    <GamingContainer>
-                        <GamingChild>
-                                <VideoPlayer videoUrl={openedVideoDetails.videoUrl}/>
-                                <VideoText videoDetails={openedVideoDetails}/>
-                        </GamingChild>
-                        </GamingContainer>
+        const { openedVideoDetails, apiStatus } = this.state
+        switch (apiStatus) {
+            case apiStatusConstant.success:
+                return (
+                    <>
+                        <Navbar />
+                        <div className='home-content'>
+                            <Sidebar />
+                            <GamingContainer>
+                                <GamingChild>
+                                    <VideoPlayer videoUrl={openedVideoDetails.videoUrl} />
+                                    <VideoText videoDetails={openedVideoDetails} />
+                                </GamingChild>
+                            </GamingContainer>
 
-                </div>
+                        </div>
 
-            </>
-            
-        );
+                    </>
+                );
+            case apiStatusConstant.failed:  
+              return <>Failed</> 
+            case apiStatusConstant.loading:
+                return (
+                    <>
+                    <ThreeDots/>
+                    </>
+                )   
+        }
+
     }
 }
 
-export default withRouter(OpenedVideo) ;
+export default withRouter(OpenedVideo);

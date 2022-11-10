@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const HomeContentContainer = styled.div`
 width: 100%;
 height: 100%;
-background-color: #ebebeb;
+background-color: ${props=>(props.darkMode?'#0f0f0f':'#ebebeb')};
 overflow-y: scroll;
 -webkit-overflow-scrolling: auto;
 `

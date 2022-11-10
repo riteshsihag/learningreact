@@ -2,6 +2,8 @@ import styled from "styled-components";
 
 export const VideoDetailContainer = styled.div`
 max-width:480px;
+color: ${props=>(props.darkMode?'white':'black')} !important;
+
 `
 export const Thumbnail = styled.img`
 width: 100%;
@@ -16,6 +18,7 @@ export const VideoDescription = styled.div`
 export const VideoParagraph = styled.p`
 `
 export const ChannelName = styled.p`
+
 `
 export const ViewsContainer = styled.div`
 display: flex;

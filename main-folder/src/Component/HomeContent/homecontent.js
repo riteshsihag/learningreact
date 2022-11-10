@@ -4,6 +4,8 @@ import VideoDetail from '../VideoContainer/videoComponent';
 import { HomeContentContainer, VideoGridContainer } from './homecontentStyle';
 import Cookies from 'js-cookie';
 import Search from '../Search/search';
+import ReactContext from '../../Context/reactContext';
+
 class HomeContent extends Component {
 
     state = {
@@ -42,7 +44,11 @@ class HomeContent extends Component {
     render() {
         const {videoDetails} = this.state
         return (
-            <HomeContentContainer>
+            <ReactContext.Consumer>
+        {value=>{
+          const {isDarkModeOn} = value
+          return(
+            <HomeContentContainer darkMode={isDarkModeOn}>
                 <Banner />
                 <Search changeSearchValue={this.changeSearchValue}/>
                 <VideoGridContainer >
@@ -50,6 +56,9 @@ class HomeContent extends Component {
                 return <VideoDetail key={eachVideo.id} videoDetails={eachVideo}/>
                 })}</VideoGridContainer>
             </HomeContentContainer>
+          )
+        }}
+        </ReactContext.Consumer>
         );
     }
 }

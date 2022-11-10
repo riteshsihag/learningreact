@@ -6,12 +6,17 @@ import {ImFire} from 'react-icons/im'
 import {IoLogoGameControllerB} from 'react-icons/io'
 import {RiPlayListAddLine} from 'react-icons/ri'
 import { Img } from '../Navbar/navbarStyle';
+import ReactContext from '../../Context/reactContext';
 
 class Sidebar extends Component {
   
   render() {
 
     return (
+      <ReactContext.Consumer>
+      {value=>{
+        const {isDarkModeOn} = value
+        return(
          <SidebarContainer>
             <SideLinkContainer>
             <NavLinkContainer>
@@ -41,6 +46,9 @@ class Sidebar extends Component {
               <ContactParagraph>Enjoy! Now to see your channels and recommendations</ContactParagraph>
             </ContactContainer>
          </SidebarContainer>
+          )
+        }}
+     </ReactContext.Consumer>
     )
   }
 }

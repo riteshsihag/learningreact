@@ -12,27 +12,47 @@ import SavedVideo from './Component/SavedVideos/savedVideo';
 class App extends Component {
   state={
     savedVideos: [],
-    isVideoSaved: false
+    likedVideos: [],
+    dislikedVideo: [],
+    isDarkModeOn: false
+  }
+  onLikeVideo=(value)=>{
+    this.setState(prevState=>({likedVideos: [...prevState.likedVideos, value]}))
+    this.removeDisLikedVideo(value)
+  }
+  removeLikedVideo=(value)=>{
+    const {likedVideos} = this.state
+   if(likedVideos.find(eachVideo=>eachVideo.id===value.id)){
+    this.setState(prevState=>({likedVideos: prevState.likedVideos.filter(eachVideo=>eachVideo.id!==value.id)}))
+  }
+  }
+  onDislikeVideo=(value)=>{
+    this.setState(prevState=>({dislikedVideo: [...prevState.dislikedVideo, value]}))
+    this.removeLikedVideo(value)
+  }
+  removeDisLikedVideo=(value)=>{
+    const {dislikedVideo} = this.state
+   if(dislikedVideo.find(eachVideo=>eachVideo.id===value.id)){
+    this.setState(prevState=>({dislikedVideo: prevState.dislikedVideo.filter(eachVideo=>eachVideo.id!==value.id)}))
+  }
   }
   changeSavedVideos=(value)=>{
-    this.setState(prevState=>({savedVideos: [...prevState.savedVideos, value], isVideoSaved:true}))
-
-  }
+    this.setState(prevState=>({savedVideos: [...prevState.savedVideos, value]}))
+   }
   removeSavedVideo=(value)=>{
     const {savedVideos} = this.state
-   const removeVideo =  savedVideos.map(eachVideo=>{
-      if(eachVideo.id!==value.id){
-        return eachVideo
-      }
-    })
-    this.setState()
+   if(savedVideos.find(eachVideo=>eachVideo.id===value.id)){
+    this.setState(prevState=>({savedVideos: prevState.savedVideos.filter(eachVideo=>eachVideo.id!==value.id)}))
+  }}
+  toggleDarkMode=(value)=>{
+    this.setState({isDarkModeOn: value})
   }
   render() {
-    const {savedVideos, isVideoSaved} = this.state
+    const {savedVideos, likedVideos,dislikedVideo, isDarkModeOn} = this.state
     return (
       <BrowserRouter>
       <Switch>
-     <ReactContext.Provider value={{savedVideos: savedVideos, changeSavedVideos: this.changeSavedVideos, isVideoSaved: isVideoSaved, removeSavedVideo: this.removeSavedVideo}}>
+     <ReactContext.Provider value={{toggleDarkMode:this.toggleDarkMode,isDarkModeOn:isDarkModeOn, removeDisLikedVideo:this.removeDisLikedVideo, removeLikedVideo:this.removeLikedVideo, savedVideos: savedVideos, changeSavedVideos: this.changeSavedVideos,  removeSavedVideo: this.removeSavedVideo, onLikeVideo: this.onLikeVideo, likedVideos:likedVideos, dislikedVideos: dislikedVideo, onDislikeVideo: this.onDislikeVideo}}>
       <Route exact path="/login" component={Login}/>
       <ProtectedRoute exact path='/' component={Home}/>
       <ProtectedRoute exact path='/trending' component={Trending}/>
