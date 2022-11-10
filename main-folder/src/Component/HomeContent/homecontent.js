@@ -45,7 +45,7 @@ class HomeContent extends Component {
             <HomeContentContainer>
                 <Banner />
                 <Search changeSearchValue={this.changeSearchValue}/>
-                <VideoGridContainer>
+                <VideoGridContainer >
                 {videoDetails.map(eachVideo=>{
                 return <VideoDetail key={eachVideo.id} videoDetails={eachVideo}/>
                 })}</VideoGridContainer>

@@ -1,5 +1,5 @@
 import { Component } from 'react'
-import {withRouter} from 'react-router-dom'
+import {Link, withRouter} from 'react-router-dom'
 import { ContactContainer, ContactHeading, ContactImgContainer, ContactParagraph, NavImg, NavLinkContainer, NavName, SidebarContainer, SideLinkContainer } from './sidebarStyle';
 import {AiFillHome} from 'react-icons/ai'
 import {ImFire} from 'react-icons/im'
@@ -16,15 +16,15 @@ class Sidebar extends Component {
             <SideLinkContainer>
             <NavLinkContainer>
                 <AiFillHome/>
-                <NavName>Home</NavName>
+                <NavName><Link to={'/'}>Home</Link></NavName>
             </NavLinkContainer>
             <NavLinkContainer>
                  <ImFire/>
-                <NavName>Trending</NavName>
+                <NavName><Link to={'/trending'}>Trending</Link></NavName>
             </NavLinkContainer>
             <NavLinkContainer>
                 <IoLogoGameControllerB/>
-                <NavName>Gaming</NavName>
+                <NavName><Link to={'/gaming'}>Gaming</Link></NavName>
             </NavLinkContainer>
             <NavLinkContainer>
                  <RiPlayListAddLine/>
