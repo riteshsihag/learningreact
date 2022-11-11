@@ -5,10 +5,21 @@ import Navbar from '../Navbar/navbar';
 import Sidebar from '../Sidebar/sidebar';
 import { ImFire } from 'react-icons/im';
 import TrendingVideo from '../TrendingVideo/trendingVideo';
+import ReactContext from '../../Context/reactContext';
+import Loader from '../Loader/loader';
+import { LoaderContainer } from '../OpenVideo/openedVideoStyle';
+import Failed from '../FailedStatus/failed';
+const apiStatusConstant = {
+    success: 'Success',
+    failed: 'Failed',
+    loading: 'loading',
+    noResult: 'noResult'
+}
 class Trending extends Component {
 
     state = {
         trendingDetails: [],
+        apiStatus: apiStatusConstant.loading
     }
     componentDidMount() {
         this.getVideoDetails();
@@ -32,34 +43,86 @@ class Trending extends Component {
                 views: eachVideo.view_count,
                 publishedAt: eachVideo.published_at
             }))
-            this.setState({ trendingDetails: updatedData })
+            this.setState({ trendingDetails: updatedData, apiStatus: apiStatusConstant.success })
+        }
+        else {
+            this.setState({ apiStatus: apiStatusConstant.failed })
+
         }
     }
 
     render() {
-        const { trendingDetails } = this.state
-        return (
-            <>
-                <Navbar />
-                <div className='home-content'>
-                    <Sidebar />
-                    <TrendingContainer>
-                        <HeadingContainer>
-                 <ImFire style={{fontSize:'27px', marginTop: '5px', color:'#ff0000'}}/>
-                       <TrendingHeading>Trending</TrendingHeading>
-                       </HeadingContainer>
-                        <TrendingChild display={'block'}>
-                            {trendingDetails.map(eachVideo => {
-                                return <TrendingVideo videoDetails={eachVideo} />
-                            })}
-                        </TrendingChild>
-                        </TrendingContainer>
+        const { trendingDetails, apiStatus } = this.state
+        switch (apiStatus) {
+            case apiStatusConstant.success:
+                return (
+                    <ReactContext.Consumer>
+                        {value => {
+                            const { isDarkModeOn } = value
+                            return (
+                                <>
+                                    <Navbar />
+                                    <div className='home-content'>
+                                        <Sidebar />
+                                        <TrendingContainer darkMode={isDarkModeOn}>
+                                            <HeadingContainer darkMode={isDarkModeOn}>
+                                                <ImFire style={{ fontSize: '27px', marginTop: '5px', color: '#ff0000' }} />
+                                                <TrendingHeading darkMode={isDarkModeOn}>Trending</TrendingHeading>
+                                            </HeadingContainer>
+                                            <TrendingChild display={'block'}>
+                                                {trendingDetails.map(eachVideo => {
+                                                    return <TrendingVideo videoDetails={eachVideo} />
+                                                })}
+                                            </TrendingChild>
+                                        </TrendingContainer>
 
-                </div>
+                                    </div>
 
-            </>
-            
-        );
+                                </>
+                            )
+                        }}
+                    </ReactContext.Consumer>
+                );
+            case apiStatusConstant.loading:
+                return (
+                    <ReactContext.Consumer>
+                        {value => {
+                            const { isDarkModeOn } = value
+                            return (
+                                <>
+                                    <Navbar />
+                                    <div className='home-content'>
+                                        <Sidebar />
+                                        <TrendingContainer darkMode={isDarkModeOn}>
+                                            <LoaderContainer>
+                                                <Loader />
+                                            </LoaderContainer>
+                                        </TrendingContainer>
+
+                                    </div>
+
+                                </>
+                            )
+                        }}
+                    </ReactContext.Consumer>
+                )
+             case apiStatusConstant.failed:
+                return(
+                    <>
+                    <Navbar />
+                    <div className='home-content'>
+                        <Sidebar />
+                        <Failed/>
+
+
+
+                    </div>
+
+                </>
+                )
+
+        }
+
     }
 }
 

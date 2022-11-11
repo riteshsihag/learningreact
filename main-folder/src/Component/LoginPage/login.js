@@ -2,6 +2,8 @@ import { Component } from 'react';
 import Cookies from 'js-cookie'
 import './login.css'
 import { Redirect } from 'react-router-dom';
+import ReactContext from '../../Context/reactContext';
+
 class Login extends Component {
     state = {
         username: '',
@@ -71,16 +73,25 @@ class Login extends Component {
         return <Redirect to={'/'}/>
      }
         return (
+            <ReactContext.Consumer>
+            {value=>{
+              const {isDarkModeOn} = value
+              return(
             <>
-                <div className='login'>
-                    <div className='login-content'>
+                <div className={isDarkModeOn?'login-dark login':'login'}>
+                    <div  className={isDarkModeOn?'login-content-dark login-content':'login-content'}>
+                        {isDarkModeOn?
+                        <img src='https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-dark-theme-img.png' />
+                        : 
                         <img src='https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png' />
+
+                    }
                         <form onSubmit={this.onSubmitForm}>
-                            <p className='head'>USERNAME</p>
-                            <input className='login-input' type={'text'} value={username} onChange={this.onChangeUsername} placeholder="Username" />
+                            <p className={isDarkModeOn?'head-dark head':'head'}>USERNAME</p>
+                            <input className={isDarkModeOn?'login-input-dark login-input':'login-input'} type={'text'} value={username} onChange={this.onChangeUsername} placeholder="Username" />
                             <p className='error'>{enterUsername}</p>
-                            <p className='head'>PASSWORD</p>
-                            <input className='login-input' type={checked?'text':'password'} value={password} onChange={this.onChangePassword} placeholder="Password" />
+                            <p className={isDarkModeOn?'head-dark head':'head'}>PASSWORD</p>
+                            <input className={isDarkModeOn?'login-input-dark login-input':'login-input'} type={checked?'text':'password'} value={password} onChange={this.onChangePassword} placeholder="Password" />
                             <div className='showPassword'>
                             <input type={'checkbox'} onChange={this.onShowPassword}/>
                             <p className='show'>Show Password</p>
@@ -93,6 +104,9 @@ class Login extends Component {
                 </div>
 
             </>
+             )
+            }}
+        </ReactContext.Consumer>
         )
     }
 }

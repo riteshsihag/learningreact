@@ -1,6 +1,8 @@
 import { Component } from 'react';
 import { BsSearch } from 'react-icons/bs';
 import './search.css'
+import ReactContext from '../../Context/reactContext';
+
 class Search extends Component {
   state={
     searchValue: ''
@@ -15,13 +17,21 @@ class Search extends Component {
     const onChangeSearchValue=(event)=>{
         this.setState({searchValue: event.target.value}, changeSearch)
       }
+
     return (
-     <div className='search-container'>
-        <input className='search-input' type={'text'} value={searchValue} placeholder={'Search'} onChange={onChangeSearchValue}/>
-        <div className='search'>
-        <BsSearch/>
+      <ReactContext.Consumer>
+      {value=>{
+        const {isDarkModeOn} = value
+        return(
+     <div className='search-container' >
+        <input className={isDarkModeOn?'dark-mode-container':'search-input'} type={'text'} value={searchValue} placeholder={'Search'} onChange={onChangeSearchValue}/>
+        <div className={isDarkModeOn?'dark-mode':'search'}>
+        <BsSearch style={{color: `${isDarkModeOn?'white':'black'}`}}/>
         </div>
      </div>
+      )
+    }}
+ </ReactContext.Consumer>
     );
   }
 }

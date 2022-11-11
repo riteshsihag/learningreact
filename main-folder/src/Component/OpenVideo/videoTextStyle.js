@@ -3,6 +3,8 @@ import styled from "styled-components";
 export const VideoTitle = styled.p`
  `
 export const VideoTextContainer = styled.div`
+background-color: ${props=>(props.darkMode?'#000000':'#ebebeb')};
+color: ${props=>(props.darkMode?'white':'black')};
 `
 export const TitleContainer = styled.div`
 border-bottom: 1px solid gray;

@@ -2,8 +2,10 @@ import { Component } from 'react'
 import Cookies from 'js-cookie'
 import {withRouter} from 'react-router-dom'
 import {FaMoon} from 'react-icons/fa'
-import { Img, Logo, LogoutButton, LogoutContainer, NavbarContainer } from './navbarStyle'
+import {BsFillSunFill} from 'react-icons/bs'
+import { Img, Logo, LogoutContainer, NavbarContainer } from './navbarStyle'
 import ReactContext from '../../Context/reactContext'
+import LogoutPopUp from '../LogoutPopup/logoutPopup'
 class Navbar extends Component {
  state={
   darkMode : false
@@ -18,18 +20,24 @@ class Navbar extends Component {
     return (
       <ReactContext.Consumer>
         {value=>{
-          const {toggleDarkMode} = value
+          const {toggleDarkMode, isDarkModeOn} = value
           const onToggleDarkMode=()=>{
             this.setState(prevState=>({darkMode: !prevState.darkMode}))
             toggleDarkMode(darkMode)
           }
           return(
-            <NavbarContainer>
+            <NavbarContainer darkMode={isDarkModeOn}>
+              {isDarkModeOn?
+                          <Logo src='https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-dark-theme-img.png'/>
+                          :
             <Logo src='https://assets.ccbp.in/frontend/react-js/nxt-watch-logo-light-theme-img.png'/>
+              }
            <LogoutContainer>
+            {isDarkModeOn? <BsFillSunFill onClick={onToggleDarkMode}  style={{fontSize: '32px', color: 'white'}}/>:
             <FaMoon onClick={onToggleDarkMode} style={{fontSize: '32px'}}/>
+            }
             <Img src='https://assets.ccbp.in/frontend/react-js/nxt-watch-profile-img.png'/>
-           <LogoutButton onClick={this.onClickLogout} className='logout-btn'>Logout</LogoutButton>
+            <LogoutPopUp onClickLogout={this.onClickLogout}/>
            </LogoutContainer>
          </NavbarContainer>
 

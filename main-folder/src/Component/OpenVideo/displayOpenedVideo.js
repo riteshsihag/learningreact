@@ -44,7 +44,7 @@ class VideoText extends Component {
         return (
             <ReactContext.Consumer >
                 {value => {
-                    const { changeSavedVideos, removeSavedVideo,onDislikeVideo,onLikeVideo,removeDisLikedVideo,removeLikedVideo } = value
+                    const { changeSavedVideos, removeSavedVideo,onDislikeVideo,onLikeVideo,removeDisLikedVideo,removeLikedVideo , isDarkModeOn} = value
                     const onSaveVideo = () => {
                         this.onSave()
                         changeSavedVideos(videoDetails)
@@ -61,7 +61,7 @@ class VideoText extends Component {
                          removeDisLikedVideo(videoDetails)
                     }
                     return (
-                        <VideoTextContainer>
+                        <VideoTextContainer darkMode={isDarkModeOn}>
                             <TitleContainer>
                                 <VideoTitle>{title}</VideoTitle>
                                 <ViewsLikesContainer>

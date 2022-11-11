@@ -2,11 +2,14 @@ import { Component } from 'react';
 import Cookies from 'js-cookie';
 import Navbar from '../Navbar/navbar';
 import Sidebar from '../Sidebar/sidebar';
-import { GamingContainer, GamingChild } from './openedVideoStyle';
+import { GamingContainer, GamingChild, LoaderContainer } from './openedVideoStyle';
 import VideoPlayer from '../VideoPlayer/videoPlayer';
 import { withRouter } from 'react-router-dom';
 import VideoText from './displayOpenedVideo';
-import {ThreeDots} from 'react-loader-spinner'
+import {ThreeDots} from 'react-loader-spinner';
+import ReactContext from '../../Context/reactContext';
+import Loader from '../Loader/loader';
+
 const apiStatusConstant = {
     success: 'Success',
     failed: 'Failed',
@@ -59,12 +62,16 @@ class OpenedVideo extends Component {
         switch (apiStatus) {
             case apiStatusConstant.success:
                 return (
+                    <ReactContext.Consumer>
+                    {value=>{
+                      const {isDarkModeOn} = value
+                      return(
                     <>
                         <Navbar />
                         <div className='home-content'>
                             <Sidebar />
-                            <GamingContainer>
-                                <GamingChild>
+                            <GamingContainer darkMode={isDarkModeOn}>
+                                <GamingChild darkMode={isDarkModeOn}>
                                     <VideoPlayer videoUrl={openedVideoDetails.videoUrl} />
                                     <VideoText videoDetails={openedVideoDetails} />
                                 </GamingChild>
@@ -73,14 +80,36 @@ class OpenedVideo extends Component {
                         </div>
 
                     </>
+                      )
+                    }}
+                 </ReactContext.Consumer>
                 );
             case apiStatusConstant.failed:  
               return <>Failed</> 
             case apiStatusConstant.loading:
                 return (
+                    <ReactContext.Consumer>
+                    {value=>{
+                      const {isDarkModeOn} = value
+                      return(
                     <>
-                    <ThreeDots/>
-                    </>
+                    <Navbar />
+                    <div className='home-content'>
+                        <Sidebar />
+                        <GamingContainer darkMode={isDarkModeOn}>
+                        <LoaderContainer>
+                            <GamingChild darkMode={isDarkModeOn}>
+                            <Loader/>
+                            </GamingChild>
+                        </LoaderContainer>
+
+                        </GamingContainer>
+                    </div>
+</>
+                )
+            }}
+         </ReactContext.Consumer>
+                   
                 )   
         }
 

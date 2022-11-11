@@ -1,5 +1,6 @@
 import { Component } from 'react';
 import { Link } from 'react-router-dom';
+import ReactContext from '../../Context/reactContext';
 import { ChannelViews, ChannelName, Thumbnail, VideoDescription, VideoDetailContainer, VideoInfoContainer, VideoParagraph, ViewsContainer } from './gamingVideoStyle';
 class GamingVideo extends Component {
   
@@ -7,8 +8,12 @@ class GamingVideo extends Component {
     const {videoDetails} = this.props
     const {id,title,thumbnailUrl,views} = videoDetails
     return (
+      <ReactContext.Consumer>
+      {value=>{
+        const {isDarkModeOn} = value
+        return(
       <Link to={`/video/${id}`}>
-     <VideoDetailContainer>
+     <VideoDetailContainer darkMode={isDarkModeOn}>
         <Thumbnail src={thumbnailUrl}/>
         <VideoInfoContainer>
             <VideoDescription>
@@ -21,6 +26,9 @@ class GamingVideo extends Component {
         </VideoInfoContainer>
      </VideoDetailContainer>
      </Link>
+      )
+    }}
+ </ReactContext.Consumer>
     );
   }
 }

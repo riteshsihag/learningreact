@@ -8,8 +8,39 @@ import {RiPlayListAddLine} from 'react-icons/ri'
 import { Img } from '../Navbar/navbarStyle';
 import ReactContext from '../../Context/reactContext';
 
+const SideBarConstants = [
+  {
+    id:'1',
+    name: 'Home',
+    linkAddress: '/',
+    icon: <AiFillHome/>
+  },
+  {
+    id:'2',
+    name: 'Trending',
+    linkAddress: '/trending',
+    icon: <ImFire/>
+  },
+  {
+    id:'3',
+    name: 'Gaming',
+    linkAddress: '/gaming',
+    icon: <IoLogoGameControllerB/>
+  },
+  {
+    id:'4',
+    name: 'Saved Videos',
+    linkAddress: '/saved-videos',
+    icon: <RiPlayListAddLine/>
+  }
+]
 class Sidebar extends Component {
-  
+  state={
+    activeBar: ''
+  }
+  changeActiveBar=(event)=>{
+  this.setState({activeBar: event.target.id})
+  }
   render() {
 
     return (
@@ -17,24 +48,18 @@ class Sidebar extends Component {
       {value=>{
         const {isDarkModeOn} = value
         return(
-         <SidebarContainer>
+         <SidebarContainer darkMode={isDarkModeOn}>
             <SideLinkContainer>
-            <NavLinkContainer>
-                <AiFillHome/>
-                <NavName><Link to={'/'}>Home</Link></NavName>
-            </NavLinkContainer>
-            <NavLinkContainer>
-                 <ImFire/>
-                <NavName><Link to={'/trending'}>Trending</Link></NavName>
-            </NavLinkContainer>
-            <NavLinkContainer>
-                <IoLogoGameControllerB/>
-                <NavName><Link to={'/gaming'}>Gaming</Link></NavName>
-            </NavLinkContainer>
-            <NavLinkContainer>
-                 <RiPlayListAddLine/>
-                <NavName><Link to={'/saved-videos'}>Saved videos</Link></NavName>
-            </NavLinkContainer>
+              {SideBarConstants.map(eachBar=>{
+                return (
+                  <NavLinkContainer id={eachBar.id} onClick={this.changeActiveBar}>
+                  {eachBar.icon}
+                  <NavName darkMode={isDarkModeOn} ><Link to={eachBar.linkAddress}>{eachBar.name}</Link></NavName>
+              </NavLinkContainer>
+                )
+               
+              })}
+           
             </SideLinkContainer>
             <ContactContainer>
               <ContactHeading>Contact Us</ContactHeading>

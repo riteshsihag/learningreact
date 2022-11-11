@@ -3,6 +3,8 @@ import styled from "styled-components";
 export const VideoDetailContainer = styled.div`
 max-width: 380px;
 padding: 30px;
+color: ${props=>(props.darkMode?'white':'black')};
+
 `
 export const Thumbnail = styled.img`
 width: 100%;

@@ -5,6 +5,8 @@ display: flex;
 flex-direction: column;
 height: 100%;
     justify-content: space-between;
+    background-color: ${props=>(props.darkMode?'#212121':'white')};
+    color: ${props=>(props.darkMode?'white':'black')} !important;
     width: 278px;
 `
 export const NavLinkContainer = styled.div`
@@ -18,6 +20,8 @@ export const NavImg = styled.img`
 export const NavName = styled.h4`
 margin: 0px;
 margin-left: 27px;
+a{ color :${props=>(props.darkMode?'white':'black')} }
+
 `
 export const ContactContainer = styled.div`
 padding-left: 40px;

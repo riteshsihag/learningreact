@@ -4,6 +4,7 @@ export const VideoDetailContainer = styled.div`
 max-width: 1170px;
 display: flex;
 padding: 30px;
+color: ${props=>(props.darkMode?'white':'black')};
 `
 export const Thumbnail = styled.img`
 width: 40%;

@@ -3,7 +3,7 @@ import styled from "styled-components";
 export const GamingContainer = styled.div`
 width: 100%;
 height: 100%;
-background-color: #f9f9f9;
+background-color: ${props=>(props.darkMode?'#000000':'#f9f9f9')};
 overflow-y: scroll;
 -webkit-overflow-scrolling: auto;
 `
@@ -16,4 +16,6 @@ padding: 51px;
 export const GamingHeading = styled.h1`
 margin: 0px;
 margin-left: 25px;
+color: ${props=>(props.darkMode?'white':'black')};
+
 `
