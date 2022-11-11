@@ -1,0 +1,16 @@
+.navLink-container{
+    display: flex;
+padding: 11px;
+margin-top: 5px;
+padding-left: 40px;
+}
+.active{
+    background-color: #d7dfe9;
+    display: flex;
+    padding: 11px;
+    margin-top: 5px;
+    padding-left: 40px;
+}
+.active .icon{
+    color: #ff0000;
+}

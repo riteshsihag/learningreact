@@ -1,0 +1,9 @@
+.hamburger{
+    display: none;
+    font-size: 35px;
+}
+@media screen  and (max-width:860px){
+  .hamburger{
+ display: block;
+  }
+}

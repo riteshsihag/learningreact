@@ -18,6 +18,9 @@ display: flex;
 align-items: center;
 width: 240px;
 justify-content: space-between;
+@media screen and (max-width: 860px) {
+    width: 137px;
+}
 `
 export const LogoutButton = styled.button`
 padding: 7px;
@@ -28,6 +31,9 @@ padding: 7px;
     font-weight: 600;
     border-radius: 4px;
     font-size: 15px;
+    @media screen and (max-width: 860px) {
+    display: none;
+}
 `
 export const CancelButton = styled.button`
 padding: 12px;
@@ -51,4 +57,7 @@ padding: 12px;
 `
 export const Img = styled.img`
 width: 35px;
+@media screen and (max-width: 860px) {
+    display: none;
+}
 `

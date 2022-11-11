@@ -42,3 +42,8 @@
 .dark-mode-container:focus{
     outline: none;
 }
+@media screen and (max-width:612px) {
+    .search-input{
+        width: 185px;
+    }
+}

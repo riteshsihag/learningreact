@@ -14,6 +14,9 @@ padding-bottom: 20px;
 export const ViewsLikesContainer = styled.div`
 display: flex;
 justify-content: space-between;
+@media screen and (max-width:650px) {
+   display: block;
+}
 `
 export const LikeDislikeContainer = styled.div`
 display: flex;

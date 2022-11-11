@@ -1,10 +1,10 @@
 import ReactPlayer from 'react-player'
-
+import './videoplayer.css'
 
 const VideoPlayer = (props) => (
   <div className="video-container">
     <div className="responsive-container">
-      <ReactPlayer width={'100%'} height={'600px'} url={props.videoUrl} />
+      <ReactPlayer className={'video'} width={'100%'}  url={props.videoUrl} />
     </div>
   </div>
 )

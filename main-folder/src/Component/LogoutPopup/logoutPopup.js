@@ -3,6 +3,7 @@ import Popup from 'reactjs-popup'
 import { Component } from "react"
 import ReactContext from '../../Context/reactContext';
 import './popup.css'
+import {FiLogOut} from 'react-icons/fi'
 class LogoutPopUp extends Component {
     render(){
         const {onClickLogout} = this.props
@@ -15,7 +16,11 @@ class LogoutPopUp extends Component {
             <Popup
               modal
               trigger={
+                <>
+                <FiLogOut onClick={this.onClickLogout} className='logout-icon'/>
                   <LogoutButton darkMode={isDarkModeOn} onClick={this.onClickLogout} className='logout-btn'>Logout</LogoutButton>
+                </>
+                  
               }
               className={isDarkModeOn?"popup-dark popup":"popup"}
             >

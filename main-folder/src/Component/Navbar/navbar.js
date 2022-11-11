@@ -6,6 +6,8 @@ import {BsFillSunFill} from 'react-icons/bs'
 import { Img, Logo, LogoutContainer, NavbarContainer } from './navbarStyle'
 import ReactContext from '../../Context/reactContext'
 import LogoutPopUp from '../LogoutPopup/logoutPopup'
+import './navbar.css'
+import SidebarPopup from '../SideBarPopup/sidePopup'
 class Navbar extends Component {
  state={
   darkMode : false
@@ -15,6 +17,7 @@ class Navbar extends Component {
     const { history } = this.props
     history.replace('/login')
   }
+ 
   render() {
         const {darkMode} = this.state
     return (
@@ -37,6 +40,7 @@ class Navbar extends Component {
             <FaMoon onClick={onToggleDarkMode} style={{fontSize: '32px'}}/>
             }
             <Img src='https://assets.ccbp.in/frontend/react-js/nxt-watch-profile-img.png'/>
+            <SidebarPopup/>
             <LogoutPopUp onClickLogout={this.onClickLogout}/>
            </LogoutContainer>
          </NavbarContainer>

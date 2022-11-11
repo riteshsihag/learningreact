@@ -12,6 +12,14 @@ display: grid;
 grid-template-columns: auto auto auto;
 grid-gap: 10px;
 padding: 51px;
+@media screen and (max-width: 1130px) {
+grid-template-columns: auto auto ;
+    
+}
+@media screen and (max-width: 700px){
+grid-template-columns: auto  ;
+justify-content: center;
+}
 `
 export const NoResultContainer = styled.div`
 display: flex;

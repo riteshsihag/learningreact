@@ -54,7 +54,7 @@ class App extends Component {
       <Switch>
      <ReactContext.Provider value={{toggleDarkMode:this.toggleDarkMode,isDarkModeOn:isDarkModeOn, removeDisLikedVideo:this.removeDisLikedVideo, removeLikedVideo:this.removeLikedVideo, savedVideos: savedVideos, changeSavedVideos: this.changeSavedVideos,  removeSavedVideo: this.removeSavedVideo, onLikeVideo: this.onLikeVideo, likedVideos:likedVideos, dislikedVideos: dislikedVideo, onDislikeVideo: this.onDislikeVideo}}>
       <Route exact path="/login" component={Login}/>
-      <ProtectedRoute exact path='/' component={Home}/>
+      <ProtectedRoute exact path='/home' component={Home}/>
       <ProtectedRoute exact path='/trending' component={Trending}/>
       <ProtectedRoute exact path='/gaming' component={Gaming}/>
       <ProtectedRoute exact path='/saved-videos' component={SavedVideo}/>

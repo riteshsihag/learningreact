@@ -11,7 +11,13 @@ export const GamingChild = styled.div`
 display: grid;
 grid-template-columns: auto auto auto auto;
 grid-gap: 10px;
-padding: 51px;
+padding: 20px;
+@media screen and (max-width:1150px) {
+    grid-template-columns: auto auto auto;
+}
+@media screen and (max-width:900px) {
+    grid-template-columns: auto auto;
+}
 `
 export const GamingHeading = styled.h1`
 margin: 0px;

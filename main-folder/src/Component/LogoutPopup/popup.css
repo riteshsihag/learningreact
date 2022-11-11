@@ -25,3 +25,12 @@
 .p-dark{
     color: white;
 }
+.logout-icon{
+    display: none;
+    font-size: 35px;
+}
+@media screen and (max-width:860px) {
+    .logout-icon{
+        display: block;
+    }
+}

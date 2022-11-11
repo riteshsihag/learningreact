@@ -1,5 +1,5 @@
 import { Component } from 'react'
-import {Link, withRouter} from 'react-router-dom'
+import {Link, NavLink, withRouter} from 'react-router-dom'
 import { ContactContainer, ContactHeading, ContactImgContainer, ContactParagraph, NavImg, NavLinkContainer, NavName, SidebarContainer, SideLinkContainer } from './sidebarStyle';
 import {AiFillHome} from 'react-icons/ai'
 import {ImFire} from 'react-icons/im'
@@ -7,12 +7,12 @@ import {IoLogoGameControllerB} from 'react-icons/io'
 import {RiPlayListAddLine} from 'react-icons/ri'
 import { Img } from '../Navbar/navbarStyle';
 import ReactContext from '../../Context/reactContext';
-
+import './sidebar.css'
 const SideBarConstants = [
   {
     id:'1',
     name: 'Home',
-    linkAddress: '/',
+    linkAddress: '/home',
     icon: <AiFillHome/>
   },
   {
@@ -35,14 +35,9 @@ const SideBarConstants = [
   }
 ]
 class Sidebar extends Component {
-  state={
-    activeBar: ''
-  }
-  changeActiveBar=(event)=>{
-  this.setState({activeBar: event.target.id})
-  }
+  
   render() {
-
+ 
     return (
       <ReactContext.Consumer>
       {value=>{
@@ -52,10 +47,10 @@ class Sidebar extends Component {
             <SideLinkContainer>
               {SideBarConstants.map(eachBar=>{
                 return (
-                  <NavLinkContainer id={eachBar.id} onClick={this.changeActiveBar}>
-                  {eachBar.icon}
-                  <NavName darkMode={isDarkModeOn} ><Link to={eachBar.linkAddress}>{eachBar.name}</Link></NavName>
-              </NavLinkContainer>
+                  <NavLink to={eachBar.linkAddress} className={isActive=> "navLink-container"+ (!isActive?" unselected":"")}>
+                 <div className='icon'>{eachBar.icon}</div> 
+                  <NavName  darkMode={isDarkModeOn}>{eachBar.name}</NavName>
+              </NavLink>
                 )
                
               })}

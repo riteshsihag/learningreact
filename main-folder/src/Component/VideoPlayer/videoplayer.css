@@ -1,0 +1,13 @@
+.video{
+    height: 600px !important;
+}
+@media screen and (max-width:1100px) {
+    .video{
+      height: 400px !important;
+    }
+ }
+ @media screen and (max-width:600px) {
+    .video{
+      height: 300px !important;
+    }
+ }
