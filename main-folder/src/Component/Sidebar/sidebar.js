@@ -13,7 +13,7 @@ const SideBarConstants = [
     id:'1',
     name: 'Home',
     linkAddress: '/home',
-    icon: <AiFillHome/>
+    icon: <AiFillHome />
   },
   {
     id:'2',
