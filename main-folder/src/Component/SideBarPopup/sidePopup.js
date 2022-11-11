@@ -1,4 +1,3 @@
-import { CancelButton, ConfirmButton, LogoutButton } from "../Navbar/navbarStyle"
 import Popup from 'reactjs-popup'
 import { Component } from "react"
 import ReactContext from '../../Context/reactContext';
@@ -48,9 +47,9 @@ class SidebarPopup extends Component {
             <Popup
               modal
               trigger={
-                <GiHamburgerMenu className='hamburger'/>
+                <GiHamburgerMenu style={{color:`${isDarkModeOn?'white':'black'}`}} className='hamburger'/>
               }
-              className={isDarkModeOn?"popup-dark popup":"popup"}
+              className={isDarkModeOn?"dark pop":"pop"}
             >
             
               {close => (
@@ -60,9 +59,9 @@ class SidebarPopup extends Component {
                 <SideLinkContainer>
               {SideBarConstants.map(eachBar=>{
                 return (
-                  <NavLink to={eachBar.linkAddress} className={isActive=> "navLink-container"+ (!isActive?" unselected":"")}>
+                  <NavLink id={isDarkModeOn?"dark":""} to={eachBar.linkAddress} className={isActive=> "navLink-container"+ (!isActive?" unselected":"")}>
                  <div className='icon'>{eachBar.icon}</div> 
-                  <NavName  darkMode={isDarkModeOn}>{eachBar.name}</NavName>
+                  <NavName className='name' darkMode={isDarkModeOn}>{eachBar.name}</NavName>
               </NavLink>
                 )
                

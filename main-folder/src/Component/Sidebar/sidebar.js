@@ -47,9 +47,9 @@ class Sidebar extends Component {
             <SideLinkContainer>
               {SideBarConstants.map(eachBar=>{
                 return (
-                  <NavLink to={eachBar.linkAddress} className={isActive=> "navLink-container"+ (!isActive?" unselected":"")}>
+                  <NavLink to={eachBar.linkAddress} id={isDarkModeOn?"dark":""} className={isActive=> "navLink-container"+ (!isActive?" unselected":"")}>
                  <div className='icon'>{eachBar.icon}</div> 
-                  <NavName  darkMode={isDarkModeOn}>{eachBar.name}</NavName>
+                <NavName  darkMode={isDarkModeOn} className="name">{eachBar.name}</NavName>
               </NavLink>
                 )
                

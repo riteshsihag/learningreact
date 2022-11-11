@@ -2,6 +2,9 @@
     display: none;
     font-size: 35px;
 }
+#dark{
+color: white !important;
+}
 @media screen  and (max-width:860px){
   .hamburger{
  display: block;

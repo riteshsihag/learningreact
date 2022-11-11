@@ -12,23 +12,23 @@ class LogoutPopUp extends Component {
             {value=>{
               const {isDarkModeOn} = value
               return(
-            <div className="popup-container">
+            <div className="popupp-container">
             <Popup
               modal
               trigger={
-                <>
-                <FiLogOut onClick={this.onClickLogout} className='logout-icon'/>
-                  <LogoutButton darkMode={isDarkModeOn} onClick={this.onClickLogout} className='logout-btn'>Logout</LogoutButton>
-                </>
+                <div>
+                <FiLogOut style={{color:`${isDarkModeOn?'white':'black'}`}}  className='logout-icon'/>
+                  <LogoutButton darkMode={isDarkModeOn}  className='logout-btn'>Logout</LogoutButton>
+                </div>
                   
               }
-              className={isDarkModeOn?"popup-dark popup":"popup"}
+              className={isDarkModeOn?"popupp-dark popupp":"popupp"}
             >
             
               {close => (
                 <>
                   <div>
-                    <p className={isDarkModeOn?"p-dark p":"p"}>Are you sure you want to Logout?</p>
+                    <p className={isDarkModeOn?"pp-dark pp":"pp"}>Are you sure you want to Logout?</p>
                   </div>
                   <div className="buttons">
                   <CancelButton darkMode={isDarkModeOn}  onClick={() => close()} className='logout-btn'>Cancel</CancelButton>

@@ -18,7 +18,6 @@ export const NavImg = styled.img`
 export const NavName = styled.h4`
 margin: 0px;
 margin-left: 27px;
-color :${props=>(props.darkMode?'white':'black')} !important;
 
 `
 export const ContactContainer = styled.div`

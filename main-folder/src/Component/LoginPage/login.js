@@ -16,7 +16,7 @@ class Login extends Component {
     onSuccess = (jwt_token) => {
         Cookies.set("jwt_token",jwt_token,30)
         const {history} = this.props
-        history.replace('/')
+        history.replace('/home')
       }
     
     onSubmitForm= async(event)=>{

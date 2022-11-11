@@ -1,14 +1,24 @@
-.popup-content{
+.popupp-content{
     background-color: white;
     color: black;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 25%;
-    height: 182px;
+    width: 25% !important;
+    height: 182px !important;
     border-radius: 10px;
 }
-.popup-dark-content{
+@media screen and (max-width: 1200px){
+    .popupp-content{
+        width: 40% !important;
+    }
+}
+@media screen and (max-width: 700px){
+    .popupp-content{
+        width: 85% !important;
+    }
+}
+.popupp-dark-content{
     background-color: #232323;
     color: white;
 }
@@ -18,11 +28,11 @@
     justify-content: space-between;
     margin-top: 16px;
 }
-.p{
+.pp{
     margin-top: 41px;
     color:  #00306e;
 }
-.p-dark{
+.pp-dark{
     color: white;
 }
 .logout-icon{
