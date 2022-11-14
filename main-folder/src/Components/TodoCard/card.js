@@ -11,7 +11,7 @@ const Card = (props) => {
     
     return (
         <div>
-            <input onChange={onChecked} type={'checkbox'} checked={checked}/>
+            <input onChange={onChecked} id={props.id} type={'checkbox'} checked={checked}/>
             <div className="list-element">
             <p>{props.task}</p>
             <AiFillDelete onClick={ondelete}/>

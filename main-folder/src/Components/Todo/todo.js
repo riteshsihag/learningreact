@@ -29,12 +29,13 @@ const Todo = () => {
         }))
     }
     const check=(value)=>{
-        const newTaskList = taskList.map(eachTask=>{
+         
+        setTaskList(prevTaskList=>(prevTaskList.map(eachTask=>{
             if(value===eachTask.id){
-               return eachTask.checked===!eachTask.checked
+                return {...eachTask, checked: !eachTask.checked}
             }
-        })
-        setTaskList(prevTaskList=>([]))
+            return eachTask
+        })))
     }
     return (
         <div>
@@ -46,7 +47,7 @@ const Todo = () => {
             <div className='list-container'>
                 <h3>My Tasks</h3>
                 {taskList.map(task => {
-                    return <Card id={task.id} deleteTask={deleteTask} check={check} key={task.id} checked={checked} task={task.task} />
+                    return <Card id={task.id} deleteTask={deleteTask} check={check} checked={task.checked} key={task.id} task={task.task} />
                 })}
             </div>
             <button onClick={onSave}>Save</button>
