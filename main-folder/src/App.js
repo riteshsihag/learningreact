@@ -1,10 +1,9 @@
 import './App.css';
-import Todo from './Components/Todo/todo';
-
+import Timer from './timer'
 function App() {
   return (
     <div className="App">
-      <Todo/>
+      <Timer/>
     </div>
   );
 }
