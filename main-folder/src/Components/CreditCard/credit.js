@@ -25,8 +25,8 @@ const changeName=(event)=>{
          <div className='input-container'>
             <div className='content'>
             <h4>Payment Method</h4>
-         <input placeholder='Card Number' value={cardNumber} onChange={changeCardNumber}/><br/>
-         <input placeholder='Cardholder Name' value={name} onChange={changeName}/>
+         <input placeholder='Card number' value={cardNumber} onChange={changeCardNumber}/><br/>
+         <input placeholder='Cardholder name' value={name} onChange={changeName}/>
             </div>
             
          </div>
