@@ -3,19 +3,27 @@ body{
     justify-content: center;
     text-align: center;
     color: white;
-    background: linear-gradient(#0b0c1e,#3c2940);
+    background-color: #24263c;
     height: 100vh;
 }
-button{
-    margin-top: 70px;
-    padding: 10px;
-    width: 100px;
-    background-color: #06b6d4;
-    color: white;
-    font-weight: 600;
-    border: none;
-    border-radius: 5px;
+.password{
+    margin-top: 180px;
+    background-color: #434451;
+    width: 530px;
+    height: 300px;
+    text-align: center;
+    padding-top: 40px;
 }
-img{
-    margin-top: 100px;
+h1{
+    font-size: 35px;
+}
+p{
+    font-size: 15px;
+}
+input{
+    padding: 8px;
+    width: 254px;
+}
+.warning{
+    color: #ef4444;
 }

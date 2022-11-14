@@ -1,10 +1,10 @@
 import './App.css';
-import Unlock from './Components/Unlock/unlock';
+import Password from './Components/Password/password';
 
 function App() {
   return (
     <div className="App">
-    <Unlock/>
+      <Password/>
     </div>
   );
 }
