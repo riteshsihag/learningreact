@@ -1,10 +1,10 @@
 import './App.css';
-import Password from './Components/Password/password';
+import CreditCard from './Components/CreditCard/credit';
 
 function App() {
   return (
     <div className="App">
-      <Password/>
+      <CreditCard/>
     </div>
   );
 }
