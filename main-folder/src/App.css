@@ -1,0 +1,21 @@
+body{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    background: linear-gradient(#0b0c1e,#3c2940);
+    height: 100vh;
+}
+button{
+    margin-top: 70px;
+    padding: 10px;
+    width: 100px;
+    background-color: #06b6d4;
+    color: white;
+    font-weight: 600;
+    border: none;
+    border-radius: 5px;
+}
+img{
+    margin-top: 100px;
+}
