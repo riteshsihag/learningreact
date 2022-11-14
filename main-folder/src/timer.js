@@ -1,19 +1,35 @@
 import {useEffect,useState} from 'react'
+import { LightContainer } from './style'
+const LightList = [
+    {
+        id:0,
+        color:"red",
+    },
+    {
+        id:1,
+        color:"yellow",
+    },{
+        id:2,
+        color:"green",
+    },
+]
 const Timer = () =>{
-    const [timer,setTimer] = useState(0)
+    const [colorValue, setColorValue] = useState(0)
     useEffect(() => {
       
-      const timerId = setInterval(()=>{
-        setTimer(prevTimer=> prevTimer+1)
-      },1000)
+      const coloID = setInterval(()=>{
+       setColorValue(prevColorValue=> prevColorValue+1)
+      },5000)
       return () => {
-        clearInterval(timerId)
+        clearInterval(coloID)
       }
     }, [])
     
     return(
         <div>
-            <h1>{timer}</h1>
+            {LightList.map(item=>{
+            return <LightContainer color={item.color} isActive={colorValue%3===item.id}></LightContainer>
+            })}
         </div>
     )
 }
