@@ -1,68 +1,66 @@
-.main-container{
-    display: flex;
+.input-container{
+    box-shadow: 0px 4px 16px #bfbfbf;
+    width: 600px;
+    height: 250px;
+    padding-top: 20px;
+    padding-left: 20px;
+    margin-bottom: 60px;
+}
+
+input{
+    width: 400px;
+    padding: 6px;
+    font-size: 17px;
+    border: none;
+    margin: 12px;
+}
+input:focus{
+    outline: none;
+}
+textarea{
+    width: 538px;
+    height: 56px;
+    padding: 6px;
+    font-size: 17px;
+    border: none;
+    margin: 12px;
+}
+textarea:focus{
+    outline: none;
+}
+button{
+    padding: 12px;
+    width: 60px;
+    margin-left: 505px;
+    margin-top: 20px;
+    background-color: #4c63b6;
+    border: none;
+    color: white;
+    border-radius: 5px;
 }
 .card{
-    background-image: url("https://assets.ccbp.in/frontend/hooks/credit-card-bg.png");
-    width: 500px;
-    height: 295px;
-    border-radius: 35px;
-    margin-top: 160px;
+    border: 1px solid grey;
+    width: 200px;
+    border-radius: 7px;
+    padding-left: 21px;
 }
-.info{
-    color: white;
-    padding-top: 140px;
-    padding-left: 40px;
-}
-p{
-    margin-top: 50px;
-    font-size: 15px;
-}
-h1{
-    line-height: 0px;
-    margin: 0px;
+.notes-card{
+    display: grid;
+    grid-template-columns: auto auto;
+    width: 495px;
+    grid-gap: 28px;
+    word-wrap: break-word;
 }
 body{
     display: flex;
     justify-content: center;
 }
-.credit-card-container{
-    height: 89vh;
-    background-color: #344e7a;
-    color: white;
-    padding: 53px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-h2{
+h1{
     text-align: center;
-    border-bottom: 5px solid wheat;
-    width: 225px;
-    font-size: 41px;
 }
-.input-container{
-    height: 89vh;
-    width: 500px;
-    padding: 53px;
+.note{
     display: flex;
     flex-direction: column;
     align-items: center;
-}
-input{
-    padding: 11px;
-    width: 235px;
-}
-.content{
-    box-shadow: 0px 4px 16px #bfbfbf;
-    padding: 18px;
-    width: 309px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    height: 190px;
-    margin-top: 313px;
-}
-h4{
-    font-size: 20px;
-    color: #344e7a;
+    margin-left: 150px;
 }

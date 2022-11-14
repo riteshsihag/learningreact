@@ -1,10 +1,11 @@
 import './App.css';
-import CreditCard from './Components/CreditCard/credit';
+import Notes from './Components/Notes/notes';
 
 function App() {
   return (
     <div className="App">
-      <CreditCard/>
+      <h1>Notes</h1>
+      <Notes/>
     </div>
   );
 }
