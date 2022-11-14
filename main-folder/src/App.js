@@ -1,11 +1,10 @@
 import './App.css';
-import Notes from './Components/Notes/notes';
+import Todo from './Components/Todo/todo';
 
 function App() {
   return (
     <div className="App">
-      <h1>Notes</h1>
-      <Notes/>
+      <Todo/>
     </div>
   );
 }
