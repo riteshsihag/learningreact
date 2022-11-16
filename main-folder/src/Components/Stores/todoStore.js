@@ -1,14 +1,12 @@
-import { makeAutoObservable } from "mobx";
+import { decorate } from "mobx";
+import { observable,action} from "mobx";
 import {v4 as uuidv4} from 'uuid'
+
 class todoStore {
 
-    inputValue = "";
-    todoList = JSON.parse(localStorage.getItem("todoList"));
+    inputValue = ""
+    todoList = JSON.parse(localStorage.getItem("todoList"))
     
-    constructor() {
-        makeAutoObservable(this);
-    
-      }
 
     changeInputValue=(event)=>{
         this.inputValue=event.target.value
@@ -39,4 +37,13 @@ class todoStore {
         localStorage.setItem("todoList",JSON.stringify(this.todoList))
     }
 }
+decorate(todoStore,{
+    inputValue: observable,
+    todoList:observable,
+    changeInputValue:action,
+    onCheck:action.bound,
+    onSave:action.bound,
+    deleteItem:action,
+    addItem:action
+})
 export default new todoStore();
