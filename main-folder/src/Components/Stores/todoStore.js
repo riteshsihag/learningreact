@@ -1,8 +1,9 @@
 import { makeAutoObservable } from "mobx";
 import {v4 as uuidv4} from 'uuid'
 class todoStore {
+
     inputValue = "";
-    todoList = [];
+    todoList = JSON.parse(localStorage.getItem("todoList"));
 
     constructor() {
         makeAutoObservable(this);
@@ -22,6 +23,9 @@ class todoStore {
     }
     deleteItem=(event)=>{
      this.todoList= this.todoList.filter(item=>(item.id!==event.target.id))
+    }
+    onSave=()=>{
+        localStorage.setItem("todoList",this.todoList)
     }
 }
 export default new todoStore();

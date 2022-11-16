@@ -18,6 +18,7 @@ const Todo = () => {
                     </div>
                 })}
             </div>
+            <button onClick={todoValues.onSave}>Save</button>
         </div>
     )
 }
