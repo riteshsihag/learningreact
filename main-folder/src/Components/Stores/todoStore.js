@@ -4,6 +4,7 @@ class todoStore {
 
     inputValue = "";
     todoList = JSON.parse(localStorage.getItem("todoList"));
+    
     constructor() {
         makeAutoObservable(this);
     
@@ -15,10 +16,21 @@ class todoStore {
     addItem=()=>{
         const newList = {
             id: uuidv4(),
-            input: this.inputValue
+            input: this.inputValue,
+            checked: false
         }
         this.inputValue=""
         this.todoList.push(newList)
+    }
+    onCheck=(event)=>{
+     this.todoList = this.todoList.map(item=>
+        {
+            if(item.id===event.target.id){
+              return {...item, checked: !item.checked}
+            }
+            return item
+        }
+     )
     }
     deleteItem=(event)=>{
      this.todoList= this.todoList.filter(item=>(item.id!==event.target.id))

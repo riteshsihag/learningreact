@@ -12,7 +12,7 @@ const Todo = () => {
             <div>
                 {todoValues.todoList.map(item => {
                     return <div>
-                        <input type={'checkbox'} />
+                        <input type={'checkbox'} id={item.id} onChange={todoValues.onCheck} checked={todoValues.checked}/>
                         <p>{item.input}</p>
                         <button id={item.id} onClick={todoValues.deleteItem}>Delete</button>
                     </div>
