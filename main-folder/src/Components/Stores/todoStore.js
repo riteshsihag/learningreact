@@ -4,7 +4,6 @@ class todoStore {
 
     inputValue = "";
     todoList = JSON.parse(localStorage.getItem("todoList"));
-
     constructor() {
         makeAutoObservable(this);
     
@@ -25,7 +24,7 @@ class todoStore {
      this.todoList= this.todoList.filter(item=>(item.id!==event.target.id))
     }
     onSave=()=>{
-        localStorage.setItem("todoList",this.todoList)
+        localStorage.setItem("todoList",JSON.stringify(this.todoList))
     }
 }
 export default new todoStore();
