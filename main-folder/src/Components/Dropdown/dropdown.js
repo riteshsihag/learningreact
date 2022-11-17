@@ -19,8 +19,8 @@ const DropdownValue = [
 ]
 const Dropdown = observer(() =>{
     const ReactionValues = reactionStore
-  const changeSelectValue=()=>{
- 
+  const changeSelectValue=(event)=>{
+    ReactionValues.selectValue(event.target.value)
     }
     return(
         <>
