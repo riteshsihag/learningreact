@@ -3,10 +3,14 @@ import {v4 as uuidv4} from 'uuid'
 class todoStore {
 
     inputValue = "";
-    todoList = JSON.parse(localStorage.getItem("todoList"));
+    todoList = []
     
     constructor() {
+        if(localStorage.getItem("todoList")!==null){
+            this.todoList = JSON.parse(localStorage.getItem("todoList"));
+          }
         makeAutoObservable(this);
+      
     
       }
 
@@ -14,6 +18,7 @@ class todoStore {
         this.inputValue=event.target.value
     }
     addItem=()=>{
+        
         const newList = {
             id: uuidv4(),
             input: this.inputValue,
@@ -37,6 +42,7 @@ class todoStore {
     }
     onSave=()=>{
         localStorage.setItem("todoList",JSON.stringify(this.todoList))
+        
     }
 }
 export default new todoStore();
