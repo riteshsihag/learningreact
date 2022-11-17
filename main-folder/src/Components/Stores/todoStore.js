@@ -6,8 +6,8 @@ class todoStore {
 
     inputValue = ""
     todoList = JSON.parse(localStorage.getItem("todoList"))
-    
 
+    
     changeInputValue=(event)=>{
         this.inputValue=event.target.value
     }
