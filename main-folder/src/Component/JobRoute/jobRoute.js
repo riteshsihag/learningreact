@@ -1,12 +1,12 @@
-import { Component } from 'react';
-import Cookies from 'js-cookie';
+import { Component, useEffect } from 'react';
 import Search from '../Search/search';
 import Filter from '../FilterProducts/filter';
 import Package from '../FilterProducts/minPackage';
 import Profile from '../Profile/profile';
 import './jobRoute.css'
 import Navbar from '../NavBar/navbar';
-
+import jobRouteStore from '../../Stores/JobRouteStore/jobRouteStore';
+import { observer } from 'mobx-react';
 const typeOfEmployment = [
   {
     id: 'FULLTIME',
@@ -45,114 +45,51 @@ const minPackage = [
     type: '40 LPA and above'
   },
 ]
-const apiStatusConstants = {
-  initial: 'INITIAL',
-  noJobs: 'NOJOBS',
-  failure: 'FAILURE',
-  success: 'SUCCESS'
-}
-class JobRoute extends Component {
-  state = {
-    allJobs: [],
-    employmentType: [],
-    minPackage: '',
-    apiStatus: apiStatusConstants.initial
-  }
 
-
-  componentDidMount() {
-    this.getJobs()
-  }
-  getJobs = async () => {
-    const { employmentType, minPackage } = this.state
-    const url = `https://apis.ccbp.in/jobs?employment_type=${employmentType}&minimum_package=${minPackage}`
-    const jwtToken = Cookies.get('jwt_token')
-    const options = {
-      method: 'GET',
-      headers: { Authorization: `Bearer ${jwtToken}`, }
-    }
-    const response = await fetch(url, options)
-    const data = await response.json()
-    if (response.ok === true) {
-      const updatedData = data.jobs.map((job) => ({
-        logoUrl: job.company_logo_url,
-        employmentType: job.employment_type,
-        id: job.id,
-        description: job.job_description,
-        location: job.location,
-        package: job.package_per_annum,
-        rating: job.rating,
-        title: job.title
-      }))
-      if (updatedData.length === 0) {
-        this.setState({ apiStatus: apiStatusConstants.noJobs })
-      }
-      this.setState({ allJobs: updatedData , apiStatus:apiStatusConstants.success})
-    }
-    else {
-      this.setState({ apiStatus: apiStatusConstants.failure})
-    }
-  }
-  checkBox = (type, checked) => {
-    const { employmentType } = this.state
-    if (checked === true) {
-      this.setState(prevState => ({ employmentType: [...prevState.employmentType, type.toUpperCase()] }), this.getJobs)
-    }
-    else {
-      const updatedData = employmentType.filter(item => {
-        if (type !== item) {
-          return item
-        }
-      })
-      this.setState({ employmentType: updatedData }, this.getJobs)
-    }
-  }
-  findMinPackageJobs = (salary, checked) => {
-    if (checked === true) {
-      this.setState({ minPackage: salary }, this.getJobs)
-    }
-  }
-
-  render() {
-    const { allJobs, apiStatus } = this.state
-    switch (apiStatus) {
-      case apiStatusConstants.success:
+const JobRoute = observer(()=> {
+  
+    const JobRouteValues = jobRouteStore
+  useEffect(()=>{
+    JobRouteValues.getJobs()
+  },[])
+    switch (JobRouteValues.apiStatus) {
+      case JobRouteValues.apiStatusConstants.success:
         return (
           <>
             <Navbar />
             <div className='main-job-container'>
               <div className='profile-filter-container'>
                 <Profile />
-                <Filter checkBox={this.checkBox} typeOfEmployment={typeOfEmployment} />
-                <Package minPackage={minPackage} findMinPackageJobs={this.findMinPackageJobs} />
+                <Filter checkBox={JobRouteValues.checkBox} typeOfEmployment={typeOfEmployment} />
+                <Package minPackage={minPackage} findMinPackageJobs={JobRouteValues.findMinPackageJobs} />
               </div>
-              <Search allJobs={allJobs} />
+              <Search allJobs={JobRouteValues.allJobs} />
             </div>
           </>
         )
-      case apiStatusConstants.noJobs:
+      case JobRouteValues.apiStatusConstants.noJobs:
         return (
           <div className='allFilter-container'>
-            <Filter checkBox={this.checkBox} typeOfEmployment={typeOfEmployment} />
+             <Filter checkBox={JobRouteValues.checkBox} typeOfEmployment={typeOfEmployment} />
             <div className='no-product'> <img src="https://assets.ccbp.in/frontend/react-js/nxt-trendz/nxt-trendz-no-products-view.png" />
               <h2>No Products Found</h2>
               <p>We could not find any products. Please try other filters</p>
             </div>
           </div>
         )
-      case apiStatusConstants.failure:
+      case JobRouteValues.apiStatusConstants.failure:
         return (
           <div className='allFilter-container'>
-            <Filter checkBox={this.checkBox} typeOfEmployment={typeOfEmployment} />
+             <Filter checkBox={JobRouteValues.checkBox} typeOfEmployment={typeOfEmployment} />
             <div className='no-product'><img src="https://assets.ccbp.in/frontend/react-js/nxt-trendz/nxt-trendz-products-error-view.png" />
               <h2>Oops! Something Went Wrong</h2>
               <p>We are having some trouble processing your request. Please try again.</p>
             </div>
           </div>
         )
-
-    }
+        }
+    
   }
-}
+)
 
 export default JobRoute;
