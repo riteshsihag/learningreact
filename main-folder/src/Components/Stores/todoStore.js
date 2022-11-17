@@ -5,9 +5,13 @@ import {v4 as uuidv4} from 'uuid'
 class todoStore {
 
     inputValue = ""
-    todoList = JSON.parse(localStorage.getItem("todoList"))
+    todoList = []
 
-    
+    constructor(){
+        if(localStorage.getItem("todoList")!==null){
+            this.todoList = JSON.parse(localStorage.getItem("todoList"));
+          }
+    }
     changeInputValue=(event)=>{
         this.inputValue=event.target.value
     }
