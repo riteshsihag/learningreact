@@ -4,23 +4,23 @@ import todoStore from "../Stores/todoStore";
 
 const TabValues = [
     {
-        id:1,
+        id:'1',
         name: "Show All"
     },
     {
-        id:2,
+        id:'2',
         name:"Show Completed"
     },
     {
-        id:3,
+        id:'3',
         name:"Show Activated"
     }
 ]
 const Tab = observer(()=>{
    
         const todoValues = todoStore;
-        const sendItemId=(event)=>{
-          todoValues.selectId(event.target.id)
+        const sendItemId=(event:React.MouseEvent<HTMLDivElement>)=>{
+          todoValues.selectId((event.target as Element).id)
         }
         return (
             <div className="tab-container">

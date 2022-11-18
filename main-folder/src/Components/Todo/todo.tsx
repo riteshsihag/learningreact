@@ -6,7 +6,12 @@ import Tab from "./tab";
 class Todo extends Component {
     render() {
         const todoValues = todoStore;
-
+        const onCheck=(event:React.ChangeEvent<HTMLInputElement>)=>{
+            todoValues.onCheck(event.target.id)
+        }
+        
+           
+        
         return (
             <div >
                 <input className="text" type={'text'} value={todoValues.inputValue} onChange={todoValues.changeInputValue} />
@@ -16,10 +21,10 @@ class Todo extends Component {
                     {todoValues.item.map(item => {
                         return <div className="card">
                             <div className="input">
-                            <input type={'checkbox'} id={item.id} onChange={todoValues.onCheck} checked={item.checked} />
+                            <input type={'checkbox'} id={item.id} onChange={onCheck} checked={item.checked} />
                             <p>{item.input}</p>
                             </div>
-                            <button id={item.id} onClick={todoValues.deleteItem}>Delete</button>
+                            <button id={item.id} onClick={()=> todoValues.deleteItem(item.id)}>Delete</button>
                         </div>
                     })}
                 </div>

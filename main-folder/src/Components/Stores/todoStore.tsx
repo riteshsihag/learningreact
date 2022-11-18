@@ -1,15 +1,24 @@
 import { computed, decorate, toJS } from "mobx";
 import { observable, action } from "mobx";
 import { v4 as uuidv4 } from 'uuid'
-
-class todoStore {
+type todoList = {
+    id: string;
+    input: string;
+    checked: boolean;
+}
+type todo = {
+    inputValue: string;
+    selectedId: string;
+    
+}
+class todoStore implements todo {
 
     inputValue = ""
-    todoList = []
+    todoList: todoList[] = []
     selectedId = ''
     constructor() {
         if (localStorage.getItem("todoList") !== null) {
-            this.todoList = JSON.parse(localStorage.getItem("todoList"));
+            this.todoList = JSON.parse(localStorage.getItem("todoList")as string);
         }
     }
     get item() {
@@ -21,15 +30,15 @@ class todoStore {
                 return this.todoList.filter(item => item.checked === true)
             case '3':
                 return this.todoList.filter(item => item.checked === false)
-            default:
+                default:
                 return this.todoList
         }
     }
-    selectId = (id) => {
+    selectId = (id:string) => {
         this.selectedId = id
         console.log(this.item)
     }
-    changeInputValue = (event) => {
+    changeInputValue = (event:React.ChangeEvent<HTMLInputElement>) => {
         this.inputValue = event.target.value
     }
     addItem = () => {
@@ -41,17 +50,17 @@ class todoStore {
         this.inputValue = ""
         this.todoList.push(newList)
     }
-    onCheck = (event) => {
+    onCheck = (value:string) => {
         this.todoList = this.todoList.map(item => {
-            if (item.id === event.target.id) {
+            if (item.id === value) {
                 return { ...item, checked: !item.checked }
             }
             return item
         }
         )
     }
-    deleteItem = (event) => {
-        this.todoList = this.todoList.filter(item => (item.id !== event.target.id))
+    deleteItem = (value:string) => {
+        this.todoList = this.todoList.filter(item => (item.id !== value))
     }
     onSave = () => {
         localStorage.setItem("todoList", JSON.stringify(this.todoList))
