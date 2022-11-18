@@ -7,8 +7,17 @@ function App() {
   return (
     <div className="App">
      <Dropdown/>
-     <Name/>
-     <Description/>
+     <div className='content-container'>
+      <div className='name'>
+        <h2>Course Name Container</h2>
+      <Name/>
+      </div>
+      <div className='description'>
+      <h2>Course Description Container</h2>
+      <Description/>
+      </div>
+     </div>
+    
     </div>
   );
 }

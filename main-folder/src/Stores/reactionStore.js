@@ -1,20 +1,21 @@
-import  { action, decorate, observable, reaction } from 'mobx'
+import  { action, decorate, observable } from 'mobx'
 
 class ReactionStore {
    course = {}
-   coursedescription = ''
+   coursedescription =  {}
+   dropDownValue = 1
     CourseName = [
         {
             id: 1,
-            courseName: "Mobx"
+            courseName: "Name-Mobx"
         },
         {
             id: 2,
-            courseName: "ReactJs"
+            courseName: "Name-ReactJs"
         },
         {
             id: 3,
-            courseName: "JavaScript"
+            courseName: "Name-JavaScript"
         },
 
 
@@ -22,33 +23,36 @@ class ReactionStore {
     CourseDescription = [
         {
             id: 1,
-            description: "Mobx"
+            description: "Description-Mobx"
         },
         {
             id: 2,
-            description: "ReactJs"
+            description: "Description-ReactJs"
         },
         {
             id: 3,
-            description: "JavaScript"
+            description: "Description-JavaScript"
         },
 
 
     ]
 
-    selectValue=(value)=>{
+    selectValue=(dropDownValue)=>{
      this.course = this.CourseName.find(item=>{
-        return item.id=== Number(value)
+        return item.id=== Number(dropDownValue)
     })
     this.coursedescription = this.CourseDescription.find(item=>{
-        return item.id=== Number(value)
+        return item.id=== Number(dropDownValue)
     })
     }
-
+   changeDropDownValue=(value)=>{
+     this.dropDownValue = value
+   }
 }
 decorate(ReactionStore,{
  course:observable,
- selectValue:action.bound,
- coursedescription:observable
+ selectValue:action,
+ coursedescription:observable,
+ dropDownValue:observable
 })
 export default new ReactionStore()

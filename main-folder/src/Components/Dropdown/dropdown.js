@@ -1,6 +1,8 @@
 import { observer } from 'mobx-react'
-import React from 'react'
+import React, { useEffect } from 'react'
 import reactionStore from '../../Stores/reactionStore'
+import { reaction } from 'mobx'
+
 const DropdownValue = [
     {
         id: 1,
@@ -17,19 +19,26 @@ const DropdownValue = [
 
 
 ]
-const Dropdown = observer(() =>{
+const Dropdown = observer(() => {
     const ReactionValues = reactionStore
-  const changeSelectValue=(event)=>{
-    ReactionValues.selectValue(event.target.value)
+    const changeSelectValue = (event) => {
+        ReactionValues.changeDropDownValue(event.target.value)
     }
-    return(
-        <>
-        <select onChange={changeSelectValue}>
-        {DropdownValue.map(item=>{
-            return <option value={item.id}>{item.courseName}</option>
-        })}
-        </select>
-        </>
+    reaction(
+        () => ReactionValues.dropDownValue,
+        (value) => ReactionValues.selectValue(value)
+    )
+    useEffect(()=>{
+        ReactionValues.selectValue(ReactionValues.dropDownValue)
+    },[])
+    return (
+        <div className='dropdown'>
+            <select onChange={changeSelectValue}>
+                {DropdownValue.map(item => {
+                    return <option key={item.id} value={item.id}>{item.courseName}</option>
+                })}
+            </select>
+        </div>
     )
 })
 export default Dropdown
