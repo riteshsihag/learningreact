@@ -7,30 +7,19 @@
     margin-bottom: 60px;
 }
 
-input{
+.text{
     width: 400px;
     padding: 6px;
     font-size: 17px;
     margin: 12px;
 }
-input:focus{
+.text:focus{
     outline: none;
 }
-textarea{
-    width: 538px;
-    height: 56px;
-    padding: 6px;
-    font-size: 17px;
-    border: none;
-    margin: 12px;
-}
-textarea:focus{
-    outline: none;
-}
+
 button{
     padding: 12px;
-    width: 60px;
-    margin-left: 505px;
+    width: 70px;
     margin-top: 20px;
     background-color: #4c63b6;
     border: none;
@@ -41,7 +30,9 @@ button{
     border: 1px solid grey;
     width: 200px;
     border-radius: 7px;
+    padding: 20px;
     padding-left: 21px;
+
 }
 .notes-card{
     display: grid;
@@ -49,6 +40,7 @@ button{
     width: 495px;
     grid-gap: 28px;
     word-wrap: break-word;
+    margin-top: 50px;
 }
 body{
     display: flex;
@@ -62,4 +54,11 @@ h1{
     flex-direction: column;
     align-items: center;
     margin-left: 150px;
+}
+.input{
+    display: flex;
+}
+.tab-container{
+    display: flex;
+    justify-content: space-between;
 }
