@@ -1,7 +1,7 @@
 import { observer } from 'mobx-react'
 import React, { useEffect } from 'react'
 import reactionStore from '../../Stores/reactionStore'
-import { reaction } from 'mobx'
+import { autorun, reaction } from 'mobx'
 
 const DropdownValue = [
     {
@@ -24,13 +24,16 @@ const Dropdown = observer(() => {
     const changeSelectValue = (event) => {
         ReactionValues.changeDropDownValue(event.target.value)
     }
-    reaction(
-        () => ReactionValues.dropDownValue,
-        (value) => ReactionValues.selectValue(value)
+    const disposer = autorun(
+        () => ReactionValues.selectValue(ReactionValues.dropDownValue)
     )
     useEffect(()=>{
         ReactionValues.selectValue(ReactionValues.dropDownValue)
+        return ()=>{
+            disposer()
+        }
     },[])
+    
     return (
         <div className='dropdown'>
             <select onChange={changeSelectValue}>
