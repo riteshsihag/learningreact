@@ -4,7 +4,6 @@ import { Redirect,RouteComponentProps } from 'react-router-dom';
 import {observer} from 'mobx-react'
 import loginStore from '../../Stores/LoginStore/loginStore';
 import Cookies from 'js-cookie'
-
 class Login extends Component<RouteComponentProps> {
 
     render() {
