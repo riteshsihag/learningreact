@@ -1,10 +1,18 @@
 import { Component } from 'react';
+import React from 'react';
 
-class Package extends Component {
+type packageType = {
+    minPackage: {
+        id: string;
+        type: string;
+    }[],
+    findMinPackageJobs: (salary: string, checked: boolean) => void
+}
+class Package extends Component<packageType> {
   
     render() {
         const { minPackage, findMinPackageJobs } = this.props
-          const onChangeRadioBtn=(event)=>{
+          const onChangeRadioBtn=(event:React.ChangeEvent<HTMLInputElement>)=>{
             const checked = event.target.checked
             findMinPackageJobs(event.target.value, checked)
           }

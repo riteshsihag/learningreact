@@ -7,6 +7,7 @@ import Login from './Component/LoginPage/login';
 import ProtectedRoute from './Component/ProtectedRoute/protectedRoute';
 import JobRoute from './Component/JobRoute/jobRoute';
 import Details from './Component/JobDetails/details';
+import React from 'react';
 class App extends Component {
   
   render() {

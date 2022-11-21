@@ -1,8 +1,12 @@
 import {action,decorate, observable} from 'mobx'
 import Cookies from 'js-cookie';
-
+type allDetails = {
+    name: string
+    profileUrl: string
+    bio: string
+}
 class profileStore{
-    allDetails= []
+    allDetails= {} as allDetails
    
     getJobs = async () => {
         const url = `https://apis.ccbp.in/profile`

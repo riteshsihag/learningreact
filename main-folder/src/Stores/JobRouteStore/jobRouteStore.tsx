@@ -1,25 +1,29 @@
 import { action, decorate, observable } from 'mobx'
 import Cookies from 'js-cookie';
 
-type JobItemType = {
-    logoUrl: string,
-    employmentType: string,
+
+type JobType = {
+    company_logo_url: string,
+    employment_type: string,
     id: string,
-    description: string,
+    job_description: string,
     location: string,
-    package: string,
+    package_per_annum: string,
     rating: string,
     title:string
 }
-class jobRouteStore implements JobItemType {
+
+
+class jobRouteStore {
+   
     apiStatusConstants = {
         initial: 'INITIAL',
         noJobs: 'NOJOBS',
         failure: 'FAILURE',
         success: 'SUCCESS'
     }
-    allJobs: JobItemType[] = []
-    employmentType = []
+    allJobs = []
+    employmentType:string[] = []
     minPackage = ''
     apiStatus = this.apiStatusConstants.initial
 
@@ -34,7 +38,7 @@ class jobRouteStore implements JobItemType {
         const response = await fetch(url, options)
         const data = await response.json()
         if (response.ok === true) {
-            const updatedData = data.jobs.map((job) => ({
+            const updatedData = data.jobs.map((job: JobType ) => ({
                 logoUrl: job.company_logo_url,
                 employmentType: job.employment_type,
                 id: job.id,
@@ -59,7 +63,7 @@ class jobRouteStore implements JobItemType {
 
         }
     }
-    checkBox = (type, checked) => {
+    checkBox = (type: string, checked: boolean) => {
         if (checked === true) {
             this.employmentType = [...this.employmentType, type.toUpperCase()]
             this.getJobs()
@@ -70,7 +74,7 @@ class jobRouteStore implements JobItemType {
             this.getJobs()
         }
     }
-    findMinPackageJobs = (salary, checked) => {
+    findMinPackageJobs = (salary: string, checked: boolean) => {
         if (checked === true) {
             this.minPackage = salary
             this.getJobs()

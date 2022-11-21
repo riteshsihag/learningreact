@@ -1,6 +1,16 @@
+import React from 'react';
 import { Component } from 'react';
 
-class Filter extends Component {
+type checkBoxType = {
+    checkBox : (type: string, checked: boolean) => void,
+    typeOfEmployment: {
+    
+        id: string;
+        type: string;
+   
+}[]
+}
+class Filter extends Component<checkBoxType> {
   
     render() {
         const { typeOfEmployment, checkBox } = this.props

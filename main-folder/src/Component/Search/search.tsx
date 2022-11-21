@@ -2,18 +2,32 @@ import { Component } from 'react';
 import '../DisplayJobs/displayjobs.css'
 import DisplayJob from '../DisplayJobs/displayJobs';
 import {AiOutlineSearch} from 'react-icons/ai'
+import React from 'react';
 
-class Search extends Component {
+type SearchType = {
+allJobs: never[]
+}
+type eachJobType = {
+    logoUrl: string,
+    employmentType: string,
+    id: string,
+    description: string,
+    location: string,
+    package: string,
+    rating: string,
+    title:string
+}
+class Search extends Component<SearchType> {
 state={
     searchValue:''
 }
-onChangeSearchValue=(event)=>[
+onChangeSearchValue=(event:React.ChangeEvent<HTMLInputElement>)=>[
   this.setState({searchValue: event.target.value})
 ]
     render() {
-        const { allJobs,  } = this.props
+        const { allJobs  } = this.props
         const {searchValue} = this.state
-        const displaySearchItem = allJobs.filter((eachJob)=>{
+        const displaySearchItem = allJobs.filter((eachJob: eachJobType)=>{
             if(eachJob.title.toLowerCase().includes(searchValue.toLowerCase())){
                 return eachJob
             }

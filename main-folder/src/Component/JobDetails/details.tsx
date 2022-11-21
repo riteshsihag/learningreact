@@ -7,8 +7,25 @@ import Similar from '../SimilarProducts/similar';
 import { observer } from 'mobx-react';
 import jobDetailStore from '../../Stores/JobDetailStore/jobDetailStore';
 
-
-const Details = observer((props) => {
+type similarJobsType = {
+    company_logo_url: string
+    employment_type: string
+    id:string
+    job_description:string
+    location: string
+    rating: string
+    title: string
+}
+type skillsType = {
+   map: any;
+   imageUrl: string;
+   name: string;
+}
+type allDetailsType = {
+      skills: skillsType[]
+      match: any
+}
+const Details = observer((props:allDetailsType) => {
     const DetailsStore = jobDetailStore
     useEffect(() => {
         const { match } = props
@@ -17,7 +34,7 @@ const Details = observer((props) => {
         DetailsStore.getJobs(id)
     },[])
    const renderSimilarProducts = () => {
-        return DetailsStore.allDetails.similarJobs.map((item) => {
+        return DetailsStore.allDetails.similarJobs.map((item:similarJobsType) => {
             return (<Similar key={item.id} jobs={item} />)
         })
     }

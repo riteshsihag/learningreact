@@ -1,11 +1,11 @@
 import { Component } from 'react';
 import './login.css'
-import { Redirect } from 'react-router-dom';
+import { Redirect,RouteComponentProps } from 'react-router-dom';
 import {observer} from 'mobx-react'
 import loginStore from '../../Stores/LoginStore/loginStore';
 import Cookies from 'js-cookie'
 
-class Login extends Component {
+class Login extends Component<RouteComponentProps> {
 
     render() {
         const LoginValues = loginStore;
@@ -13,20 +13,20 @@ class Login extends Component {
      if(jwtToken !== undefined){
         return <Redirect to={'/'}/>
      }
-     const onSuccess = (jwt_token) => {
+     const onSuccess = (jwt_token: string) => {
         const {history} = this.props
 
-        Cookies.set("jwt_token",jwt_token,30)
+        Cookies.set("jwt_token",jwt_token)
         history.replace('/')
       }
-    const onSubmitForm=(event)=>{
+    const onSubmitForm=(event:React.FormEvent<HTMLFormElement>)=>{
         event.preventDefault();
         LoginValues.onSuccessSubmitForm(onSuccess)
      }
-    const onChangeUsername=(event)=>{
+    const onChangeUsername=(event:React.ChangeEvent<HTMLInputElement>)=>{
         LoginValues.onChangeUsername(event.target.value)
     }
-    const onChangePassword=(event)=>{
+    const onChangePassword=(event:React.ChangeEvent<HTMLInputElement>)=>{
         LoginValues.onChangePassword(event.target.value)
        
     }

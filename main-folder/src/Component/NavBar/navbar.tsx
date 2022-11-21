@@ -1,11 +1,12 @@
 import { Component } from 'react'
-import { Link, withRouter } from 'react-router-dom'
+import { Link, withRouter,RouteComponentProps } from 'react-router-dom'
 import Cookies from 'js-cookie'
 import './navbar.css'
 import { AiFillHome } from 'react-icons/ai';
 import { BsFillBriefcaseFill } from "react-icons/bs";
 import { FiLogOut } from "react-icons/fi";
-class Navbar extends Component {
+
+class Navbar extends Component<RouteComponentProps> {
   onClickLogout = () => {
     Cookies.remove('jwt_token')
     const { history } = this.props

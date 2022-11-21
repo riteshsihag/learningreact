@@ -3,7 +3,40 @@ import { AiFillStar } from 'react-icons/ai'
 import { GoLocation } from 'react-icons/go'
 import { BsFillBagFill } from 'react-icons/bs'
 import './showDetails.css'
-class ShowJobDetails extends Component {
+type similarJobsType = {
+    company_logo_url: string
+    employment_type: string
+    id:string
+    job_description:string
+    location: string
+    rating: string
+    title: string
+}
+type skillsType = {
+   map: any;
+   imageUrl: string;
+   name: string;
+}
+type allDetailsType = {
+      allDetails: {
+        title: string,
+        id: string,
+        logoUrl: string,
+        websiteUrl:string,
+        employmentType: string,
+        description:string,
+        skills: skillsType[],
+        life:{description: string,image_url: string},
+        salary: string,
+        rating: string,
+        similarJobs: similarJobsType[],
+        location: string
+      }
+      skills: skillsType[]
+     
+  
+}
+class ShowJobDetails extends Component<allDetailsType> {
 
     render() {
         const { allDetails, skills } = this.props

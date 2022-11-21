@@ -7,7 +7,7 @@ class loginStore{
     enterUsername = ''
     error_msg = ''
     
-    onSuccessSubmitForm= async(onSuccess)=>{
+    onSuccessSubmitForm= async(onSuccess: (jwt_token: string) => void)=>{
         const userDetails = {username:this.username,password:this.password}
         const url = "https://apis.ccbp.in/login"
         const options = {
@@ -25,10 +25,10 @@ class loginStore{
         }
     }
 
-    onChangeUsername=(value)=>{
+    onChangeUsername=(value:string)=>{
         this.username=value
     }
-    onChangePassword=(value)=>{
+    onChangePassword=(value:string)=>{
         this.password=value
     }
     checkInput=()=>{

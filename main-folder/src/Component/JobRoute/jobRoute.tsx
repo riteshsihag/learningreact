@@ -7,6 +7,7 @@ import './jobRoute.css'
 import Navbar from '../NavBar/navbar';
 import jobRouteStore from '../../Stores/JobRouteStore/jobRouteStore';
 import { observer } from 'mobx-react';
+import React from 'react';
 const typeOfEmployment = [
   {
     id: 'FULLTIME',
@@ -47,7 +48,7 @@ const minPackage = [
 ]
 
 const JobRoute = observer(()=> {
-  
+ 
     const JobRouteValues = jobRouteStore
   useEffect(()=>{
     JobRouteValues.getJobs()
@@ -60,7 +61,7 @@ const JobRoute = observer(()=> {
             <div className='main-job-container'>
               <div className='profile-filter-container'>
                 <Profile />
-                <Filter checkBox={JobRouteValues.checkBox} typeOfEmployment={typeOfEmployment} />
+                <Filter checkBox ={JobRouteValues.checkBox} typeOfEmployment={typeOfEmployment} />
                 <Package minPackage={minPackage} findMinPackageJobs={JobRouteValues.findMinPackageJobs} />
               </div>
               <Search allJobs={JobRouteValues.allJobs} />

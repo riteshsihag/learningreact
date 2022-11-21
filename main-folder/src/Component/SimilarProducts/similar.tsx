@@ -1,10 +1,22 @@
 import { Component } from 'react';
-import { withRouter } from 'react-router-dom'
 import { AiFillStar } from 'react-icons/ai'
 import { GoLocation } from 'react-icons/go'
 import { BsFillBagFill } from 'react-icons/bs'
 import './similar.css'
-class Similar extends Component {
+type similarJobsType = {
+  jobs:{
+    company_logo_url: string
+    employment_type: string
+    id:string
+    job_description:string
+    location: string
+    rating: string
+    title: string
+  }
+  
+}
+
+class Similar extends Component<similarJobsType> {
 
   render() {
     const { jobs } = this.props
@@ -45,4 +57,4 @@ class Similar extends Component {
         )
   }
 }
-        export default withRouter(Similar);
+export default Similar;

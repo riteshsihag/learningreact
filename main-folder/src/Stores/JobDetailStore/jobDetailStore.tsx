@@ -1,6 +1,35 @@
 import { action, decorate, observable } from 'mobx'
 import Cookies from 'js-cookie';
 
+type similarJobsType = {
+    company_logo_url: string
+    employment_type: string
+    id:string
+    job_description:string
+    location: string
+    rating: string
+    title: string
+}
+type skillsType = {
+   map: any;
+   imageUrl: string;
+   name: string;
+}
+type allDetailsType = { 
+        title: string,
+        id: string,
+        logoUrl: string,
+        websiteUrl:string,
+        employmentType: string,
+        description:string,
+        skills: skillsType[],
+        life:{description: string,image_url: string},
+        salary: string,
+        rating: string,
+        similarJobs: similarJobsType[],
+        location: string
+   
+}
 class detailStore {
     apiStatusConstants = {
         initial: 'INITIAL',
@@ -9,13 +38,13 @@ class detailStore {
         inProgress: 'INPROGRESS'
     }
 
-    allDetails = []
+    allDetails = {} as allDetailsType
     skills = []
     isLoading = false
     apiStatus = this.apiStatusConstants.initial
 
 
-    getJobs = async (id) => {
+    getJobs = async (id: string) => {
         this.apiStatus = this.apiStatusConstants.inProgress
 
         const url = `https://apis.ccbp.in/jobs/${id}`
@@ -42,7 +71,7 @@ class detailStore {
                 similarJobs: data.similar_jobs,
                 location: data.job_details.location
             }
-            const updatedSkills = updatedData.skills.map(skill => ({
+            const updatedSkills = updatedData.skills.map((skill: { image_url: string; name: string; }) => ({
                 imageUrl: skill.image_url,
                 name: skill.name
             }))
