@@ -4,7 +4,7 @@ class Filter extends Component {
   
     render() {
         const { typeOfEmployment, checkBox } = this.props
-          const onChangeCheckBox=(event)=>{
+          const onChangeCheckBox=(event:React.ChangeEvent<HTMLInputElement>)=>{
             const checked = event.target.checked
             checkBox(event.target.value, checked)
           }

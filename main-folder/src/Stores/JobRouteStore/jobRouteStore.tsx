@@ -1,14 +1,24 @@
 import { action, decorate, observable } from 'mobx'
 import Cookies from 'js-cookie';
 
-class jobRouteStore {
+type JobItemType = {
+    logoUrl: string,
+    employmentType: string,
+    id: string,
+    description: string,
+    location: string,
+    package: string,
+    rating: string,
+    title:string
+}
+class jobRouteStore implements JobItemType {
     apiStatusConstants = {
         initial: 'INITIAL',
         noJobs: 'NOJOBS',
         failure: 'FAILURE',
         success: 'SUCCESS'
     }
-    allJobs = []
+    allJobs: JobItemType[] = []
     employmentType = []
     minPackage = ''
     apiStatus = this.apiStatusConstants.initial
