@@ -48,7 +48,6 @@ const minPackage = [
 ]
 
 const JobRoute = observer(()=> {
- 
     const JobRouteValues = jobRouteStore
   useEffect(()=>{
     JobRouteValues.getJobs()
@@ -70,6 +69,7 @@ const JobRoute = observer(()=> {
         )
       case JobRouteValues.apiStatusConstants.noJobs:
         return (
+          <>
           <div className='allFilter-container'>
              <Filter checkBox={JobRouteValues.checkBox} typeOfEmployment={typeOfEmployment} />
             <div className='no-product'> <img src="https://assets.ccbp.in/frontend/react-js/nxt-trendz/nxt-trendz-no-products-view.png" />
@@ -77,9 +77,11 @@ const JobRoute = observer(()=> {
               <p>We could not find any products. Please try other filters</p>
             </div>
           </div>
+          </>
         )
       case JobRouteValues.apiStatusConstants.failure:
         return (
+          <>
           <div className='allFilter-container'>
              <Filter checkBox={JobRouteValues.checkBox} typeOfEmployment={typeOfEmployment} />
             <div className='no-product'><img src="https://assets.ccbp.in/frontend/react-js/nxt-trendz/nxt-trendz-products-error-view.png" />
@@ -87,7 +89,10 @@ const JobRoute = observer(()=> {
               <p>We are having some trouble processing your request. Please try again.</p>
             </div>
           </div>
+          </>
         )
+      default:
+        return null;
         }
     
   }

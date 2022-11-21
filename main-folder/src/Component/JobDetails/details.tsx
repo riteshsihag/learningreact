@@ -67,6 +67,8 @@ const Details = observer((props:allDetailsType) => {
             return <div className='loader'>
                 <ThreeDots color="white" height="50" width="50" />
             </div>
+         default:
+            return null;
     }
 
 }
