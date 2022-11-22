@@ -6,6 +6,7 @@ import ShowJobDetails from './showDetails';
 import Similar from '../SimilarProducts/similar';
 import { observer } from 'mobx-react';
 import jobDetailStore from '../../Stores/JobDetailStore/jobDetailStore';
+import LanguageDropdown from '../LanguageChanger/languageDropdown';
 
 type similarJobsType = {
     company_logo_url: string
@@ -49,6 +50,7 @@ const Details = observer((props:allDetailsType) => {
                         {renderSimilarProducts()}
 
                     </div>
+                    <LanguageDropdown/>
                 </div>
 
             </>

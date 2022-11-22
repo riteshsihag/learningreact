@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { AiFillStar } from 'react-icons/ai'
 import { GoLocation } from 'react-icons/go'
 import { BsFillBagFill } from 'react-icons/bs'
-import React from 'react';
+
 
 type DisplayJobType = {
     displaySearchItem: never[]
