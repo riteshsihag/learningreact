@@ -1,7 +1,7 @@
 import { Component } from "react";
 import {withTranslation} from 'react-i18next'
 import './dropdown.css'
-class DropDown extends Component<any> {
+class DropDown extends Component {
  
   render() {
     const lngs = {
@@ -10,9 +10,9 @@ class DropDown extends Component<any> {
     }
     return (
      <>
-     <select className="dropdown" onClick={(e)=>this.props.i18n.changeLanguage((e.target as HTMLInputElement).value)}>
+     <select className="dropdown" onClick={(e)=>this.props.i18n.changeLanguage(e.target.value)}>
       {Object.keys(lngs).map((eachlng)=>{
-        return <option  key={eachlng} value={eachlng}>{lngs[eachlng as keyof typeof lngs].name}</option>
+        return <option  key={eachlng} value={eachlng}>{lngs[eachlng].name}</option>
       })}
         </select>
      </>
