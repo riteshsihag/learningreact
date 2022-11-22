@@ -61,4 +61,9 @@ h1{
 .tab-container{
     display: flex;
     justify-content: space-between;
+    margin-top: 26px;
+    width: 378px;
+    text-align: center;
+    padding: 10px;
+    margin-left: 47px;
 }

@@ -1,0 +1,20 @@
+{
+    "heading": "TodoList Application",
+    "deleteButton": "Delete",
+    "saveButton": "Save",
+    "addButton": "Add",
+    "tabList":[
+        {
+            "id":"1",
+            "name": "Show All"
+        },
+        {
+            "id":"2",
+            "name":"Show Checked"
+        },
+        {
+            "id":"3",
+            "name":"Show Activated"
+        }
+    ]
+}
