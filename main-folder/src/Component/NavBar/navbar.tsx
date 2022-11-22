@@ -5,8 +5,9 @@ import './navbar.css'
 import { AiFillHome } from 'react-icons/ai';
 import { BsFillBriefcaseFill } from "react-icons/bs";
 import { FiLogOut } from "react-icons/fi";
+import {withTranslation} from 'react-i18next'
 
-class Navbar extends Component<RouteComponentProps> {
+class Navbar extends Component<any> {
   onClickLogout = () => {
     Cookies.remove('jwt_token')
     const { history } = this.props
@@ -21,11 +22,11 @@ class Navbar extends Component<RouteComponentProps> {
         </div>
         <div className='desktop-nav'>
           <div className='navigations'>
-            <p><Link to={'/'}>Home</Link> </p>
-            <p> <Link to={'/jobs'}>Jobs</Link> </p>
+            <p><Link to={'/'}>{this.props.t('navbarHome')}</Link> </p>
+            <p> <Link to={'/jobs'}>{this.props.t('navbarJob')}</Link> </p>
           </div>
           <div className='logout'>
-            <button onClick={this.onClickLogout} className='logout-btn'>Logout</button>
+            <button onClick={this.onClickLogout} className='logout-btn'>{this.props.t('navbarLogout')}</button>
           </div>
         </div>
         <div className="mobile-nav">
@@ -45,4 +46,4 @@ class Navbar extends Component<RouteComponentProps> {
     )
   }
 }
-export default withRouter(Navbar);
+export default withTranslation()(withRouter(Navbar));

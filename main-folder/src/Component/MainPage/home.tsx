@@ -7,7 +7,7 @@ import LanguageDropdown from '../LanguageChanger/languageDropdown';
 class Home extends Component<any> {
  
   render() {
-   
+
     return (
      <>
      <Navbar/>

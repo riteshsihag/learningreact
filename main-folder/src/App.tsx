@@ -7,6 +7,8 @@ import Login from './Component/LoginPage/login';
 import ProtectedRoute from './Component/ProtectedRoute/protectedRoute';
 import JobRoute from './Component/JobRoute/jobRoute';
 import Details from './Component/JobDetails/details';
+import { I18nextProvider } from 'react-i18next';
+
 class App extends Component {
   
   render() {

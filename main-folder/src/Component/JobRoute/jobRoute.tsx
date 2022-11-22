@@ -8,47 +8,14 @@ import Navbar from '../NavBar/navbar';
 import jobRouteStore from '../../Stores/JobRouteStore/jobRouteStore';
 import { observer } from 'mobx-react';
 import React from 'react';
-const typeOfEmployment = [
-  {
-    id: 'FULLTIME',
-    type: 'Full Time'
+import LanguageDropdown from '../LanguageChanger/languageDropdown';
+import { useTranslation } from 'react-i18next';
 
-  },
-  {
-    id: 'PARTTIME',
-    type: 'Part Time'
-  },
-  {
-    id: 'FREELANCE',
-    type: 'Freelance'
-  },
-  {
-    id: 'INTERNSHIP',
-    type: 'Internship'
-  },
-]
-const minPackage = [
-  {
-    id: '1000000',
-    type: '10 LPA and above'
 
-  },
-  {
-    id: '2000000',
-    type: '20 LPA and above'
-  },
-  {
-    id: '3000000',
-    type: '30 LPA and above'
-  },
-  {
-    id: '4000000',
-    type: '40 LPA and above'
-  },
-]
 
 const JobRoute = observer(()=> {
     const JobRouteValues = jobRouteStore
+    const {t} = useTranslation()
   useEffect(()=>{
     JobRouteValues.getJobs()
   },[])
@@ -60,10 +27,11 @@ const JobRoute = observer(()=> {
             <div className='main-job-container'>
               <div className='profile-filter-container'>
                 <Profile />
-                <Filter checkBox ={JobRouteValues.checkBox} typeOfEmployment={typeOfEmployment} />
-                <Package minPackage={minPackage} findMinPackageJobs={JobRouteValues.findMinPackageJobs} />
+                <Filter checkBox ={JobRouteValues.checkBox}/>
+                <Package findMinPackageJobs={JobRouteValues.findMinPackageJobs} />
               </div>
               <Search allJobs={JobRouteValues.allJobs} />
+              <LanguageDropdown/>
             </div>
           </>
         )
@@ -71,7 +39,7 @@ const JobRoute = observer(()=> {
         return (
           <>
           <div className='allFilter-container'>
-             <Filter checkBox={JobRouteValues.checkBox} typeOfEmployment={typeOfEmployment} />
+             <Filter checkBox={JobRouteValues.checkBox} />
             <div className='no-product'> <img src="https://assets.ccbp.in/frontend/react-js/nxt-trendz/nxt-trendz-no-products-view.png" />
               <h2>No Products Found</h2>
               <p>We could not find any products. Please try other filters</p>
@@ -83,7 +51,7 @@ const JobRoute = observer(()=> {
         return (
           <>
           <div className='allFilter-container'>
-             <Filter checkBox={JobRouteValues.checkBox} typeOfEmployment={typeOfEmployment} />
+             <Filter checkBox={JobRouteValues.checkBox} />
             <div className='no-product'><img src="https://assets.ccbp.in/frontend/react-js/nxt-trendz/nxt-trendz-products-error-view.png" />
               <h2>Oops! Something Went Wrong</h2>
               <p>We are having some trouble processing your request. Please try again.</p>

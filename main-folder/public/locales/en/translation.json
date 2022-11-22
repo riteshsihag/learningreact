@@ -1,0 +1,48 @@
+{
+    "mainPageHeading":"Find The Job That Fits Your Life",
+    "mainPageDescription":"Millions of people are searching for jobs, salary information, company reviews. Find the job that fits your abilities and potential.",
+    "mainPageButton": "Find Jobs",
+    "navbarHome": "Home",
+    "navbarJob": "Jobs",
+    "navbarLogout": "Logout",
+    "typeOfEmployment" : [
+        {
+          "id": "FULLTIME",
+          "type": "Full Time"
+      
+        },
+        {
+          "id": "PARTTIME",
+          "type": "Part Time"
+        },
+        {
+          "id": "FREELANCE",
+          "type": "Freelance"
+        },
+        {
+          "id": "INTERNSHIP",
+          "type": "Internship"
+        }
+      ],
+      "typeHeading": "Type of Employment",
+      "minPackage" : [
+        {
+          "id": "1000000",
+          "type": "10 LPA and above"
+      
+        },
+        {
+          "id": "2000000",
+          "type": "20 LPA and above"
+        },
+        {
+          "id": "3000000",
+          "type": "30 LPA and above"
+        },
+        {
+          "id": "4000000",
+          "type": "40 LPA and above"
+        }
+      ],
+      "salaryHeading":"Salary Range"
+}

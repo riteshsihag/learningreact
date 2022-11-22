@@ -1,26 +1,22 @@
 import React from 'react';
 import { Component } from 'react';
-
+import {withTranslation} from 'react-i18next'
 type checkBoxType = {
     checkBox : (type: string, checked: boolean) => void,
-    typeOfEmployment: {
-    
-        id: string;
-        type: string;
-   
-}[]
+t: any,
 }
 class Filter extends Component<checkBoxType> {
-  
+    
     render() {
-        const { typeOfEmployment, checkBox } = this.props
+        const {checkBox } = this.props
           const onChangeCheckBox=(event:React.ChangeEvent<HTMLInputElement>)=>{
             const checked = event.target.checked
             checkBox(event.target.value, checked)
           }
+          const typeOfEmployment:{id: string; type: string;}[] = this.props.t('typeOfEmployment',{returnObjects:true})
         return (
             <div className='border-container'>
-                        <h3>Type of Employment</h3>
+                        <h3>{this.props.t('typeHeading')}</h3>
 
                 {typeOfEmployment.map(item => {
                     return <div className='filter-container'>
@@ -33,4 +29,4 @@ class Filter extends Component<checkBoxType> {
     }
 }
 
-export default Filter;
+export default withTranslation() (Filter);
