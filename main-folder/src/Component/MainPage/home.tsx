@@ -2,22 +2,25 @@ import { Component } from 'react';
 import Navbar from '../NavBar/navbar';
 import './home.css'
 import {Link} from 'react-router-dom'
-class Home extends Component {
+import {withTranslation} from 'react-i18next'
+import LanguageDropdown from '../LanguageChanger/languageDropdown';
+class Home extends Component<any> {
  
   render() {
-  
+   
     return (
      <>
      <Navbar/>
      <div className='home'>
       <div className='home-content'>
-      <h1>Find The Job That Fits Your Life</h1>
-      <p>Millions of people are searching for jobs, salary information, company reviews. Find the job that fits your abilities and potential.</p>
-      <button><Link to={'/jobs'}>Find Jobs</Link></button>
+      <h1>{this.props.t('mainPageHeading')}</h1>
+      <p>{this.props.t('mainPageDescription')}</p>
+      <button><Link to={'/jobs'}></Link>{this.props.t('mainPageButton')}</button>
       </div>
+      <LanguageDropdown/>
      </div>
      </>
     )
   }
 }
-export default Home;
+export default withTranslation()(Home);
