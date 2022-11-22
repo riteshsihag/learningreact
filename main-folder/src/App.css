@@ -44,7 +44,6 @@ button{
 }
 body{
     display: flex;
-    justify-content: center;
 }
 h1{
     text-align: center;
@@ -66,4 +65,14 @@ h1{
     text-align: center;
     padding: 10px;
     margin-left: 47px;
+}
+select{
+    position: absolute;
+    right: 500px;
+    top: 25px;
+    padding: 5px;
+    width: 139px;
+}
+.App{
+margin-left: 500px;
 }
