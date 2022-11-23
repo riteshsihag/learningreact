@@ -1,6 +1,7 @@
 import { computed, decorate, toJS } from "mobx";
 import { observable, action } from "mobx";
 import { v4 as uuidv4 } from 'uuid'
+import { getLocalStoreItem, setLocalStoreItem } from "../../util";
 type todoList = {
     id: string;
     input: string;
@@ -17,12 +18,11 @@ class todoStore implements todo {
     todoList: todoList[] = []
     selectedId = ''
     constructor() {
-        if (localStorage.getItem("todoList") !== null) {
-            this.todoList = JSON.parse(localStorage.getItem("todoList")as string);
+        if(getLocalStoreItem("todoList") !== null) {
+            this.todoList = getLocalStoreItem("todoList")
         }
     }
     get item() {
-        console.log(this.selectedId)
         switch (this.selectedId) {
             case '1':
                 return this.todoList
@@ -30,7 +30,7 @@ class todoStore implements todo {
                 return this.todoList.filter(item => item.checked === true)
             case '3':
                 return this.todoList.filter(item => item.checked === false)
-                default:
+            default:
                 return this.todoList
         }
     }
@@ -38,8 +38,8 @@ class todoStore implements todo {
         this.selectedId = id
         console.log(this.item)
     }
-    changeInputValue = (event:React.ChangeEvent<HTMLInputElement>) => {
-        this.inputValue = event.target.value
+    changeInputValue = (value:string) => {
+        this.inputValue = value
     }
     addItem = () => {
         const newList = {
@@ -63,7 +63,7 @@ class todoStore implements todo {
         this.todoList = this.todoList.filter(item => (item.id !== value))
     }
     onSave = () => {
-        localStorage.setItem("todoList", JSON.stringify(this.todoList))
+        setLocalStoreItem("todoList", JSON.stringify(this.todoList))
     }
 }
 decorate(todoStore, {

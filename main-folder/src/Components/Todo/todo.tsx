@@ -1,36 +1,39 @@
-import { observer } from "mobx-react";
+import { inject, observer } from "mobx-react";
 import React, { Component } from 'react'
-import todoStore from "../Stores/todoStore";
 import Tab from "./tab";
-import {withTranslation} from 'react-i18next'
+import {ReactI18NextChild, withTranslation} from 'react-i18next'
 
+@inject('todoStore')
+@observer
 class Todo extends Component<any>{
     render() {
-        const todoValues = todoStore;
         const onCheck=(event:React.ChangeEvent<HTMLInputElement>)=>{
-            todoValues.onCheck(event.target.id)
+            this.props.todoStore.onCheck(event.target.id)
         }           
+        const changeInputText = (event:React.ChangeEvent<HTMLInputElement>) =>{
+            this.props.todoStore.changeInputValue(event.target.value)
+        }
         
         return (
             <div >
-                <input className="text" type={'text'} value={todoValues.inputValue} onChange={todoValues.changeInputValue} />
-                <button onClick={todoValues.addItem}>{this.props.t('addButton')}</button>
+                <input className="text" type={'text'} value={this.props.todoStore.inputValue} onChange={changeInputText} />
+                <button onClick={this.props.todoStore.addItem}>{this.props.t('addButton')}</button>
                 <Tab/>
                 <div className="notes-card">
-                    {todoValues.item.map(item => {
+                    {this.props.todoStore.item.map((item: { id: string | undefined; checked: boolean | undefined; input: string | number | boolean | React.ReactElement<any, string | React.JSXElementConstructor<any>> | React.ReactFragment | React.ReactPortal | Iterable<ReactI18NextChild> | null | undefined; }) => {
                         return <div className="card">
                             <div className="input">
                             <input type={'checkbox'} id={item.id} onChange={onCheck} checked={item.checked} />
                             <p>{item.input}</p>
                             </div>
-                            <button id={item.id} onClick={()=> todoValues.deleteItem(item.id)}>{this.props.t('deleteButton')}</button>
+                            <button id={item.id} onClick={()=> this.props.todoStore.deleteItem(item.id)}>{this.props.t('deleteButton')}</button>
                         </div>
                     })}
                 </div>
-                <button onClick={todoValues.onSave}>{this.props.t('saveButton')}</button>
+                <button onClick={this.props.todoStore.onSave}>{this.props.t('saveButton')}</button>
             </div>
         )
     }
 }
 
-export default withTranslation()(observer(Todo))
+export default withTranslation()(Todo)
