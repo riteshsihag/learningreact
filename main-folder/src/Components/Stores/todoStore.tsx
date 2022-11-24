@@ -23,6 +23,7 @@ class todoStore implements todo {
         }
     }
     get item() {
+        console.log(this.selectedId)
         switch (this.selectedId) {
             case '1':
                 return this.todoList
