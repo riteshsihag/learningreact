@@ -1,18 +1,14 @@
 import {action,decorate, observable} from 'mobx'
 import Cookies from 'js-cookie';
 import { mockGetJobs } from '../../utils';
-// type allDetails = {
-//     name: string
-//     profileUrl: string
-//     bio: string
-// }
+
 
 class profileStore{
     allDetails= {} 
    
-    getJobs =  () => {
+    getJobs =  async() => {
        
-         const data = mockGetJobs()
+         const data = await mockGetJobs()
             const updatedData  = {
                 name: data.name,
                 profileUrl: data.profile_image_url,

@@ -1,3 +1,5 @@
+import Cookies from 'js-cookie';
+
 export const mockGetJobs = async() => {
     const url = `https://apis.ccbp.in/profile`
     const jwtToken = Cookies.get('jwt_token')
@@ -7,8 +9,7 @@ export const mockGetJobs = async() => {
     }
     const response = await fetch(url, options)
     const data = await response.json()
-    if(response.ok === true){
+    
         return data.profile_details
-    }
    
 }
