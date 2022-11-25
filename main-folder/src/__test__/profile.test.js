@@ -3,7 +3,11 @@ import { BrowserRouter } from "react-router-dom";
 import Profile from "../Component/Profile/profile";
 import profileStore from "../Stores/ProfileStore/profileStore";
 
-jest.mock('react-navigation', () => ({ withNavigation: (component) => component}));
+jest.mock('./utils',()=>{
+    return {
+        mockG
+    }
+})
 test("testing profile details fetching", () => {
 
   render(
