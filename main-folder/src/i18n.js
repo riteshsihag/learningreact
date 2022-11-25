@@ -9,6 +9,10 @@ i18next
 .use(Backend)
 .init({
    fallbackLng: 'en',
+   backend: {
+      // for all available options read the backend's repository readme file
+      loadPath: '/locales/{{lng}}/{{ns}}.json'
+    }
 })
 
 export default i18next

@@ -13,14 +13,32 @@ class Filter extends Component<checkBoxType> {
             const checked = event.target.checked
             checkBox(event.target.value, checked)
           }
-          const typeOfEmployment:{id: string; type: string;}[] = this.props.t('typeOfEmployment',{returnObjects:true})
+          const typeOfEmployment = [
+            {
+              id: "FULLTIME",
+              type:this.props.t('employ-type1')
+          
+            },
+            {
+              id: "PARTTIME",
+              type: this.props.t('employ-type2')
+            },
+            {
+              id: "FREELANCE",
+              type: this.props.t('employ-type3')
+            },
+            {
+              id: "INTERNSHIP",
+              type: this.props.t('employ-type4')
+            }
+          ]
         return (
             <div className='border-container'>
                         <h3>{this.props.t('typeHeading')}</h3>
 
                 {typeOfEmployment.map(item => {
                     return <div className='filter-container'>
-                        <input type={'checkbox'}  value={item.id} onChange={onChangeCheckBox} />
+                        <input type={'checkbox'} data-testid={item.id} value={item.id} onChange={onChangeCheckBox} />
                         <p>{item.type}</p>
                     </div>
                 })}

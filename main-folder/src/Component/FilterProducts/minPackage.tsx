@@ -1,28 +1,44 @@
 import { Component } from 'react';
 import React from 'react';
-import {withTranslation} from 'react-i18next'
+import { withTranslation } from 'react-i18next'
 type packageType = {
     findMinPackageJobs: (salary: string, checked: boolean) => void,
-    t:any
+    t: any
 }
+
 class Package extends Component<packageType> {
-  
+
     render() {
         const { findMinPackageJobs } = this.props
-          const onChangeRadioBtn=(event:React.ChangeEvent<HTMLInputElement>)=>{
+        const onChangeRadioBtn = (event: React.ChangeEvent<HTMLInputElement>) => {
             const checked = event.target.checked
             findMinPackageJobs(event.target.value, checked)
-          }
-          const minPackage:{
-            id: string;
-            type: string;
-        }[] = this.props.t('minPackage',{returnObjects:true})
+        }
+        const minPackage = [
+            {
+              id: "1000000",
+              type:this.props.t('type1')
+          
+            },
+            {
+              id: "2000000",
+              type: this.props.t('type1')
+            },
+            {
+              id: "3000000",
+              type: this.props.t('type1')
+            },
+            {
+              id: "4000000",
+              type: this.props.t('type1')
+            }
+          ]
         return (
             <>
-                        <h3>{this.props.t('salaryHeading')}</h3>
+                <h3>{this.props.t('salaryHeading')}</h3>
                 {minPackage.map(item => {
                     return <div className='filter-container'>
-                        <input type={'radio'} name="salary" value={item.id} onChange={onChangeRadioBtn} />
+                        <input type={'radio'} name="salary" data-testid={item.id} value={item.id} onChange={onChangeRadioBtn} />
                         <p>{item.type}</p>
                     </div>
                 })}
@@ -31,4 +47,4 @@ class Package extends Component<packageType> {
     }
 }
 
-export default withTranslation() (Package);
+export default withTranslation()(Package);

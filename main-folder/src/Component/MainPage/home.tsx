@@ -15,7 +15,7 @@ class Home extends Component<any> {
       <div className='home-content'>
       <h1>{this.props.t('mainPageHeading')}</h1>
       <p>{this.props.t('mainPageDescription')}</p>
-      <button><Link to={'/jobs'}></Link>{this.props.t('mainPageButton')}</button>
+      <button><Link to={'/jobs'}>{this.props.t('mainPageButton')}</Link></button>
       </div>
       <LanguageDropdown/>
      </div>
