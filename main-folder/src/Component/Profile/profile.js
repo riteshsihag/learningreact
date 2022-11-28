@@ -1,5 +1,5 @@
 import { observer } from 'mobx-react';
-import { Component, useEffect } from 'react';
+import { useEffect } from 'react';
 import profileStore from '../../Stores/ProfileStore/profileStore';
 
 

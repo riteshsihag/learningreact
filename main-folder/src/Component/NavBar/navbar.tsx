@@ -22,11 +22,11 @@ class Navbar extends Component<any> {
         </div>
         <div className='desktop-nav'>
           <div className='navigations'>
-            <p><Link to={'/'}>{this.props.t('navbarHome')}</Link> </p>
-            <p> <Link to={'/jobs'}>{this.props.t('navbarJob')}</Link> </p>
+            <p data-testid = "Home"><Link to={'/'}>{this.props.t('navbarHome')}</Link> </p>
+            <p data-testid = "NavJob"> <Link to={'/jobs'}>{this.props.t('navbarJob')}</Link> </p>
           </div>
           <div className='logout'>
-            <button onClick={this.onClickLogout} className='logout-btn'>{this.props.t('navbarLogout')}</button>
+            <button onClick={this.onClickLogout} data-testid="logout" className='logout-btn'>{this.props.t('navbarLogout')}</button>
           </div>
         </div>
         <div className="mobile-nav">

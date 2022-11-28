@@ -27,7 +27,7 @@ class DisplayJob extends Component<DisplayJobType> {
             <>
                 {displaySearchItem.map((eachJob: JobItemType) => {
                     return <Link to={`/jobs/${eachJob.id}`}>
-                        <div className='job-container'>
+                        <div data-testid={eachJob.id} className='job-container'>
                             <div className='roll-container'>
                                 <img className='logo' src={eachJob.logoUrl} />
                                 <div className='roll-detail'>

@@ -19,6 +19,7 @@ class loginStore{
         
         if(response.ok === true){
             onSuccess(data.jwt_token);
+            this.error_msg = ''
         }
         else{
           this.error_msg = data.error_msg

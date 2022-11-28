@@ -22,15 +22,15 @@ class Package extends Component<packageType> {
             },
             {
               id: "2000000",
-              type: this.props.t('type1')
+              type: this.props.t('type2')
             },
             {
               id: "3000000",
-              type: this.props.t('type1')
+              type: this.props.t('type3')
             },
             {
               id: "4000000",
-              type: this.props.t('type1')
+              type: this.props.t('type4')
             }
           ]
         return (
