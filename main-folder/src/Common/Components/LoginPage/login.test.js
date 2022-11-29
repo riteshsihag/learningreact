@@ -1,6 +1,6 @@
 import {render,screen,fireEvent} from '@testing-library/react'
 import Login from '../Component/LoginPage/login'
-import loginStore from '../Stores/LoginStore/loginStore'
+import loginStore from '../../Stores/LoginStore/loginStore'
 
 beforeEach(()=>{
     render(<Login/>)

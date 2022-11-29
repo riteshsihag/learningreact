@@ -1,8 +1,8 @@
 import {fireEvent, render,screen} from '@testing-library/react'
-import Filter from '../Component/FilterProducts/filter'
-import MinPackage from '../Component/FilterProducts/minPackage'
+import Filter from '../FilterbyEmploymentType/filter'
+import MinPackage from '../FilterbySalary/minPackage'
 import JobRoute from '../Component/JobRoute/jobRoute'
-import jobRouteStore from '../Stores/JobRouteStore/jobRouteStore'
+import jobRouteStore from '../../Stores/JobRouteStore/jobRouteStore'
  beforeEach(()=>{
     render(<JobRoute/>)
  })

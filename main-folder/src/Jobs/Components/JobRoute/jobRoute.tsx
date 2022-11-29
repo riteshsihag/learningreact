@@ -1,7 +1,7 @@
 import { Component, useEffect } from 'react';
-import Search from '../Search/search';
-import Filter from '../FilterProducts/filter';
-import Package from '../FilterProducts/minPackage';
+import Search from '../SearchJobs/search';
+import Filter from '../FilterbyEmploymentType/filter';
+import Package from '../FilterbySalary/minPackage';
 import Profile from '../Profile/profile';
 import './jobRoute.css'
 import Navbar from '../NavBar/navbar';

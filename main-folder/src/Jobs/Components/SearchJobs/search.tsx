@@ -1,5 +1,5 @@
 import { Component } from 'react';
-import '../DisplayJobs/displayjobs.css'
+import '../../Jobs/Components/DisplayJobs/displayjobs.css'
 import DisplayJob from '../DisplayJobs/displayJobs';
 import {AiOutlineSearch} from 'react-icons/ai'
 import React from 'react';

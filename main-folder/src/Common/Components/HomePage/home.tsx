@@ -1,9 +1,9 @@
 import { Component } from 'react';
-import Navbar from '../NavBar/navbar';
 import './home.css'
 import {Link} from 'react-router-dom'
 import {withTranslation} from 'react-i18next'
 import LanguageDropdown from '../LanguageChanger/languageDropdown';
+import Navbar from '../NavBar/navbar';
 class Home extends Component<any> {
  
   render() {

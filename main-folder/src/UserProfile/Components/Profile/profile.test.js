@@ -1,7 +1,7 @@
 import { render, screen , waitFor} from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
 import Profile from "../Component/Profile/profile";
-import profileStore from "../Stores/ProfileStore/profileStore";
+import profileStore from "../Jobs/Stores/ProfileStore/profileStore";
 
 
 jest.mock('../utils', () => {
