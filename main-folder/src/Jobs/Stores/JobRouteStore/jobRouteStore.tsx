@@ -1,5 +1,5 @@
 import { action, decorate, observable } from 'mobx'
-import Cookies from 'js-cookie';
+import JobService from '../../Services/JobServices/index.api'
 
 
 type JobType = {
@@ -28,14 +28,7 @@ class jobRouteStore {
     apiStatus = this.apiStatusConstants.initial
 
     getJobs = async () => {
-        const url = `https://apis.ccbp.in/jobs?employment_type=${this.employmentType}&minimum_package=${this.minPackage}`
-        const jwtToken = Cookies.get('jwt_token')
-        const options = {
-            method: 'GET',
-            headers: { Authorization: `Bearer ${jwtToken}`, }
-        }
-        
-        const response = await fetch(url, options)
+        const response = await JobService.getUpdatedJobs(this.employmentType,this.minPackage)
         const data = await response.json()
         if (response.ok === true) {
             const updatedData = data.jobs.map((job: JobType ) => ({

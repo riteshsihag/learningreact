@@ -1,22 +1,15 @@
 import {fireEvent, render,screen} from '@testing-library/react'
-import Filter from '../FilterbyEmploymentType/filter'
-import MinPackage from '../FilterbySalary/minPackage'
-import JobRoute from '../Component/JobRoute/jobRoute'
+import Filter from '../../Components/FilterbyEmploymentType/filter'
+import MinPackage from '../../Components/FilterbySalary/minPackage'
 import jobRouteStore from '../../Stores/JobRouteStore/jobRouteStore'
+import JobRoute from './jobRoute'
+
  beforeEach(()=>{
     render(<JobRoute/>)
  })
  afterEach(()=>{
     jobRouteStore.employmentType = []
     jobRouteStore.minPackage = ''
- })
- test("testing filter by salary",()=>{
-    jobRouteStore.findMinPackageJobs('1000000',true)
-    expect(jobRouteStore.minPackage).toBe('1000000')
- })
- test("testing employment type filter ",()=>{
-    jobRouteStore.checkBox("FullTime",true)
-    expect(jobRouteStore.employmentType).toStrictEqual(["FULLTIME"])
  })
 test("integration between package component and store",()=>{
     render(<MinPackage/>)

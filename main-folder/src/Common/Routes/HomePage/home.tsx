@@ -2,9 +2,10 @@ import { Component } from 'react';
 import './home.css'
 import {Link} from 'react-router-dom'
 import {withTranslation} from 'react-i18next'
-import LanguageDropdown from '../LanguageChanger/languageDropdown';
-import Navbar from '../NavBar/navbar';
-class Home extends Component<any> {
+import LanguageDropdown from '../../Components/LanguageChanger/languageDropdown';
+import Navbar from '../../Components/NavBar/navbar';
+import { propsType } from '../../Stores/types';
+class Home extends Component<propsType> {
  
   render() {
 

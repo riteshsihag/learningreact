@@ -1,6 +1,5 @@
-import {action,decorate, observable} from 'mobx'
-import Cookies from 'js-cookie';
-import { mockGetJobs } from '../../utils';
+import {decorate, observable} from 'mobx'
+import { mockGetJobs } from '../../Utils/utils'
 
 
 class profileStore{

@@ -4,21 +4,10 @@ import { Link } from 'react-router-dom'
 import { AiFillStar } from 'react-icons/ai'
 import { GoLocation } from 'react-icons/go'
 import { BsFillBagFill } from 'react-icons/bs'
+import { DisplayJobType, JobItemType } from '../../Stores/type';
 
 
-type DisplayJobType = {
-    displaySearchItem: never[]
-}
-type JobItemType = {
-    logoUrl: string,
-    employmentType: string,
-    id: string,
-    description: string,
-    location: string,
-    package: string,
-    rating: string,
-    title:string
-}
+
 class DisplayJob extends Component<DisplayJobType> {
 
     render() {
@@ -26,10 +15,10 @@ class DisplayJob extends Component<DisplayJobType> {
         return (
             <>
                 {displaySearchItem.map((eachJob: JobItemType) => {
-                    return <Link to={`/jobs/${eachJob.id}`}>
+                    return <Link  key={eachJob.id} to={`/jobs/${eachJob.id}`}>
                         <div data-testid={eachJob.id} className='job-container'>
                             <div className='roll-container'>
-                                <img className='logo' src={eachJob.logoUrl} />
+                                <img className='logo' src={eachJob.logoUrl} alt='' />
                                 <div className='roll-detail'>
                                     <h2 className='roll-title'>{eachJob.title}</h2>
                                     <div className='rating-container'>

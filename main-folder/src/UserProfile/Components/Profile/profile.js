@@ -1,6 +1,6 @@
 import { observer } from 'mobx-react';
 import { useEffect } from 'react';
-import profileStore from '../../../Jobs/Stores/ProfileStore/profileStore';
+import profileStore from '../../Stores/ProfileStore/profileStore';
 
 
 
@@ -8,10 +8,10 @@ const Profile = observer(()=> {
     const ProfileValues = profileStore
      useEffect(()=>{
         ProfileValues.getJobs()
-     },[])
+     },[ProfileValues])
         return (
              <div className='profile-container'>
-                    <img src={ProfileValues.allDetails.profileUrl} />
+                    <img src={ProfileValues.allDetails.profileUrl} alt=''/>
                     <h2>{ProfileValues.allDetails.name}</h2>
                     <p>{ProfileValues.allDetails.bio}</p>
                 </div>

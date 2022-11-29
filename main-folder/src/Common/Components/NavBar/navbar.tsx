@@ -6,8 +6,9 @@ import { AiFillHome } from 'react-icons/ai';
 import { BsFillBriefcaseFill } from "react-icons/bs";
 import { FiLogOut } from "react-icons/fi";
 import {withTranslation} from 'react-i18next'
+import { propsType } from '../../Stores/types';
 
-class Navbar extends Component<any> {
+class Navbar extends Component<RouteComponentProps&propsType>{
   onClickLogout = () => {
     Cookies.remove('jwt_token')
     const { history } = this.props
@@ -18,7 +19,7 @@ class Navbar extends Component<any> {
     return (
       <div className='navbar'>
         <div className='logo'>
-          <img src='https://assets.ccbp.in/frontend/react-js/logo-img.png' />
+          <img src='https://assets.ccbp.in/frontend/react-js/logo-img.png' alt='' />
         </div>
         <div className='desktop-nav'>
           <div className='navigations'>

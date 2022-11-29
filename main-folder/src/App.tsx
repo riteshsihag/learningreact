@@ -1,12 +1,12 @@
 import './App.css';
 import { Component } from 'react';
 import { BrowserRouter, Route, Switch } from "react-router-dom"
-import home from './Common/Components/HomePage/home';
-import login from './Common/Components/LoginPage/login';
-import JobRoute from './Jobs/Components/JobRoute/jobRoute';
+import home from './Common/Routes/HomePage/home';
+import login from './Common/Routes/LoginPage/login';
 import Details from './Jobs/Components/JobDetails/details';
-import NotFound from './Common/Components/NotFound/notfound';
-import ProtectedRoute from './Common/Components/ProtectedRoute/protectedRoute';
+import NotFound from './Common/Routes/NotFound/notfound';
+import ProtectedRoute from './Common/Routes/ProtectedRoute/protectedRoute';
+import JobRoute from './Jobs/Routes/JobRoute/jobRoute';
 
 class App extends Component {
   

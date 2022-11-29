@@ -1,10 +1,10 @@
 import { render, screen , waitFor} from "@testing-library/react";
 import { BrowserRouter } from "react-router-dom";
-import Profile from "../Component/Profile/profile";
-import profileStore from "../Jobs/Stores/ProfileStore/profileStore";
+import profileStore from "../../Stores/ProfileStore/profileStore";
+import Profile from "./profile";
 
 
-jest.mock('../utils', () => {
+jest.mock('../../Utils/utils.js', () => {
     return {
         mockGetJobs: () => ({
             name:"Rahul Attluri",

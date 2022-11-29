@@ -1,7 +1,5 @@
-import React from 'react'
 import Cookies from 'js-cookie';
-import {Redirect, Route, RouteProps} from 'react-router-dom';
-import { OmitNative } from 'react-router';
+import {Redirect, Route} from 'react-router-dom';
 const ProtectedRoute = (props) => {
     const jwtToken = Cookies.get('jwt_token')
     if(jwtToken===undefined){

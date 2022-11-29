@@ -1,5 +1,5 @@
-import { action, decorate, observable } from 'mobx'
-import Cookies from 'js-cookie';
+import { decorate, observable } from 'mobx'
+import JobDetailService from '../../Services/JobDetailsServices/index.api'
 
 type similarJobsType = {
     company_logo_url: string
@@ -46,16 +46,9 @@ class detailStore {
 
     getJobs = async (id: string) => {
         this.apiStatus = this.apiStatusConstants.inProgress
-
-        const url = `https://apis.ccbp.in/jobs/${id}`
-        const jwtToken = Cookies.get('jwt_token')
-        const options = {
-            method: 'GET',
-            headers: { Authorization: `Bearer ${jwtToken}`, }
-        }
-        const response = await fetch(url, options)
+        const response = await JobDetailService.getUpdatedJobDetails(id)
+        const data = await response.json()
         if (response.ok === true) {
-            const data = await response.json()
 
             const updatedData = {
                 title: data.job_details.title,

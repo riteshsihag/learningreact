@@ -6,33 +6,17 @@ import { observer } from 'mobx-react';
 import jobDetailStore from '../../Stores/JobDetailStore/jobDetailStore';
 import Navbar from '../../../Common/Components/NavBar/navbar';
 import LanguageDropdown from '../../../Common/Components/LanguageChanger/languageDropdown';
+import { allDetailsType, similarJobsType } from '../../Stores/type';
 
-type similarJobsType = {
-    company_logo_url: string
-    employment_type: string
-    id: string
-    job_description: string
-    location: string
-    rating: string
-    title: string
-}
-type skillsType = {
-    map: any;
-    imageUrl: string;
-    name: string;
-}
-type allDetailsType = {
-    skills: skillsType[]
-    match: any
-}
+
 const Details = observer((props: allDetailsType) => {
     const DetailsStore = jobDetailStore
     useEffect(() => {
-        const { match } = props
+        const { match }:any = props
         const { params } = match
         const { id } = params
         DetailsStore.getJobs(id)
-    }, [])
+    }, [DetailsStore,props])
     const renderSimilarProducts = () => {
         return DetailsStore.allDetails.similarJobs.map((item: similarJobsType) => {
             return (<Similar key={item.id} jobs={item} />)

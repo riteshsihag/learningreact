@@ -3,39 +3,8 @@ import { AiFillStar } from 'react-icons/ai'
 import { GoLocation } from 'react-icons/go'
 import { BsFillBagFill } from 'react-icons/bs'
 import './showDetails.css'
-type similarJobsType = {
-    company_logo_url: string
-    employment_type: string
-    id:string
-    job_description:string
-    location: string
-    rating: string
-    title: string
-}
-type skillsType = {
-   map: any;
-   imageUrl: string;
-   name: string;
-}
-type allDetailsType = {
-      allDetails: {
-        title: string,
-        id: string,
-        logoUrl: string,
-        websiteUrl:string,
-        employmentType: string,
-        description:string,
-        skills: skillsType[],
-        life:{description: string,image_url: string},
-        salary: string,
-        rating: string,
-        similarJobs: similarJobsType[],
-        location: string
-      }
-      skills: skillsType[]
-     
-  
-}
+import { allDetailsType } from '../../Stores/type';
+
 class ShowJobDetails extends Component<allDetailsType> {
 
     render() {
@@ -45,7 +14,7 @@ class ShowJobDetails extends Component<allDetailsType> {
             <>
                 <div id='job-container'>
                     <div id='roll-container'>
-                        <img id='logo' src={allDetails.logoUrl} />
+                        <img id='logo' src={allDetails.logoUrl} alt=''/>
                         <div id='roll-detail'>
                             <h2 id='roll-title'>{allDetails.title}</h2>
                             <div id='rating-container'>
@@ -79,8 +48,8 @@ class ShowJobDetails extends Component<allDetailsType> {
                     <h3 className='skill-heading'>Skills</h3>
                     <div className='skills-container'>
                     {skills.map(skill => {
-                        return <div className='skills'>
-                            <img src={skill.imageUrl} />
+                        return <div key={skill.name} className='skills'>
+                            <img src={skill.imageUrl} alt=''/>
                             <p>{skill.name}</p>
                         </div>
                     })}
@@ -90,7 +59,7 @@ class ShowJobDetails extends Component<allDetailsType> {
                             <h3>Life at company</h3>
                             <p>{allDetails.life.description}</p>
                         </div>
-                        <img src={allDetails.life.image_url} />
+                        <img src={allDetails.life.image_url} alt=''/>
                     </div>
                 </div>
 

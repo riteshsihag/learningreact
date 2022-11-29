@@ -3,20 +3,9 @@ import { AiFillStar } from 'react-icons/ai'
 import { GoLocation } from 'react-icons/go'
 import { BsFillBagFill } from 'react-icons/bs'
 import './similar.css'
-type similarJobsType = {
-  jobs:{
-    company_logo_url: string
-    employment_type: string
-    id:string
-    job_description:string
-    location: string
-    rating: string
-    title: string
-  }
-  
-}
+import { similarType } from '../../Stores/type';
 
-class Similar extends Component<similarJobsType> {
+class Similar extends Component<similarType> {
 
   render() {
     const { jobs } = this.props
@@ -25,7 +14,7 @@ class Similar extends Component<similarJobsType> {
      <>
         <div id='job-container1'>
           <div id='roll-container'>
-            <img id='logo1' src={jobs.company_logo_url} />
+            <img id='logo1' src={jobs.company_logo_url} alt='' />
             <div id='roll-detail'>
               <h2 className='job-title'>{jobs.title}</h2>
               <div id='rating-container'>

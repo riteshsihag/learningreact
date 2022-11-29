@@ -1,6 +1,6 @@
 import {render,screen} from '@testing-library/react'
 import { BrowserRouter } from 'react-router-dom'
-import Home from '../Component/MainPage/home'
+import Home from './home'
 beforeEach(()=>{
     render(<BrowserRouter><Home/></BrowserRouter>)
 })

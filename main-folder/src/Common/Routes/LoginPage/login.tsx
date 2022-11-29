@@ -34,7 +34,7 @@ class Login extends Component<RouteComponentProps> {
             <>
                 <div className='login'>
                     <div className='login-content'>
-                        <img src='https://assets.ccbp.in/frontend/react-js/logo-img.png' />
+                        <img src='https://assets.ccbp.in/frontend/react-js/logo-img.png' alt=''/>
                         <form onSubmit={onSubmitForm}>
                             <p className='head'>USERNAME</p>
                             <input type={'text'} value={LoginValues.username} onChange={onChangeUsername} placeholder="Username" />

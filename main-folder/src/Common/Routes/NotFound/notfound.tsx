@@ -6,7 +6,7 @@ class NotFound extends Component{
        
         return(
             <div className='notfound'>
-            <img src='https://assets.ccbp.in/frontend/react-js/not-found-blog-img.png'/>
+            <img src='https://assets.ccbp.in/frontend/react-js/not-found-blog-img.png' alt=''/>
            </div>
         )
     }
