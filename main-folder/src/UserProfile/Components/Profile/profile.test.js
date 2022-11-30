@@ -4,17 +4,7 @@ import profileStore from "../../Stores/ProfileStore/profileStore";
 import Profile from "./profile";
 
 
-jest.mock('../../Utils/utils.js', () => {
-    return {
-        mockGetJobs: () => ({
-            name:"Rahul Attluri",
-            profile_image_url:"https://assets.ccbp.in/frontend/react-js/male-avatar-img.png",
-            short_bio:"Lead Software Developer and AI-ML expert"
-        
-    })}
-})
 test("testing profile details fetching", () => {
-    jest.spyOn(profileStore,'getJobs')
 
     render(
         <BrowserRouter>
@@ -23,6 +13,6 @@ test("testing profile details fetching", () => {
     );
 
     expect(profileStore.getJobs).toBeCalledTimes(1);
-    const profileTitle = screen.findByText("Rahul Attluri");
+    const profileTitle = screen.findByText("Ritesh Sihag");
    waitFor(()=>expect(profileTitle).toBeInTheDocument()) 
 });

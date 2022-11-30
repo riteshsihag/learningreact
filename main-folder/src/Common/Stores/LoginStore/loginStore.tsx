@@ -1,65 +1,60 @@
-import {action,decorate, observable} from 'mobx'
+import { action, decorate, observable } from "mobx";
 
-class loginStore{
-    username = ''
-    password = ''
-    enterPassword = ''
-    enterUsername = ''
-    error_msg = ''
-    
-    onSuccessSubmitForm= async(onSuccess: (jwt_token: string) => void)=>{
-        const userDetails = {username:this.username,password:this.password}
-        const url = "https://apis.ccbp.in/login"
-        const options = {
-            method: "POST",
-            body: JSON.stringify(userDetails)
-        }
-        const response = await fetch(url,options)
-        const data = await response.json()
-        
-        if(response.ok === true){
-            onSuccess(data.jwt_token);
-            this.error_msg = ''
-        }
-        else{
-          this.error_msg = data.error_msg
-        }
+class loginStore {
+  username = "";
+  password = "";
+  enterPassword = "";
+  enterUsername = "";
+  error_msg = "";
+  LoginApiData;
+  constructor(
+    LoginServiceData: InstanceType<any>,
+    LoginFixtureData: InstanceType<any>
+  ) {
+    this.LoginApiData = LoginServiceData;
+  }
+  onSuccessSubmitForm = async (onSuccess: (jwt_token: string) => void) => {
+    const response = await this.LoginApiData.getLoginData(
+      this.username,
+      this.password
+    );
+    try {
+      onSuccess(response.jwt_token);
+    } catch {
+      this.error_msg = response.error_msg;
     }
+  };
 
-    onChangeUsername=(value:string)=>{
-        this.username=value
+  onChangeUsername = (value: string) => {
+    this.username = value;
+  };
+  onChangePassword = (value: string) => {
+    this.password = value;
+  };
+  checkInput = () => {
+    if (this.username === "") {
+      this.enterUsername = "Enter Username";
+    } else {
+      this.enterUsername = "";
     }
-    onChangePassword=(value:string)=>{
-        this.password=value
+    if (this.password === "") {
+      this.enterPassword = "Enter Password";
+    } else {
+      this.enterPassword = "";
     }
-    checkInput=()=>{
-   
-        if(this.username===''){
-        this.enterUsername = 'Enter Username'
-        }
-        else{
-            this.enterUsername=''
-        }
-        if(this.password===''){
-         this.enterPassword = 'Enter Password'
-         }
-         else{
-        this.enterPassword = ''
-    
-         }
-     }
+  };
 }
 
-decorate(loginStore,{
-    username: observable,
-    password: observable,
-    enterPassword: observable,
-    enterUsername: observable,
-    error_msg: observable,
-    onSuccessSubmitForm: action,
-    onChangeUsername:action,
-    onChangePassword:action,
-    checkInput:action
-})
+decorate(loginStore, {
+  username: observable,
+  password: observable,
+  enterPassword: observable,
+  enterUsername: observable,
+  error_msg: observable,
+  onSuccessSubmitForm: action,
+  onChangeUsername: action,
+  onChangePassword: action,
+  checkInput: action,
+});
 
-export default new loginStore()
+export default loginStore;

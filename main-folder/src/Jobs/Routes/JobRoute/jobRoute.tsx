@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import './jobRoute.css'
-import jobRouteStore from '../../Stores/JobRouteStore/jobRouteStore';
-import { observer } from 'mobx-react';
+import { inject, observer } from 'mobx-react';
 import Navbar from '../../../Common/Components/NavBar/navbar';
 import Profile from '../../../UserProfile/Components/Profile/profile';
 import LanguageDropdown from '../../../Common/Components/LanguageChanger/languageDropdown';
@@ -11,8 +10,9 @@ import Search from '../../Components/SearchJobs/search';
 
 
 
-const JobRoute = observer(() => {
-  const JobRouteValues = jobRouteStore
+const JobRoute = inject('JobRouteValues')(observer((props:InstanceType<any>) => {
+  const {JobRouteValues} = props
+  console.log(props)
   useEffect(() => {
     JobRouteValues.getJobs()
   }, [JobRouteValues])
@@ -71,6 +71,6 @@ const JobRoute = observer(() => {
   }
 
 }
-)
+))
 
 export default JobRoute;

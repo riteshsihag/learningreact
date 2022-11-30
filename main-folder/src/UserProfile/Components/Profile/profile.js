@@ -1,11 +1,10 @@
-import { observer } from 'mobx-react';
+import { observer,inject } from 'mobx-react';
 import { useEffect } from 'react';
-import profileStore from '../../Stores/ProfileStore/profileStore';
 
 
 
-const Profile = observer(()=> {
-    const ProfileValues = profileStore
+const Profile = inject('ProfileValues')(observer((props)=> {
+    const {ProfileValues} = props
      useEffect(()=>{
         ProfileValues.getJobs()
      },[ProfileValues])
@@ -17,7 +16,7 @@ const Profile = observer(()=> {
                 </div>
         )
 
-    })
+    }))
 
 
 export default Profile;

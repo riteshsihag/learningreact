@@ -1,13 +1,14 @@
 import { Component } from 'react';
 import './login.css'
 import { Redirect,RouteComponentProps } from 'react-router-dom';
-import {observer} from 'mobx-react'
-import loginStore from '../../Stores/LoginStore/loginStore';
+import {inject, observer} from 'mobx-react'
 import Cookies from 'js-cookie'
-class Login extends Component<RouteComponentProps> {
+@inject('LoginValues')
+@observer
+class Login extends Component<RouteComponentProps&InstanceType<any>> {
 
     render() {
-        const LoginValues = loginStore;
+    const {LoginValues} = this.props
     const jwtToken = Cookies.get("jwt_token")
      if(jwtToken !== undefined){
         return <Redirect to={'/'}/>
@@ -52,4 +53,4 @@ class Login extends Component<RouteComponentProps> {
         )
     }
 }
-export default observer(Login);
+export default Login;

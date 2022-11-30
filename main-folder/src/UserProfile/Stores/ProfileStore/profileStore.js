@@ -1,26 +1,25 @@
-import {decorate, observable} from 'mobx'
-import { mockGetJobs } from '../../Utils/utils'
+import { decorate, observable } from "mobx";
 
-
-class profileStore{
-    allDetails= {} 
-   
-    getJobs =  async() => {
-       
-         const data = await mockGetJobs()
-            const updatedData  = {
-                name: data.name,
-                profileUrl: data.profile_image_url,
-                bio: data.short_bio
-            }
-             this.allDetails = updatedData 
-        
-    }
+class profileStore {
+  allDetails = {};
+  profileApiData;
+  constructor(ProfileServiceData,ProfileFixtureData) {
+    this.profileApiData = ProfileFixtureData;
+  }
+  getJobs = async () => {
+    const data = await this.profileApiData.getProfileData();
+    const updatedData = {
+      name: data.name,
+      profileUrl: data.profile_image_url,
+      bio: data.short_bio,
+    };
+    this.allDetails = updatedData;
+  };
 }
 
-decorate(profileStore,{
-   getJobs:observable,
-   allDetails:observable
-})
+decorate(profileStore, {
+  getJobs: observable,
+  allDetails: observable,
+});
 
-export default new profileStore()
+export default profileStore;

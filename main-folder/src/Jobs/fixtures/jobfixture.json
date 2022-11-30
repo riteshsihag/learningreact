@@ -1,0 +1,57 @@
+{
+    "jobs": [
+        {
+            "id": "6bd26015-6df2-44c4-9e91-444bfbacdfd2",
+            "title": "ML Engineer",
+            "rating": 4,
+            "company_logo_url": "https://assets.ccbp.in/frontend/react-js/jobby-app/netflix-img.png",
+            "location": "Delhi",
+            "job_description": "As an ML Engineer, you will help define and execute the strategy and vision for enabling standard and novel experimentation practices at Netflix, including model training, ensembling and pipeline componentization, hyperparameter optimization, feature selection, and engineering, model reuse, model evaluation/validation, performance profiling, and optimization. You will build systems, infrastructure, and libraries to provide a robust and transparent platform for experimentation at scale, aiming to consistently deliver “member joy” to our platform customers. You will work within the larger Machine Learning Platform org and the applied ML research community at Netflix to set the forward-looking direction for nascent platform areas of investment like AutoML and ML Performance.",
+            "employment_type": "Part Time",
+            "package_per_annum": "26 LPA"
+        },
+        {
+            "id": "df664d45-8b40-4504-897c-ed3fdb6b5b02",
+            "title": "Backend Engineer",
+            "rating": 5,
+            "company_logo_url": "https://assets.ccbp.in/frontend/react-js/jobby-app/google-img.png",
+            "location": "Mumbai",
+            "job_description": "At Google, engineers not only revolutionize search, they routinely work on massive scalability and storage solutions, large-scale applications and entirely new platforms for developers around the world. From Google Ads to Chrome, Android to YouTube, Social to Local, Google engineers are changing the world one technological achievement after another.",
+            "employment_type": "Part Time",
+            "package_per_annum": "29 LPA"
+        },
+        {
+            "id": "bcaf3272-6ee7-46b8-9d1a-828d1a6ed085",
+            "title": "Backend Engineer",
+            "rating": 4,
+            "company_logo_url": "https://assets.ccbp.in/frontend/react-js/jobby-app/zomato-img.png",
+            "location": "Hyderabad",
+            "job_description": "We are looking for engineers who have hands-on experience in building highly reliable distributed systems and have deep expertise in database design & performance tuning. Knowledge of Machine Learning and other Predictive Modeling techniques will be added strength.",
+            "employment_type": "Full Time",
+            "package_per_annum": "44 LPA"
+        },
+        {
+            "id": "9060e3b1-05d2-4940-9bf8-54c0423eb490",
+            "title": "Backend Engineer",
+            "rating": 4,
+            "company_logo_url": "https://assets.ccbp.in/frontend/react-js/jobby-app/netflix-img.png",
+            "location": "Mumbai",
+            "job_description": "As an engineer in the Personalisation team, you will build platforms and tools that deliver personalized recommendations to 500+ million users. You will work on building storage solutions and microservices that serve recommendations at a rate of few 100K requests per second. You will build tools that serve recommendations to our users in real-time.",
+            "employment_type": "Freelance",
+            "package_per_annum": "46 LPA"
+        },
+        {
+            "id": "775924df-fb9a-4d0b-beef-7f8c17e78ee8",
+            "title": "Fullstack Developer",
+            "rating": 5,
+            "company_logo_url": "https://assets.ccbp.in/frontend/react-js/jobby-app/facebook-img.png",
+            "location": "Bangalore",
+            "job_description": "We are looking for full-stack engineers who can help us reach our mission of empowering the next generation. Your duties will include development, writing code, and documenting functionality. You should be able to build high-quality, innovative, and fully performing software in compliance with coding standards and technical design. ",
+            "employment_type": "Part Time",
+            "package_per_annum": "49 LPA"
+        }
+    ]
+
+}
+
+  
