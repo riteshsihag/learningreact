@@ -1,25 +1,29 @@
+import { LoginServiceApi } from "../../Services/index.api"
+import { LoginFixture } from "../../Services/index.fixture"
 import loginStore from "./loginStore"
 
-
+const LoginServiceData = new LoginServiceApi()
+const LoginFixtureData = new LoginFixture()
+const LoginValues = new loginStore(LoginServiceData,LoginFixtureData)
 afterEach(()=>{
-    loginStore.username = ''
-    loginStore.password = ''
-    loginStore.enterPassword = ''
-    loginStore.enterUsername = ''
-    loginStore.error_msg = ''
+    LoginValues.username = ''
+    LoginValues.password = ''
+    LoginValues.enterPassword = ''
+    LoginValues.enterUsername = ''
+    LoginValues.error_msg = ''
 })
 test('checking Login UserName',()=>{
-   loginStore.onChangeUsername('Rahul')
-   expect(loginStore.username).toBe('Rahul')
+    LoginValues.onChangeUsername('Rahul')
+   expect(LoginValues.username).toBe('Rahul')
 })
 test('checking Login Password',()=>{
-    loginStore.onChangePassword('Rahul@2021')
-    expect(loginStore.password).toBe('Rahul@2021')
+    LoginValues.onChangePassword('Rahul@2021')
+    expect(LoginValues.password).toBe('Rahul@2021')
  })
 
 test("Empty Username and Password input value",()=>{
-    loginStore.checkInput()
-    expect(loginStore.enterUsername).toBe('Enter Username')
-    expect(loginStore.enterPassword).toBe('Enter Password')
+    LoginValues.checkInput()
+    expect(LoginValues.enterUsername).toBe('Enter Username')
+    expect(LoginValues.enterPassword).toBe('Enter Password')
 })
 

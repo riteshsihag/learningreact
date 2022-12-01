@@ -1,15 +1,19 @@
+import { JobService } from "../../Services/index.api"
+import { JobFixtureData } from "../../Services/index.fixture"
 import jobRouteStore from "./jobRouteStore"
 
- 
+const jobService = new JobService()
+const jobFixtureData = new JobFixtureData()
+const JobRouteValues = new jobRouteStore(jobService,jobFixtureData)
  afterEach(()=>{
-    jobRouteStore.employmentType = []
-    jobRouteStore.minPackage = ''
+   JobRouteValues.employmentType = []
+   JobRouteValues.minPackage = ''
  })
  test("testing filter by salary",()=>{
-    jobRouteStore.findMinPackageJobs('1000000',true)
-    expect(jobRouteStore.minPackage).toBe('1000000')
+   JobRouteValues.findMinPackageJobs('1000000',true)
+    expect(JobRouteValues.minPackage).toBe('1000000')
  })
  test("testing employment type filter ",()=>{
-    jobRouteStore.checkBox("FullTime",true)
-    expect(jobRouteStore.employmentType).toStrictEqual(["FULLTIME"])
+   JobRouteValues.checkBox("FullTime",true)
+    expect(JobRouteValues.employmentType).toStrictEqual(["FULLTIME"])
  })
