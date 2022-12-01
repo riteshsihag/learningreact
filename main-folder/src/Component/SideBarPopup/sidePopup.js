@@ -13,7 +13,7 @@ const SideBarConstants = [
     {
       id:'1',
       name: 'Home',
-      linkAddress: '/home',
+      linkAddress: '/',
       icon: <AiFillHome/>
     },
     {
@@ -59,7 +59,7 @@ class SidebarPopup extends Component {
                 <SideLinkContainer>
               {SideBarConstants.map(eachBar=>{
                 return (
-                  <NavLink id={isDarkModeOn?"dark":""} to={eachBar.linkAddress} className={isActive=> "navLink-container"+ (!isActive?" unselected":"")}>
+                  <NavLink id={isDarkModeOn?"dark":""} exact to={eachBar.linkAddress} className={isActive=> "navLink-container"+ (!isActive?" unselected":"")}>
                  <div className='icon'>{eachBar.icon}</div> 
                   <NavName className='name' darkMode={isDarkModeOn}>{eachBar.name}</NavName>
               </NavLink>

@@ -12,7 +12,7 @@ const SideBarConstants = [
   {
     id:'1',
     name: 'Home',
-    linkAddress: '/home',
+    linkAddress: '/',
     icon: <AiFillHome />
   },
   {
@@ -47,7 +47,7 @@ class Sidebar extends Component {
             <SideLinkContainer>
               {SideBarConstants.map(eachBar=>{
                 return (
-                  <NavLink to={eachBar.linkAddress} id={isDarkModeOn?"dark":""} className={isActive=> "navLink-container"+ (!isActive?" unselected":"")}>
+                  <NavLink exact to={eachBar.linkAddress} id={isDarkModeOn?"dark":""} className={isActive=> "navLink-container"+ (!isActive?" unselected":"")}>
                  <div className='icon'>{eachBar.icon}</div> 
                 <NavName  darkMode={isDarkModeOn} className="name">{eachBar.name}</NavName>
               </NavLink>
